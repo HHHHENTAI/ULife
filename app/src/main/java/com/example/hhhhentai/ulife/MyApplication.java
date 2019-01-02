@@ -10,4 +10,5 @@ public class MyApplication extends Application {
         super.onCreate();
         x.Ext.init(this);
     }
+
 }
