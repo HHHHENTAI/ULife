@@ -12,10 +12,6 @@ public class MainActivity extends AppCompatActivity {
         //dsadsadsa
         //123
 
-        //我是盛光明的测试
-        //我是吴泽豪的测试
-        //test123
-        //test
 
     }
 }
