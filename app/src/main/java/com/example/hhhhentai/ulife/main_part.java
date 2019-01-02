@@ -7,12 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import org.xutils.x;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import main_fragment.fragment.Fragment_show;
-import main_fragment.fragment.MyAdapter;
-import main_fragment.fragment.item_fragment;
+
 //TODO 赵效慷and江守鑫---
 public class main_part extends AppCompatActivity implements View.OnClickListener {
 

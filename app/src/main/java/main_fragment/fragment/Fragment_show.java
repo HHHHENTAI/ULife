@@ -3,7 +3,6 @@ package main_fragment.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -43,7 +42,7 @@ public class Fragment_show extends Fragment {
         initData();
 
         /*设置Adapter*/
-        pager.setAdapter(new MyAdapter(getChildFragmentManager(),list));
+        pager.setAdapter(new ViewPageAdapter(getChildFragmentManager(),list));
 
         /*Tab与ViewPager绑定*/
         tab.setupWithViewPager(pager);

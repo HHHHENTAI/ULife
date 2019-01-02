@@ -11,16 +11,14 @@ import android.widget.TextView;
 
 import com.example.hhhhentai.ulife.R;
 
-public class item_fragment extends Fragment {
+public class tab_item_fragment extends Fragment {
 
-    public item_fragment(){};
-
-
+    public tab_item_fragment(){}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      View view = inflater.inflate(R.layout.viewpager_test,null);
+      View view = inflater.inflate(R.layout.show_list,null);
         return view;
     }
 
@@ -34,11 +32,11 @@ public class item_fragment extends Fragment {
     }
 
      /* Bundle 传参数 */
-    public static item_fragment newInstance(String text)
+    public static tab_item_fragment newInstance(String text)
     {
         Bundle bundle =new Bundle();
         bundle.putString("text",text);
-        item_fragment item = new item_fragment();
+        tab_item_fragment item = new tab_item_fragment();
         item.setArguments(bundle);
         return item;
     }
