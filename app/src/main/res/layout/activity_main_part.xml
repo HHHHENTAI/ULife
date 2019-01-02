@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <!--菜单-->
+    <!--               主界面   by 江守鑫&&赵效慷                -->
     <LinearLayout
         android:background="@color/white"
         android:id="@+id/btm_menu"
