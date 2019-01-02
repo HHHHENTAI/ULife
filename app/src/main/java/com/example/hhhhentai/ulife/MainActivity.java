@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //dsadsadsa
+        //认为他认为
         ///jsx come
     }
 }
