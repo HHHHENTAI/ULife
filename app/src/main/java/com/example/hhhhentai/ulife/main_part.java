@@ -113,14 +113,13 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 Calendar calendar = Calendar.getInstance();
                 String ymd = calendar.get(Calendar.YEAR) * 10000 + (calendar.get(Calendar.MONTH) + 1) * 100 + calendar.get(Calendar.DAY_OF_MONTH) + "";
                 String hms = calendar.get(Calendar.HOUR_OF_DAY) * 10000 + calendar.get(Calendar.MINUTE) * 100 + calendar.get(Calendar.SECOND) + "";
-                String timestamp = "";
+                String NewsTime_text = "";
                 if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
-                    timestamp = "timestamp=" + ymd + "0" + hms;
+                    NewsTime_text = ymd + "0" + hms;
                 } else {
-                    timestamp = "timestamp=" + ymd + hms;
+                    NewsTime_text = ymd + hms;
                 }
-                String NewsTime_text = timestamp;
-                Log.i("timestamp", timestamp);
+                Log.i("timestamp", NewsTime_text);
                 database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_int, NewsHot_int, NewsTime_text);
                 //TODO TEST_END:赵效慷：测试插入数据结束
 
