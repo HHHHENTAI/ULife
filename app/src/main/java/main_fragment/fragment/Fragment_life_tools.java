@@ -90,6 +90,26 @@ public class Fragment_life_tools extends Fragment {
         Gv_Toolgridview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("ID",position+"");
+
+                switch (position) {
+                    case 0:
+                        Intent weatherintent=new Intent(context,WeatherActivity.class);
+                        startActivity(weatherintent);
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+
+
+                }
 
             }
         });
@@ -132,26 +152,7 @@ public class Fragment_life_tools extends Fragment {
         Gv_Toolgridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("ID",position+"");
 
-                switch (position) {
-                    case 0:
-                        Intent weatherintent=new Intent(context,WeatherActivity.class);
-                        startActivity(weatherintent);
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        break;
-
-
-                }
             }
         });
 
