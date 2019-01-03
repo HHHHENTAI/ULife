@@ -1,6 +1,7 @@
 package com.example.hhhhentai.ulife;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
@@ -35,6 +36,10 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_part);
         init();
+
+        //接收登录页面传来的用户登录信息 —— 手机号
+        Intent phone_intent = getIntent();
+        String user_phone_num = phone_intent.getStringExtra("phonenum");
         addFragment();
     }
 

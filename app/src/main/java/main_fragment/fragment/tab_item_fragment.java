@@ -52,14 +52,11 @@ public class tab_item_fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //todo 页面显示
         //初始化
-        Log.i("jjj", "000");
         init(view);
         //为listView设置Adapter
         choose_classify();
         //监听事件
         setOnclick();
-
-
     }
 
     private void setOnclick() {
@@ -86,13 +83,13 @@ public class tab_item_fragment extends Fragment {
 
                 break;
             case 1:
-                // data_to_adapter("学习");
+                 data_to_adapter("学习");
                 break;
             case 2:
-                // data_to_adapter("游戏");
+                 data_to_adapter("游戏");
                 break;
             case 3:
-                // data_to_adapter("生活");
+                 data_to_adapter("生活");
                 break;
 
             default:break;

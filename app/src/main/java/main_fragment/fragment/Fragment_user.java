@@ -26,17 +26,20 @@ public class Fragment_user extends Fragment implements View.OnClickListener
         return view;
     }
 
+
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        LinearLayout ll_history = (LinearLayout) getActivity().findViewById(R.id.ll_history);
-        LinearLayout ll_seting = (LinearLayout) getActivity().findViewById(R.id.ll_seting);
-        LinearLayout ll_set_userInfo = (LinearLayout) getActivity().findViewById(R.id.ll_set_userInfo);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        LinearLayout ll_history = (LinearLayout) view.findViewById(R.id.ll_history);
+        LinearLayout ll_seting = (LinearLayout) view.findViewById(R.id.ll_seting);
+        LinearLayout ll_set_userInfo = (LinearLayout) view.findViewById(R.id.ll_set_userInfo);
         ll_history.setOnClickListener(this);
         ll_seting.setOnClickListener(this);
         ll_set_userInfo.setOnClickListener(this);
 
     }
+
+
 
     @Override
     public void onClick(View view)
@@ -47,21 +50,21 @@ public class Fragment_user extends Fragment implements View.OnClickListener
            {
                Intent intent = new Intent(getActivity(),History.class);
                startActivity(intent);
-               getActivity().finish();
+
                break;
            }
            case R.id.ll_seting:
            {
                Intent intent = new Intent(getActivity(),Seting.class);
                startActivity(intent);
-               getActivity().finish();
+
                break;
            }
            case R.id.ll_set_userInfo:
            {
                Intent intent = new Intent(getActivity(),Set_userInfo.class);
                startActivity(intent);
-               getActivity().finish();
+
                break;
            }
        }
