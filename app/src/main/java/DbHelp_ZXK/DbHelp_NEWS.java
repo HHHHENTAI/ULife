@@ -1,4 +1,4 @@
-package main_fragment.fragment;
+package DbHelp_ZXK;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 public class DbHelp_NEWS extends SQLiteOpenHelper {
 
     //数据库名称和版本号
-    public static final String DB_NAME = "NEWS_INFO";
+    public static final String DB_NAME = "NEWS_INFO.db";
     public static final int VERSION = 1;
 
     public DbHelp_NEWS(@Nullable Context context) {
@@ -40,13 +40,13 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
         db.execSQL(CREATE_SQL_NewsInfo);
 
 //        SeeId	Integer	自动增长	标识ID
-//        SeePhone	Text	非空	浏览账号
+//        SeePhone	Text	非空	浏览账号x
 //        SeeNewsID	Integer	主键	新闻ID
+        String CREATE_SQL_SeeHistory = "create table SeeHistory(SeeId_int integer primary key autoincrement," +
+                "SeePhone_text text not null," +
+                "SeeNewsID_int integer not null)";
+        db.execSQL(CREATE_SQL_SeeHistory);
 
-//        String CREATE_SQL_SeeHistory = "create table SeeHistory(SeeId_int primary key autoincrement," +
-//                "SeePhone_text text not null," +
-//                "SeeNewsID_int integer not null)";
-//        db.execSQL(CREATE_SQL_SeeHistory);
     }
 
     @Override
