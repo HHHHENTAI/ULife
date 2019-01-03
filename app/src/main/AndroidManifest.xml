@@ -29,6 +29,8 @@
         <activity android:name=".History" />
         <activity android:name=".Seting" />
         <activity android:name=".Set_userInfo"></activity>
+
+        <activity android:name=".newsActivity"></activity>
     </application>
 
 </manifest>
