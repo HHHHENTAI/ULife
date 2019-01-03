@@ -4,8 +4,26 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
         tools:context=".Register_phonenum" >
+
+    <RelativeLayout
+        android:id="@+id/RL_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_nav_back"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="注册"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/LL_phone_reg"
@@ -13,6 +31,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
+            android:layout_below="@+id/RL_register"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -27,7 +46,6 @@
                 android:hint="请输入手机号"
                 android:textSize="18sp"
                 android:textColorHint="#acbbff"
-                android:inputType="textPassword"
                 />
 
         </LinearLayout>
@@ -37,9 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/LL_phone_reg"
-            android:layout_marginTop="20dp"
-
-            >
+            android:layout_marginTop="20dp">
 
             <EditText
                 android:id="@+id/et_SMS_reg"

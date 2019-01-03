@@ -79,7 +79,6 @@
                 android:hint="请输入昵称"
                 android:textSize="18sp"
                 android:textColorHint="#acbbff"
-                android:inputType="textPassword"
                 />
 
         </LinearLayout>
