@@ -17,7 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main_part"></activity>
+        <activity android:name=".main_part" />
+        <activity android:name=".History" />
+        <activity android:name=".Seting" />
+        <activity android:name=".Set_userInfo"></activity>
     </application>
 
 </manifest>
