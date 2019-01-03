@@ -1,19 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<FrameLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    <TextView
-        android:id="@+id/wzh"
-        android:clickable="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+
+    <com.example.hhhhentai.background.CustomVideoView
+        android:id="@+id/cvv_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/LL_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello Chinasofti!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:gravity="center">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/et_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="username"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColorHint="#ffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LL_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="password"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:inputType="textPassword"
+                android:textColorHint="#ffffff"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/RL_fr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_pwd_for"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="forget password"
+                android:textSize="15sp"
+                android:textColor="#ffffff"
+                android:layout_centerVertical="true"/>
+
+            <CheckBox
+                android:id="@+id/cb_pwd_rem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="remember me"
+                android:textSize="15sp"
+                android:textColor="#ffffff"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/LL_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sign in"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LL_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sign up"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
