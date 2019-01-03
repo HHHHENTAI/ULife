@@ -21,7 +21,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
         //在创建时调用，返回一个fragment，他会判断是哪个fragment
         @Override
         public Fragment getItem(int position) {
-            return tab_item_fragment.newInstance(list.get(position));
+            return tab_item_fragment.newInstance(position);
         }
 
 
@@ -30,6 +30,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
         public int getCount() {
             return list.size();
         }
+
          /*根据位置返回当前所对应的标题。*/
         @Override
         public CharSequence getPageTitle(int position) {

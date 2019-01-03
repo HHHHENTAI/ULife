@@ -18,7 +18,7 @@ public class Fragment_show extends Fragment {
     //pager是下边的内容展示
     //tablayout是上边的滑动的小组件
     private ViewPager pager;
-    /*abLayout提供了一个水平的布局用来展示Tabs*/
+    /*TabLayout提供了一个水平的布局用来展示Tabs*/
     private TabLayout tab;
     private List<String> list = new ArrayList<String>(){};
     private String [] strings = {"推荐","学习","游戏","生活"};
@@ -33,10 +33,9 @@ public class Fragment_show extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.i("jjj", "onViewCreated: ");
 
-        this.pager = (ViewPager) view.findViewById(R.id.pager);
-        this.tab = (TabLayout) view.findViewById(R.id.tab);
+        this.pager = view.findViewById(R.id.pager);
+        this.tab =  view.findViewById(R.id.tab);
         initData();
 
         /*设置Adapter*/
