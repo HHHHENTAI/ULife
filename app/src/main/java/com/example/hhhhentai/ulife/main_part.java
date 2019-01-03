@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.Calendar;
+
 import DbHelp_ZXK.Database_News;
 import DbHelp_ZXK.DbHelp_NEWS;
 import main_fragment.fragment.Fragment_life_tools;
@@ -107,16 +109,25 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 String NewsClass_text = "生活";
                 int NewsImage_int = 100;
                 int NewsHot_int = 7;
-                String NewsTime_text = "20180103131200";
+                //时间戳
+                Calendar calendar = Calendar.getInstance();
+                String ymd = calendar.get(Calendar.YEAR) * 10000 + (calendar.get(Calendar.MONTH) + 1) * 100 + calendar.get(Calendar.DAY_OF_MONTH) + "";
+                String hms = calendar.get(Calendar.HOUR_OF_DAY) * 10000 + calendar.get(Calendar.MINUTE) * 100 + calendar.get(Calendar.SECOND) + "";
+                String timestamp = "";
+                if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
+                    timestamp = "timestamp=" + ymd + "0" + hms;
+                } else {
+                    timestamp = "timestamp=" + ymd + hms;
+                }
+                String NewsTime_text = timestamp;
+                Log.i("timestamp", timestamp);
                 database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_int, NewsHot_int, NewsTime_text);
-
-
                 //TODO TEST_END:赵效慷：测试插入数据结束
 
-                //TODO TEST_START:赵效慷：测试删除数据
-                database_news.delete_newsinfo("0");
-                //Log.i("delete", "删除了数据");
 
+                //TODO TEST_START:赵效慷：测试删除数据
+                //database_news.delete_newsinfo("0");
+                //Log.i("delete", "删除了数据");
                 //TODO TEST_END:赵效慷：测试删除数据结束
 
                 //TODO TEST_START:赵效慷：测试修改数据
@@ -126,7 +137,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 //TODO TEST_END:赵效慷：测试修改数据结束
 
                 //TODO TEST_START:赵效慷：测试查询数据
-                Cursor cursor = database_news.query_newsinfo();
+                Cursor cursor = database_news.query_newsinfo(null, null, null, null, null, null);
                 int i = 0;
                 while (cursor.moveToNext()) {
                     i++;

@@ -48,8 +48,8 @@ public class Database_News {
         database_news.update("NewsInfo", values_update, "NewsId_int=?", new String[]{NewsId_oldint + ""});
     }
 
-    public Cursor query_newsinfo() {
-        return database_news.query("NewsInfo", null, null, null, null, null, null);
+    public Cursor query_newsinfo(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
+        return database_news.query("NewsInfo", columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
 
