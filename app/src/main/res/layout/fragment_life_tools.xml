@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <!--盛光明编写的工具栏界面-->
+
+    <!--生活工具-->
+    <TextView
+        android:id="@+id/Tv_Tooltitle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="生活工具"
+        android:textSize="25sp" />
+
+    <GridView
+        android:id="@+id/Gv_Toolgridview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Tv_Tooltitle1"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:numColumns="4">
+
+    </GridView>
+
+    <!--学习工具-->
+    <TextView
+        android:id="@+id/Tv_Tooltitle2"
+        android:layout_below="@id/Gv_Toolgridview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="学习工具"
+        android:textSize="25sp" />
+
+    <GridView
+        android:id="@+id/Gv_Toolgridview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Tv_Tooltitle2"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:numColumns="4">
+
+    </GridView>
+
+</RelativeLayout>
