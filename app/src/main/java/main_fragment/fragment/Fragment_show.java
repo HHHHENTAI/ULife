@@ -39,6 +39,7 @@ public class Fragment_show extends Fragment {
         initData();
 
         /*设置Adapter*/
+        pager.setOffscreenPageLimit(5); //设置加载的页面个数，保证不会被销毁
         pager.setAdapter(new ViewPageAdapter(getChildFragmentManager(),list));
         tab.setTabMode(TabLayout.MODE_FIXED);
         tab.setTabGravity(TabLayout.GRAVITY_FILL);

@@ -1,19 +1,23 @@
 package main_fragment.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.hhhhentai.ulife.R;
-import com.example.hhhhentai.ulife.main_part;
+
+import com.example.hhhhentai.ulife.newsActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +26,6 @@ import java.util.Map;
 
 public class tab_item_fragment extends Fragment {
 
-    private TextView textView;
     private ListView listView;
     private Context context;
 
@@ -49,36 +52,59 @@ public class tab_item_fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //todo 页面显示
         //初始化
+        Log.i("jjj", "000");
         init(view);
         //为listView设置Adapter
-        switch (getArguments().getInt("position"))
-        {
-            case 0:
-               data_to_adapter("推荐");
+        choose_classify();
+        //监听事件
+        setOnclick();
 
-                break;
-            case 1:
-               // data_to_adapter("学习");
-                break;
-            case 2:
-               // data_to_adapter("游戏");
-                break;
-            case 3:
-               // data_to_adapter("生活");
-                break;
-
-
-                default:break;
-        }
 
     }
 
+    private void setOnclick() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-     /*    初始化   */
+                      Intent intent= new Intent(context,newsActivity.class);
+                      intent.putExtra("news_title","");//新闻作者
+                      intent.putExtra("news_time","");//新闻时间
+
+                      startActivity(intent);
+
+            }
+        });
+    }
+
+    private void choose_classify() {
+        switch (getArguments().getInt("position"))
+        {
+            case 0:
+                data_to_adapter("推荐");
+                Log.i("test","推荐");
+
+                break;
+            case 1:
+                // data_to_adapter("学习");
+                break;
+            case 2:
+                // data_to_adapter("游戏");
+                break;
+            case 3:
+                // data_to_adapter("生活");
+                break;
+
+            default:break;
+        }
+    }
+
+
+    /*    初始化   */
     private void init(View view) {
-        textView = view.findViewById(R.id.tx_test);
+
         listView= view.findViewById(R.id.list_show);
-        textView.setText(""+getArguments().getInt("position"));
+
 
     }
 
@@ -89,22 +115,22 @@ public class tab_item_fragment extends Fragment {
         //todo 查询数据库  获取id等信息
         //Cursor cursor   =  db.rawQuery("select * from newsInfo where classify = ? ",new String[]{classify});
         //whlie(cursor.movetoNext()){}
-
+        Log.i("test","chinasofti");
 
         //todo 添加到数据源
         HashMap<String,Object> map = new HashMap<String, Object>();
-        map.put("news_title","1");
-        map.put("news_classify","2");
-        map.put("news_browse_count","3");
+        map.put("news_title","11");
+        map.put("news_classify","22");
+        map.put("news_browse_count","33");
         map.put("news_img",R.drawable.ic_launcher_background);
-        map.put("news_time","4");
+        map.put("news_time","44");
         data.add(map);
 
         //todo 配置数据源
         String from[] = {"news_title","news_classify","news_browse_count","news_img","news_time"};
         int to[] = {R.id.list_title,R.id.list_classify,R.id.list_browse_num,R.id.list_img,R.id.list_time};
         SimpleAdapter adapter = new SimpleAdapter(context,data,R.layout.list_item,from,to);
-         listView.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 
 
