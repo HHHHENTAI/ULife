@@ -72,10 +72,13 @@ public class tab_item_fragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                      TextView tv_title =  view.findViewById(R.id.list_title);
+                      String news_title= tv_title.getText().toString();
+                      TextView tv_time = view.findViewById(R.id.list_time);
+                      String news_time = tv_time.getText().toString();
                       Intent intent= new Intent(context,newsActivity.class);
-                      intent.putExtra("news_title","");//新闻标题
-                      intent.putExtra("news_time","");//新闻时间
+                      intent.putExtra("news_title",news_title);//新闻标题
+                      intent.putExtra("news_time",news_time);//新闻时间
                       //intent.putExtra("user_num",user_num);//新闻作者
                       startActivity(intent);
             }
