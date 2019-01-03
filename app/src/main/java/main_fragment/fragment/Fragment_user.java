@@ -67,21 +67,18 @@ public class Fragment_user extends Fragment implements View.OnClickListener
            {
                Intent intent = new Intent(getActivity(),History.class);
                startActivity(intent);
-
                break;
            }
            case R.id.ll_seting:
            {
                Intent intent = new Intent(getActivity(),Seting.class);
                startActivity(intent);
-
                break;
            }
            case R.id.ll_set_userInfo:
            {
                Intent intent = new Intent(getActivity(),Set_userInfo.class);
                startActivity(intent);
-
                break;
            }
        }
