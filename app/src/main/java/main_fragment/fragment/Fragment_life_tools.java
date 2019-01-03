@@ -14,7 +14,7 @@ import com.example.hhhhentai.ulife.R;
 public class Fragment_life_tools extends Fragment {
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_life_tools,null);
         return view;
     }
