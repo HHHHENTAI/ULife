@@ -24,6 +24,7 @@
         <activity android:name=".main_part" />
         <activity android:name=".Register_phonenum" />
         <activity android:name=".Forget" />
+        <activity android:name=".newsActivity" />
         <activity android:name=".Register_userinfo"></activity>
         <activity android:name=".History" />
         <activity android:name=".Seting" />
