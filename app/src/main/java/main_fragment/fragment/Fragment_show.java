@@ -55,7 +55,7 @@ public class Fragment_show extends Fragment {
     /* Bundle 传参数 */
     public static Fragment_show newInstance(String user_num)
     {
-        Log.i("jjj", "newInstance: "+user_num);
+
         Bundle bundle =new Bundle();
         bundle.putString("user_num",user_num);
         Fragment_show item = new Fragment_show();

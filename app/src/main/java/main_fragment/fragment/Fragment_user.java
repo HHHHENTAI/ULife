@@ -46,7 +46,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener
 
         //获取用户手机号
         user_num=getArguments().getString("user_num");
-        Log.i("jjj", "onViewCreated: "+user_num);
+       // Log.i("jjj", "onViewCreated: "+user_num);
         LinearLayout ll_history = (LinearLayout) view.findViewById(R.id.ll_history);
         LinearLayout ll_seting = (LinearLayout) view.findViewById(R.id.ll_seting);
         LinearLayout ll_set_userInfo = (LinearLayout) view.findViewById(R.id.ll_set_userInfo);

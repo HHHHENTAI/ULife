@@ -1,14 +1,19 @@
 package com.example.hhhhentai.ulife;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import DbHelp_ZXK.Database_News;
+import DbHelp_ZXK.DbHelp_NEWS;
+
 public class newsActivity extends AppCompatActivity {
 
-
+    private DbHelp_NEWS help_news;
+    private Database_News database_news;
     private TextView title;
     private TextView user;
     private ImageView user_pic;
@@ -22,7 +27,7 @@ public class newsActivity extends AppCompatActivity {
         String title = intent.getStringExtra("news_title");
         String time  = intent.getStringExtra("news_time");
         //todo 检索数据库，找到新闻 记录
-        //
+       // Cursor cursor = database_news.query_()
         initView();
 
 
@@ -86,6 +91,10 @@ public class newsActivity extends AppCompatActivity {
         time =findViewById(R.id.news_time);
         title=findViewById(R.id.news_title);
         content =findViewById(R.id.news_content);
+        //创建信息的数据库
+        help_news = new DbHelp_NEWS(this);
+        //获取数据可读写对象
+        database_news = new Database_News(help_news);
 
     }
 
