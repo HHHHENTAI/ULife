@@ -18,8 +18,10 @@ public class Fragment_show extends Fragment {
     //pager是下边的内容展示
     //tablayout是上边的滑动的小组件
     private ViewPager pager;
+    /*abLayout提供了一个水平的布局用来展示Tabs*/
     private TabLayout tab;
-    private List<String> list;
+    private List<String> list = new ArrayList<String>(){};
+    private String [] strings = {"推荐","学习","游戏","生活"};
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -39,15 +41,14 @@ public class Fragment_show extends Fragment {
 
         /*设置Adapter*/
         pager.setAdapter(new ViewPageAdapter(getChildFragmentManager(),list));
-
+        tab.setTabMode(TabLayout.MODE_FIXED);
+        tab.setTabGravity(TabLayout.GRAVITY_FILL);
         /*Tab与ViewPager绑定*/
         tab.setupWithViewPager(pager);
     }
     private void initData() {
-        list = new ArrayList<>();
-        for (int i = 0; i < 5 ; i++) {
-            list.add("第"+i+"页");
-
+        for (int i = 0; i < 4 ; i++) {
+            list.add(strings[i]);
         }
     }
 }
