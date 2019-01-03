@@ -35,7 +35,8 @@
                 android:gravity="center"
                 android:textSize="18sp"
                 android:textColorHint="#ffffff"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff"
+                android:background="@null"/>
 
         </LinearLayout>
 
@@ -54,7 +55,8 @@
                 android:textSize="18sp"
                 android:inputType="textPassword"
                 android:textColorHint="#ffffff"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff"
+                android:background="@null"/>
 
         </LinearLayout>
 

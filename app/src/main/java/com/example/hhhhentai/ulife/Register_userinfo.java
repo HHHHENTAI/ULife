@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.hhhhentai.DbHelp.DbHelp;
 
-public class Register_userinfo extends Activity {
+public class Register_userinfo extends SwipeBackActivity {
 
     private EditText et_pwd_reg,et_pwd_confirm_reg,et_name_reg,et_phone_reg,et_SMS_reg;
     private Button btn_register,btn_SMS_reg;

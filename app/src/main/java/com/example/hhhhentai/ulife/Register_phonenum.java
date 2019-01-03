@@ -2,19 +2,24 @@ package com.example.hhhhentai.ulife;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 import com.example.hhhhentai.JsonGet.Sms;
 import com.example.hhhhentai.MD5Utils.MD5Utils;
@@ -25,10 +30,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
 
-public class Register_phonenum extends Activity {
+public class Register_phonenum extends SwipeBackActivity {
 
-    private EditText et_acc_reg,et_pwd_reg,et_name_reg,et_phone_reg,et_SMS_reg;
+    private EditText et_phone_reg,et_SMS_reg;
+    private TimeCount time;
     private Button btn_next,btn_SMS_reg;
+    private LinearLayout LL_phonenum_reg,LL_phone_reg,LL_SMS_reg,LL_btn_next;
     private DbHelp help;
     private SQLiteDatabase database;
     private String sms = "";
@@ -46,11 +53,21 @@ public class Register_phonenum extends Activity {
         help = new DbHelp(Register_phonenum.this);
         database = help.getWritableDatabase();
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constant.displayWidth = displayMetrics.widthPixels;
+        Constant.displayHeight = displayMetrics.heightPixels;
+
+        time = new TimeCount(120000, 1000);
+
         et_phone_reg = (EditText) findViewById(R.id.et_phone_reg);
         et_SMS_reg = (EditText) findViewById(R.id.et_SMS_reg);
         btn_next = (Button) findViewById(R.id.btn_next);
         btn_SMS_reg = (Button) findViewById(R.id.btn_SMS_reg);
-
+        LL_phonenum_reg = (LinearLayout) findViewById(R.id.LL_phonenum_reg);
+        LL_phone_reg = (LinearLayout) findViewById(R.id.LL_phone_reg);
+        LL_SMS_reg = (LinearLayout) findViewById(R.id.LL_SMS_reg);
+        LL_btn_next = (LinearLayout)findViewById(R.id.LL_btn_next);
         for(int i = 0; i < 6;i++){
             sms = sms+(int)(Math.random()*10)+"";
         }
@@ -83,6 +100,7 @@ public class Register_phonenum extends Activity {
                     if(c.moveToNext() == true){
                         Toast.makeText(Register_phonenum.this, "该手机号已被注册", Toast.LENGTH_SHORT).show();
                     }else{
+                        time.start();
                         new Thread() {
                             public void run() {
                                 Calendar ca = Calendar.getInstance();
@@ -174,6 +192,48 @@ public class Register_phonenum extends Activity {
                 }
             }
         });
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.7f + 0.5f));
+        LL_phonenum_reg.setLayoutParams(params);
+
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        LL_phone_reg.setLayoutParams(params1);
+
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params2.setMargins(0,(int) (Constant.displayHeight * 0.03f + 0.5f),0,0);
+        LL_SMS_reg.setLayoutParams(params2);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.06f + 0.5f));
+        params3.setMargins(0,(int) (Constant.displayHeight * 0.09f + 0.5f),0,0);
+        LL_btn_next.setLayoutParams(params3);
+    }
+
+    class TimeCount extends CountDownTimer {
+
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            btn_SMS_reg.setClickable(false);
+            btn_SMS_reg.setText("("+millisUntilFinished / 1000 +") 秒后可重新发送");
+        }
+
+        @Override
+        public void onFinish() {
+            btn_SMS_reg.setText("重新获取验证码");
+            btn_SMS_reg.setClickable(true);
+
+        }
     }
 }
 

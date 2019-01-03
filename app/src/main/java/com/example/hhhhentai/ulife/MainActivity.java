@@ -24,7 +24,7 @@ import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 import com.example.hhhhentai.background.CustomVideoView;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends SwipeBackActivity implements View.OnClickListener {
 
     private CustomVideoView videoview;
     private LinearLayout LL_all,LL_password,LL_sign_in,LL_sign_up;

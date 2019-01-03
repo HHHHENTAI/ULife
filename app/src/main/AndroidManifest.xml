@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@android:style/Theme.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,11 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".main_part" />
-        <activity android:name=".Register_phonenum" />
-        <activity android:name=".Forget" />
-        <activity android:name=".Register_userinfo" />
+        <activity android:name=".Register_phonenum" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:name=".Forget" android:theme="@android:style/Theme.Translucent"/>
         <activity android:name=".newsActivity" />
-        <activity android:name=".Register_userinfo"></activity>
+        <activity android:name=".Register_userinfo" android:theme="@android:style/Theme.Translucent"></activity>
         <activity android:name=".History" />
         <activity android:name=".Seting" />
         <activity android:name=".Set_userInfo" />

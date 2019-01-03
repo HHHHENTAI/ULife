@@ -24,7 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Forget extends Activity {
+public class Forget extends SwipeBackActivity{
 
     private EditText et_phone_for, et_SMS_for, et_pwd_for;
     private Button btn_SMS_for, btn_forget;
