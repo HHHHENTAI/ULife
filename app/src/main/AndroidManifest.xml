@@ -24,11 +24,13 @@
         <activity android:name=".main_part" />
         <activity android:name=".Register_phonenum" />
         <activity android:name=".Forget" />
+        <activity android:name=".Register_userinfo" />
         <activity android:name=".newsActivity" />
         <activity android:name=".Register_userinfo"></activity>
         <activity android:name=".History" />
         <activity android:name=".Seting" />
-        <activity android:name=".Set_userInfo"></activity>
+        <activity android:name=".Set_userInfo" />
+        <activity android:name="com.example.hhhhentai.UseTool.WeatherActivity"></activity>
     </application>
 
 </manifest>
