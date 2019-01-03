@@ -40,7 +40,7 @@ public class Fragment_show extends Fragment {
 
         /*设置Adapter*/
         pager.setOffscreenPageLimit(5); //设置加载的页面个数，保证不会被销毁
-        pager.setAdapter(new ViewPageAdapter(getChildFragmentManager(),list));
+        pager.setAdapter(new ViewPageAdapter(getChildFragmentManager(),list,getArguments().getString("user_num")));
         tab.setTabMode(TabLayout.MODE_FIXED);
         tab.setTabGravity(TabLayout.GRAVITY_FILL);
         /*Tab与ViewPager绑定*/
@@ -50,5 +50,16 @@ public class Fragment_show extends Fragment {
         for (int i = 0; i < 4 ; i++) {
             list.add(strings[i]);
         }
+    }
+
+    /* Bundle 传参数 */
+    public static Fragment_show newInstance(String user_num)
+    {
+        Log.i("jjj", "newInstance: "+user_num);
+        Bundle bundle =new Bundle();
+        bundle.putString("user_num",user_num);
+        Fragment_show item = new Fragment_show();
+        item.setArguments(bundle);
+        return item;
     }
 }

@@ -32,6 +32,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
     private ImageView btn_upload;
     private ImageView btn_life_tools;
     private ImageView btn_user;
+    private  String user_phone_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,8 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
 
         //接收登录页面传来的用户登录信息 —— 手机号
         Intent phone_intent = getIntent();
-        String user_phone_num = phone_intent.getStringExtra("phonenum");
+        user_phone_num = phone_intent.getStringExtra("phonenum");
+
         addFragment();
     }
 
@@ -53,7 +55,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         //开始事务
         ft = manager.beginTransaction();
         //ft.add("要显示的位置","要显示的内容")
-        Fragment fragment_show = new Fragment_show();
+        Fragment fragment_show = new Fragment_show().newInstance(user_phone_num);
         ft.add(R.id.content, fragment_show);
         ft.commit();
     }
@@ -81,10 +83,10 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         manager = getSupportFragmentManager();
         //开始事务
         ft = manager.beginTransaction();
-        Fragment fragment_show = new Fragment_show();
+        Fragment fragment_show = new Fragment_show().newInstance(user_phone_num);
         Fragment fragment_upload = new Fragment_upload();
         Fragment fragment_life_tools = new Fragment_life_tools();
-        Fragment fragment_user = new Fragment_user();
+        Fragment fragment_user = new Fragment_user().newInstance(user_phone_num);
         switch (view.getId()) {
             case R.id.btn_show:
                 ft.replace(R.id.content, fragment_show);

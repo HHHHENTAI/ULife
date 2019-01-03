@@ -13,15 +13,19 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
         //数据源List
         private List<String> list;
 
-        public ViewPageAdapter(FragmentManager fm, List<String> list) {
+        //用户名user_num
+        private String user_num;
+
+        public ViewPageAdapter(FragmentManager fm, List<String> list,String user_num) {
             super(fm);
             this.list = list;
+            this.user_num=user_num;
         }
 
         //在创建时调用，返回一个fragment，他会判断是哪个fragment
         @Override
         public Fragment getItem(int position) {
-            return tab_item_fragment.newInstance(position);
+            return tab_item_fragment.newInstance(position,user_num);
         }
 
 

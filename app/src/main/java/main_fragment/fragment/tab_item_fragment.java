@@ -132,12 +132,15 @@ public class tab_item_fragment extends Fragment {
 
 
     /* Bundle 传参数 */
-    public static tab_item_fragment newInstance(int position)
+    public static tab_item_fragment newInstance(int position,String user_num)
     {
+        Log.i("jjj", "newInstance: "+user_num);
         Bundle bundle =new Bundle();
         bundle.putInt("position",position);
+        bundle.putString("user_num",user_num);
         tab_item_fragment item = new tab_item_fragment();
         item.setArguments(bundle);
         return item;
     }
+
 }
