@@ -4,20 +4,24 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import DbHelp_ZXK.Database_News;
 import DbHelp_ZXK.DbHelp_NEWS;
 
-public class newsActivity extends AppCompatActivity {
+public class newsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DbHelp_NEWS help_news;
     private Database_News database_news;
-    private TextView title;
+
+    private ImageView news_back;
+
+    private TextView news_title;
     private TextView user;
     private ImageView user_pic;
-    private TextView time;
+    private TextView news_time;
     private TextView content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class newsActivity extends AppCompatActivity {
         if(cursor.moveToFirst()){
             //cursor 默认下标是-1
             content.setText(cursor.getString(cursor.getColumnIndex("NewsContent_text")));
+            news_title.setText(cursor.getString(cursor.getColumnIndex("NewsTitle_text")));
+            news_time.setText(cursor.getString(cursor.getColumnIndex("NewsTime_text")));
         }
 
 
@@ -95,9 +101,10 @@ public class newsActivity extends AppCompatActivity {
     private void initView() {
         user = findViewById(R.id.news_user);
         user_pic=findViewById(R.id.news_user_pic);
-        time =findViewById(R.id.news_time);
-        title=findViewById(R.id.news_title);
+        news_time =findViewById(R.id.news_time);
+        news_title=findViewById(R.id.news_title);
         content =findViewById(R.id.news_content);
+        news_back=findViewById(R.id.news_back);
         //创建信息的数据库
         help_news = new DbHelp_NEWS(this);
         //获取数据可读写对象
@@ -105,4 +112,14 @@ public class newsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.news_back:
+                finish();
+                break;
+        }
+
+    }
 }
