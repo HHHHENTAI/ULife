@@ -17,7 +17,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="密碼"
+                android:text="密码"
                 android:textSize="18sp"
                 />
             <EditText
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="确认密碼"
+            android:text="确认密码"
             android:textSize="18sp"
             />
         <EditText

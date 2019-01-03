@@ -115,6 +115,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         editor.commit();
                     }
                     Intent intent = new Intent(MainActivity.this, main_part.class);
+                    intent.putExtra("phonenum",account);
                     startActivity(intent);
                     finish();
                 }else{
