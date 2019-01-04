@@ -13,8 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
+import com.example.hhhhentai.JsonGet.GetToolShow;
 import com.example.hhhhentai.UseTool.ExpressageActivity;
 import com.example.hhhhentai.UseTool.SchoolDataActivity;
 import com.example.hhhhentai.UseTool.WeatherActivity;
@@ -29,6 +32,10 @@ import java.util.Map;
 public class Fragment_life_tools extends Fragment {
     private GridView Gv_Toolgridview1;
     private GridView Gv_Toolgridview2;
+
+    private ImageView Im_ToolshowPicture;
+    private TextView Tv_Toolshowsentence;
+
     private Context context;
 
     @Override
@@ -54,6 +61,14 @@ public class Fragment_life_tools extends Fragment {
     private void init(View view) {
         Gv_Toolgridview1 = (GridView) view.findViewById(R.id.Gv_Toolgridview1);
         Gv_Toolgridview2 = (GridView) view.findViewById(R.id.Gv_Toolgridview2);
+
+        Im_ToolshowPicture =(ImageView)view.findViewById(R.id.Im_ToolshowPicture);
+        Tv_Toolshowsentence=(TextView)view.findViewById(R.id.Tv_Toolshowsentence);
+
+        //获取网络图片
+
+        new GetToolShow(Im_ToolshowPicture,Tv_Toolshowsentence).execute("http://open.iciba.com/dsapi");
+
         //填充数据
         List<Map<String, Object>> data1 = new ArrayList<Map<String, Object>>();
 

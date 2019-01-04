@@ -3,49 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <!--盛光明编写的工具栏界面-->
-
-    <!--生活工具-->
-    <TextView
-        android:id="@+id/Tv_Tooltitle1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="生活工具"
-        android:textSize="25sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <GridView
-        android:id="@+id/Gv_Toolgridview1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Tv_Tooltitle1"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:numColumns="4">
+        <!--盛光明编写的工具栏界面-->
+        <LinearLayout
+            android:id="@+id/Li_ToolShow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
 
-    </GridView>
+            <ImageView
+                android:id="@+id/Im_ToolshowPicture"
+                android:layout_width="wrap_content"
+                android:layout_weight="5"
+                android:layout_height="0dp"
+                android:scaleType="fitStart"/>
 
-    <!--学习工具-->
-    <TextView
-        android:id="@+id/Tv_Tooltitle2"
-        android:layout_below="@id/Gv_Toolgridview1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="学习工具"
-        android:textSize="25sp" />
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/Tv_Toolshowsentence"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textSize="25dp" />
+        </LinearLayout>
 
-    <GridView
-        android:id="@+id/Gv_Toolgridview2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Tv_Tooltitle2"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:numColumns="4">
 
-    </GridView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:layout_below="@id/Li_ToolShow"
+            android:orientation="vertical">
+
+            <!--生活工具-->
+            <TextView
+                android:id="@+id/Tv_Tooltitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生活工具"
+                android:textSize="25sp" />
+
+            <GridView
+                android:id="@+id/Gv_Toolgridview1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:numColumns="4">
+            </GridView>
+
+            <!--学习工具-->
+            <TextView
+                android:id="@+id/Tv_Tooltitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="学习工具"
+                android:textSize="25sp" />
+
+            <GridView
+                android:id="@+id/Gv_Toolgridview2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:numColumns="4">
+
+            </GridView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
