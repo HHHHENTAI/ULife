@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,7 @@ public class tab_item_fragment extends Fragment {
 
     private Bitmap_handle bitmap_handle;
 
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -126,6 +127,17 @@ public class tab_item_fragment extends Fragment {
         database_news = new Database_News(help_news);
 
         bitmap_handle = new Bitmap_handle();
+
+        swipeRefreshLayout=view.findViewById(R.id.list_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                choose_classify();
+                //news_Adapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     /*     适配器设置   */
@@ -164,8 +176,6 @@ public class tab_item_fragment extends Fragment {
                 mdatas.add(news);
             }
         }
-
-
         //todo 配置数据源
         newsAdapter = new news_Adapter(context,mdatas,listView);
         listView.setAdapter(newsAdapter);

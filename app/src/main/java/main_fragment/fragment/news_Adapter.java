@@ -106,7 +106,13 @@ public class news_Adapter extends BaseAdapter {
         byte[] imgData = bean.getNews_img();
         Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
         holder.news_img.setImageBitmap(imagebitmap);
+        holder.news_img.setMaxHeight(listView.getHeight() / 5);
         return convertView;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 
     //这个ViewHolder只能服务于当前这个特定的adapter，因为ViewHolder里会指定item的控件，不同的ListView，item可能不同，所以ViewHolder写成一个私有的类

@@ -87,6 +87,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
 
     //图片转为二进制数据
     public byte[] bitmabToBytes(String path) {
+
         //将图片转化为位图
         FileInputStream fis = null;
         try {
@@ -102,6 +103,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         }
         Bitmap bitmap = BitmapFactory.decodeStream(fis);
         int size = bitmap.getWidth() * bitmap.getHeight() * 4;
+
         //创建一个字节数组输出流,流的大小为size
         ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
         try {
