@@ -44,10 +44,12 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             content.setText(cursor.getString(cursor.getColumnIndex("NewsContent_text")));
             news_title.setText(cursor.getString(cursor.getColumnIndex("NewsTitle_text")));
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
+            Log.i("jjj", "onCreate: " + user_num);
             Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);
-            user.setText(cursor1.getString(cursor.getColumnIndex("name")));
+
             if(cursor1.moveToFirst())
             {
+                user.setText(cursor1.getString(cursor1.getColumnIndex("name")));
                 String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
                 String hour = t.substring(8,10);
                 String minute = t.substring(10,12);
@@ -121,6 +123,7 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
         news_title=findViewById(R.id.news_title);
         content =findViewById(R.id.news_content);
         news_back=findViewById(R.id.news_back);
+        news_back.setOnClickListener(this);
         //创建信息的数据库
         help_news = new DbHelp_NEWS(this);
         help_user= new DbHelp(this);

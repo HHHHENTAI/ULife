@@ -41,6 +41,8 @@ public class tab_item_fragment extends Fragment {
     private List<news_class> mdatas;
     private news_Adapter newsAdapter;
 
+    private Bitmap_handle bitmap_handle;
+
 
     @Override
     public void onAttach(Context context) {
@@ -124,6 +126,7 @@ public class tab_item_fragment extends Fragment {
         //获取数据可读写对象
         database_news = new Database_News(help_news);
 
+        bitmap_handle = new Bitmap_handle();
     }
 
 
@@ -153,9 +156,12 @@ public class tab_item_fragment extends Fragment {
             String title = cursor.getString(cursor.getColumnIndex("NewsTitle_text"));
             String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
             Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
-            Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
+            //测试图片
+            byte[] imgData = null;
+            imgData = bitmap_handle.readImage(cursor);
+            //Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
             String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
-            news_class news = new  news_class(title,tokyohot,class_fy,time,R.drawable.ic_launcher_background);
+            news_class news = new news_class(title, tokyohot, class_fy, time, imgData);
             mdatas.add(news);
 
         }

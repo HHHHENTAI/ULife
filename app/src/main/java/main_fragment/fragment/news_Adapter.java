@@ -1,6 +1,8 @@
 package main_fragment.fragment;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -22,14 +24,13 @@ import java.util.List;
 public class news_Adapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
-     private List<news_class> mDatas;
+    private List<news_class> mDatas;
     private Integer mScreenHeight;
     private Integer mScreenWeight;
     private Context mcontext;
     private ListView listView;
 
-    public news_Adapter(Context context, List<news_class> list,ListView listView)
-    {
+    public news_Adapter(Context context, List<news_class> list, ListView listView) {
         this.mDatas = list;
         this.mcontext = context;
         this.listView = listView;
@@ -50,6 +51,7 @@ public class news_Adapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
     //重点
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -80,38 +82,39 @@ public class news_Adapter extends BaseAdapter {
 //                linearParams.gravity = Gravity.CENTER_VERTICAL;
             ll.setLayoutParams(linearParams);*/
             convertView.setTag(holder);
-            }
-            else {
+        } else {
             //else里面说明，convertView已经被复用了，说明convertView中已经设置过tag了，即holder
-                         holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-                 news_class bean = mDatas.get(position);
-                 holder.news_title.setText(bean.getNews_title());
-                //holder.news_title.setTextSize((mScreenWeight/14));
+        news_class bean = mDatas.get(position);
+        holder.news_title.setText(bean.getNews_title());
+        //holder.news_title.setTextSize((mScreenWeight/14));
 
-                  String t = bean.getNews_time();
-                  String year = t.substring(0,4);
-                 String month = t.substring(4,6);
-                 String day = t.substring(6,8);
-                 holder.news_time.setText(year+"/"+month+"/"+day);
-              //  holder.news_time.setTextSize((mScreenWeight/21));
+        String t = bean.getNews_time();
+        String year = t.substring(0, 4);
+        String month = t.substring(4, 6);
+        String day = t.substring(6, 8);
+        holder.news_time.setText(year + "/" + month + "/" + day);
+        //  holder.news_time.setTextSize((mScreenWeight/21));
 
-                 holder.news_classify.setText(bean.getNews_classify());
-               // holder.news_classify.setTextSize((mScreenWeight/21));
+        holder.news_classify.setText(bean.getNews_classify());
+        // holder.news_classify.setTextSize((mScreenWeight/21));
 
-                 holder.news_browse_count.setText(""+bean.getNews_browse_count());
-                // holder.news_browse_count.setTextSize((mScreenWeight/21));
+        holder.news_browse_count.setText("" + bean.getNews_browse_count());
+        // holder.news_browse_count.setTextSize((mScreenWeight/21));
 
-                 holder.news_img.setImageResource(bean.getNews_img());
-                return convertView;
+        byte[] imgData = bean.getNews_img();
+        Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+        holder.news_img.setImageBitmap(imagebitmap);
+        return convertView;
     }
 
     //这个ViewHolder只能服务于当前这个特定的adapter，因为ViewHolder里会指定item的控件，不同的ListView，item可能不同，所以ViewHolder写成一个私有的类
-     private class ViewHolder {
-         TextView news_title;
-         TextView news_browse_count;
-         TextView news_time;
-         TextView news_classify;
-         ImageView news_img;
-     }
+    private class ViewHolder {
+        TextView news_title;
+        TextView news_browse_count;
+        TextView news_time;
+        TextView news_classify;
+        ImageView news_img;
+    }
 }

@@ -50,8 +50,8 @@ public class History extends AppCompatActivity implements View.OnClickListener
             Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
             Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
             String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
-            news_class news = new  news_class(title,tokyohot,class_fy,time,R.drawable.ic_launcher_background);
-            mdatas.add(news);
+            //news_class news = new  news_class(title,tokyohot,class_fy,time,R.drawable.ic_launcher_background);
+            //mdatas.add(news);
 
         }
         //todo 添加到数据源

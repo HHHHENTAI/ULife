@@ -1,8 +1,11 @@
 package com.example.hhhhentai.ulife;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +15,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Blob;
 import java.util.Calendar;
 
 import DbHelp_ZXK.Database_News;
@@ -34,7 +42,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
     private ImageView btn_upload;
     private ImageView btn_life_tools;
     private ImageView btn_user;
-    private  String user_phone_num;
+    private String user_phone_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +53,6 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         //接收登录页面传来的用户登录信息 —— 手机号
         Intent phone_intent = getIntent();
         user_phone_num = phone_intent.getStringExtra("phonenum");
-
         addFragment();
     }
 
@@ -80,6 +87,51 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         database_news = new Database_News(help_news);
     }
 
+    //图片转为二进制数据
+    public byte[] bitmabToBytes(String path) {
+        //将图片转化为位图
+        FileInputStream fis = null;
+        try {
+            //例子
+            //fis = new FileInputStream("/storage/emulated/0/data/test.jpg");
+            fis = new FileInputStream(path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (fis == null) {
+            Log.i("错误", "照片路径错误");
+            return new byte[0];
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(fis);
+        int size = bitmap.getWidth() * bitmap.getHeight() * 4;
+        //创建一个字节数组输出流,流的大小为size
+        ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
+        try {
+            //设置位图的压缩格式，质量为100%，并放入字节数组输出流中
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            //将字节数组输出流转化为字节数组byte[]
+            byte[] imagedata = baos.toByteArray();
+            return imagedata;
+        } catch (Exception e) {
+        } finally {
+            try {
+                bitmap.recycle();
+                baos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return new byte[0];
+    }
+
+    //读照片
+    public byte[] readImage(Cursor cursor) {
+        byte[] imgData = null;
+        //将Blob数据转化为字节数组
+        imgData = cursor.getBlob(cursor.getColumnIndex("NewsImage_blob"));
+        return imgData;
+    }
+
     @Override
     public void onClick(View view) {
         manager = getSupportFragmentManager();
@@ -107,7 +159,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 String NewsTitle_text = "震惊！武汉大学生在如皋做这种事！";
                 String NewsContent_text = "武汉理工大学！！！";
                 String NewsClass_text = "生活";
-                int NewsImage_int = 100;
+                //Blob NewsImage_blob = ;
                 int NewsHot_int = 7;
                 //时间戳
                 Calendar calendar = Calendar.getInstance();
@@ -120,7 +172,12 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                     NewsTime_text = ymd + hms;
                 }
                 Log.i("timestamp", NewsTime_text);
-                database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_int, NewsHot_int, NewsTime_text);
+                //存入照片
+                String path = "/storage/emulated/0/data/test.jpg";
+                //路径例子：path = "/storage/emulated/0/data/test.jpg";
+                byte[] NewsImage_blob = bitmabToBytes(path);
+                //NewsImage_blob = test;
+                database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_blob, NewsHot_int, NewsTime_text);
                 //TODO TEST_END:赵效慷：测试插入数据结束
 
 
@@ -131,17 +188,30 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
 
                 //TODO TEST_START:赵效慷：测试修改数据
 
-                database_news.update_newsinfo(0, 23, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_int, NewsHot_int, NewsTime_text);
-                Log.i("update", "修改了数据");
+                //database_news.update_newsinfo(0, 23, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_blob, NewsHot_int, NewsTime_text);
+                //Log.i("update", "修改了数据");
                 //TODO TEST_END:赵效慷：测试修改数据结束
 
                 //TODO TEST_START:赵效慷：测试查询数据
                 Cursor cursor = database_news.query_newsinfo(null, null, null, null, null, null);
                 int i = 0;
+                byte[] imgData = null;
                 while (cursor.moveToNext()) {
                     i++;
                     String test_phonenum = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
                     Log.i("qurry:phonenum", test_phonenum);
+                    //将Blob数据转化为字节数组
+                    imgData = readImage(cursor);
+                    if (imgData != null) {
+                        //将字节数组转化为位图
+                        Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+
+                        //TODO 注意：iv_test.setImageBitmap(imagebitmap);即可
+
+                        Log.i("imgbyte", imgData.toString());
+                    } else {
+                        Log.i("imgbyte", "不成功");
+                    }
                 }
                 Log.i("i", i + "");
                 //TODO TEST_END:赵效慷：测试查询数据结束

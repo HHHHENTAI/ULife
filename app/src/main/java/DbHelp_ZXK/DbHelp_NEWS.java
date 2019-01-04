@@ -25,7 +25,7 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
 //        NewsTitle	Text	非空	新闻标题
 //        NewsContent	Text	非空	新闻内容
 //        NewsClass	Text	非空	新闻分类
-//        NewsImage	Integer	非空	新闻图片
+//        NewsImage	Integer  非空	新闻图片
 //        NewsHot	Integer	非空	新闻热度
 //        NewsTime	Text	非空	发布时间
 
@@ -35,7 +35,7 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
                 "NewsTitle_text text not null," +
                 "NewsContent_text text not null," +
                 "NewsClass_text text not null," +
-                "NewsImage_int integer not null," +
+                "NewsImage_blob BLOB not null," +
                 "NewsHot_int integer not null," +
                 "NewsTime_text text not null)";
 
@@ -51,7 +51,7 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
         db.execSQL(CREATE_SQL);
 
 //        SeeId	Integer	自动增长	标识ID
-//        SeePhone	Text	非空	浏览账号x
+//        SeePhone	Text	非空	浏览账号
 //        SeeNewsID	Integer	主键	新闻ID
         String CREATE_SQL_SeeHistory = "create table SeeHistory(SeeId_int integer primary key autoincrement," +
                 "SeePhone_text text not null," +

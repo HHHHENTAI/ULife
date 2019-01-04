@@ -1,19 +1,41 @@
 package DbHelp_ZXK;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.example.hhhhentai.ulife.R;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.sql.Blob;
 
 public class Database_News {
     private DbHelp_NEWS dbHelp_news;
     private SQLiteDatabase database_news;
+
 
     public Database_News(DbHelp_NEWS dbHelp_news) {
         this.dbHelp_news = dbHelp_news;
         this.database_news = dbHelp_news.getWritableDatabase();
     }
 
-    public void insert_newsinfo(int NewsId_int, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, int NewsImage_int, int NewsHot_int, String NewsTime_text) {
+
+    public byte[] readImage() {
+        Cursor cur = database_news.query("NewsInfo", new String[]{"_id", "avatar"}, null, null, null, null, null);
+        byte[] imgData = null;
+        if (cur.moveToNext()) {
+            //将Blob数据转化为字节数组
+            imgData = cur.getBlob(cur.getColumnIndex("avatar"));
+        }
+        return imgData;
+    }
+
+
+    public void insert_newsinfo(int NewsId_int, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, byte[] NewsImage_blob, int NewsHot_int, String NewsTime_text) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
         values_insert.put("NewsId_int", NewsId_int);
@@ -21,7 +43,7 @@ public class Database_News {
         values_insert.put("NewsTitle_text", NewsTitle_text);
         values_insert.put("NewsContent_text", NewsContent_text);
         values_insert.put("NewsClass_text", NewsClass_text);
-        values_insert.put("NewsImage_int", NewsImage_int);
+        values_insert.put("NewsImage_blob", NewsImage_blob);
         values_insert.put("NewsHot_int", NewsHot_int);
         values_insert.put("NewsTime_text", NewsTime_text);
         database_news.insert("NewsInfo ", null, values_insert);
@@ -31,14 +53,14 @@ public class Database_News {
         database_news.delete("NewsInfo ", "NewsId_int=?", new String[]{delete});
     }
 
-    public void update_newsinfo(int NewsId_oldint, int NewsId_newint, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, int NewsImage_int, int NewsHot_int, String NewsTime_text) {
+    public void update_newsinfo(int NewsId_oldint, int NewsId_newint, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, byte[] NewsImage_blob, int NewsHot_int, String NewsTime_text) {
         ContentValues values_update = new ContentValues();
         values_update.put("NewsId_int", NewsId_newint);
         values_update.put("SendusrPhone_text", SendusrPhone_text);
         values_update.put("NewsTitle_text", NewsTitle_text);
         values_update.put("NewsContent_text", NewsContent_text);
         values_update.put("NewsClass_text", NewsClass_text);
-        values_update.put("NewsImage_int", NewsImage_int);
+        values_update.put("NewsImage_blob", NewsImage_blob);
         values_update.put("NewsHot_int", NewsHot_int);
         values_update.put("NewsTime_text", NewsTime_text);
         //第二个参数是修改的字段及修改的值(已经存放到ContentValues中)
