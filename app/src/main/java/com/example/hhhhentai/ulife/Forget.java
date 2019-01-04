@@ -27,6 +27,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
+
 public class Forget extends SwipeBackActivity{
 
     private EditText et_phone_for, et_SMS_for, et_pwd_for;
@@ -76,11 +78,11 @@ public class Forget extends SwipeBackActivity{
         btn_SMS_for = (Button) findViewById(R.id.btn_SMS_for);
         btn_forget = (Button) findViewById(R.id.btn_forget);
 
-        et_phone_for.setTextSize(Constant.displayHeight * 0.02f);
-        et_SMS_for.setTextSize(Constant.displayHeight * 0.02f);
-        et_pwd_for.setTextSize(Constant.displayHeight * 0.02f);
-        btn_SMS_for.setTextSize(Constant.displayHeight * 0.02f);
-        btn_forget.setTextSize(Constant.displayHeight * 0.02f);
+        et_phone_for.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        et_SMS_for.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        et_pwd_for.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        btn_SMS_for.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        btn_forget.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
 
         btn_SMS_for.setOnClickListener(new OnClickListener() {
             //处理从json转过来的字符串

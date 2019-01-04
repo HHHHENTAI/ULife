@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
+
 public class Register_userinfo extends SwipeBackActivity {
 
     private EditText et_pwd_reg,et_pwd_confirm_reg,et_name_reg;
@@ -46,10 +48,10 @@ public class Register_userinfo extends SwipeBackActivity {
         LL_btn_reg = (LinearLayout) findViewById(R.id.LL_btn_reg);
         LL_userinfo_reg = (LinearLayout) findViewById(R.id.LL_userinfo_reg);
 
-        et_pwd_reg.setTextSize(Constant.displayHeight * 0.02f);
-        et_pwd_confirm_reg.setTextSize(Constant.displayHeight * 0.02f);
-        et_name_reg.setTextSize(Constant.displayHeight * 0.02f);
-        btn_register.setTextSize(Constant.displayHeight * 0.02f);
+        et_pwd_reg.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        et_pwd_confirm_reg.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        et_name_reg.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        btn_register.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
 
         Intent intent = getIntent();
         final String phonenum = intent.getStringExtra("phonenum");

@@ -28,6 +28,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
 
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
+
 public class Register_phonenum extends SwipeBackActivity {
 
     private EditText et_phone_reg,et_SMS_reg;
@@ -67,10 +69,10 @@ public class Register_phonenum extends SwipeBackActivity {
         LL_SMS_reg = (LinearLayout) findViewById(R.id.LL_SMS_reg);
         LL_btn_next = (LinearLayout)findViewById(R.id.LL_btn_next);
 
-        et_phone_reg.setTextSize(Constant.displayHeight * 0.02f);
-        et_SMS_reg.setTextSize(Constant.displayHeight * 0.02f);
-        btn_next.setTextSize(Constant.displayHeight * 0.02f);
-        btn_SMS_reg.setTextSize(Constant.displayHeight * 0.02f);
+        et_phone_reg.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        et_SMS_reg.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        btn_next.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        btn_SMS_reg.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
 
         for(int i = 0; i < 6;i++){
             sms = sms+(int)(Math.random()*10)+"";

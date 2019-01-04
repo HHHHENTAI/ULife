@@ -28,6 +28,8 @@ import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 import com.example.hhhhentai.background.CustomVideoView;
 
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
+
 public class MainActivity extends SwipeBackActivity implements View.OnClickListener {
 
     private CustomVideoView videoview;
@@ -69,12 +71,13 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         et_password = (EditText) findViewById(R.id.et_password);
         tv_pwd_for = (TextView)findViewById(R.id.tv_pwd_for);
         cb_pwd_rem = (CheckBox)findViewById(R.id.cb_pwd_rem);
-        btn_sign_in.setTextSize(Constant.displayHeight * 0.02f);
-        btn_sign_up.setTextSize(Constant.displayHeight * 0.02f);
-        tv_pwd_for.setTextSize(Constant.displayHeight * 0.02f);
-        cb_pwd_rem.setTextSize(Constant.displayHeight * 0.018f);
-        et_account.setTextSize(Constant.displayHeight * 0.02f);
-        et_password.setTextSize(Constant.displayHeight * 0.02f);
+
+        btn_sign_in.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        btn_sign_up.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        tv_pwd_for.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        cb_pwd_rem.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.018f);
+        et_account.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        et_password.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
 
 
         //取得设置好的drawable对象
@@ -87,6 +90,13 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         cb_pwd_rem.setCompoundDrawables(drawable,null,null,null);
 
         SharedPreferences preferences = getSharedPreferences("data",MODE_PRIVATE);
+//        Boolean loged = preferences.getBoolean("loged",false);
+//        String ac = preferences.getString("acc","");
+//        if(loged){
+//            Intent intent = new Intent(MainActivity.this, main_part.class);
+//            intent.putExtra("phonenum",ac);
+//            startActivity(intent);
+//        }
         String acc = preferences.getString("account","");
         String pass = preferences.getString("password","");
         boolean isRemember_password = preferences.getBoolean("remember_password",false);
@@ -135,6 +145,10 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
                         editor.putBoolean("remember_password", false);
                         editor.commit();
                     }
+//                    SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
+//                    editor.putBoolean("loged",true);
+//                    editor.putString("acc",account);
+//                    editor.commit();
                     Intent intent = new Intent(MainActivity.this, main_part.class);
                     intent.putExtra("phonenum",account);
                     startActivity(intent);
@@ -177,7 +191,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         });
 
         videoview = (CustomVideoView) findViewById(R.id.cvv_background);
-        videoview.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.shipin));
+        videoview.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.shipin2));
 
         //布局设置
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
