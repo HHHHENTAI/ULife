@@ -1,36 +1,41 @@
 package com.example.hhhhentai.ulife;
 
-import android.app.Activity;
 import android.os.Bundle;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.Random;
 
 import com.alibaba.fastjson.JSON;
+import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 import com.example.hhhhentai.JsonGet.Sms;
 import com.example.hhhhentai.MD5Utils.MD5Utils;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class Forget extends SwipeBackActivity{
 
     private EditText et_phone_for, et_SMS_for, et_pwd_for;
     private Button btn_SMS_for, btn_forget;
+    private LinearLayout LL_forget,LL_phone_for,LL_SMS_for,LL_pwd_for,LL_btn_for;
     private DbHelp help;
     private SQLiteDatabase database;
     private String sms = "";
+
+    private TimeCount time;
 
 
 
@@ -47,13 +52,23 @@ public class Forget extends SwipeBackActivity{
         //数据库
         help = new DbHelp(Forget.this);
         database = help.getWritableDatabase();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constant.displayWidth = displayMetrics.widthPixels;
+        Constant.displayHeight = displayMetrics.heightPixels;
 
         for(int i = 0; i < 6;i++){
             sms = sms+(int)(Math.random()*10)+"";
         }
         Log.i("test",sms);
 
+        time = new TimeCount(120000, 1000);
 
+        LL_forget = (LinearLayout) findViewById(R.id.LL_forget);
+        LL_phone_for = (LinearLayout) findViewById(R.id.LL_phone_for);
+        LL_SMS_for = (LinearLayout) findViewById(R.id.LL_SMS_for);
+        LL_pwd_for = (LinearLayout) findViewById(R.id.LL_pwd_for);
+        LL_btn_for = (LinearLayout) findViewById(R.id.LL_btn_for);
         et_phone_for = (EditText) findViewById(R.id.et_phone_for);
         et_SMS_for = (EditText) findViewById(R.id.et_SMS_for);
         et_pwd_for = (EditText) findViewById(R.id.et_pwd_for);
@@ -84,6 +99,7 @@ public class Forget extends SwipeBackActivity{
                     Cursor c = database.rawQuery(judge, null);
                     if (c.moveToNext() == true) {
                         Log.i("testtp", judge);
+                        time.start();
                         //子线程获取验证码
                         new Thread() {
                             public void run() {
@@ -186,6 +202,52 @@ public class Forget extends SwipeBackActivity{
                 }
             }
         });
+        //  LL_forget,LL_phone_for,LL_SMS_for,LL_pwd_for,LL_btn_for
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.7f + 0.5f));
+        LL_forget.setLayoutParams(params);
+
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        LL_phone_for.setLayoutParams(params1);
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params2.setMargins(0,(int) (Constant.displayHeight * 0.03f + 0.5f),0,0);
+        LL_SMS_for.setLayoutParams(params2);
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params3.setMargins(0,(int) (Constant.displayHeight * 0.03f + 0.5f),0,0);
+        LL_pwd_for.setLayoutParams(params3);
+        LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.06f + 0.5f));
+        params4.setMargins(0,(int) (Constant.displayHeight * 0.07f + 0.5f),0,0);
+        LL_btn_for.setLayoutParams(params4);
+
+    }
+
+    class TimeCount extends CountDownTimer {
+
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            btn_SMS_for.setClickable(false);
+            btn_SMS_for.setText("("+millisUntilFinished / 1000 +") 秒后可重新发送");
+        }
+
+        @Override
+        public void onFinish() {
+            btn_SMS_for.setText("重新获取验证码");
+            btn_SMS_for.setClickable(true);
+
+        }
     }
 }
 

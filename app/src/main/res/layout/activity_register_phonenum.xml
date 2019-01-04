@@ -38,24 +38,23 @@
             android:id="@+id/LL_SMS_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:gravity="center">
 
             <EditText
                 android:id="@+id/et_SMS_reg"
-                android:layout_width="wrap_content"
+                android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:hint="请输入验证码"
                 android:textColorHint="#acbbff"
                 android:textSize="18sp"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:background="@null"/>
 
             <Button
                 android:id="@+id/btn_SMS_reg"
-                android:layout_width="wrap_content"
+                android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:text="发送验证码"
                 android:layout_alignParentRight="true"

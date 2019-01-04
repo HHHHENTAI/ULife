@@ -1,8 +1,6 @@
 package com.example.hhhhentai.ulife;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -194,23 +192,23 @@ public class Register_phonenum extends SwipeBackActivity {
         });
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
                 (int) (Constant.displayHeight * 0.7f + 0.5f));
         LL_phonenum_reg.setLayoutParams(params);
 
         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
                 (int) (Constant.displayHeight * 0.07f + 0.5f));
         LL_phone_reg.setLayoutParams(params1);
 
         LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
                 (int) (Constant.displayHeight * 0.07f + 0.5f));
         params2.setMargins(0,(int) (Constant.displayHeight * 0.03f + 0.5f),0,0);
         LL_SMS_reg.setLayoutParams(params2);
 
         LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
                 (int) (Constant.displayHeight * 0.06f + 0.5f));
         params3.setMargins(0,(int) (Constant.displayHeight * 0.09f + 0.5f),0,0);
         LL_btn_next.setLayoutParams(params3);

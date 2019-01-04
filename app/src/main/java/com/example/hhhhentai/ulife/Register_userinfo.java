@@ -6,19 +6,23 @@ import android.os.Bundle;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 
 public class Register_userinfo extends SwipeBackActivity {
 
-    private EditText et_pwd_reg,et_pwd_confirm_reg,et_name_reg,et_phone_reg,et_SMS_reg;
-    private Button btn_register,btn_SMS_reg;
+    private EditText et_pwd_reg,et_pwd_confirm_reg,et_name_reg;
+    private Button btn_register;
+    private LinearLayout LL_userinfo_reg,LL_pwd_reg,LL_pwd_confirm_reg,LL_name_reg,LL_btn_reg;
     private DbHelp help;
     private SQLiteDatabase database;
     @Override
@@ -27,10 +31,20 @@ public class Register_userinfo extends SwipeBackActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_userinfo);
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constant.displayWidth = displayMetrics.widthPixels;
+        Constant.displayHeight = displayMetrics.heightPixels;
+
         et_pwd_reg = (EditText) findViewById(R.id.et_pwd_reg);
         et_pwd_confirm_reg = (EditText) findViewById(R.id.et_pwd_confirm_reg);
         et_name_reg = (EditText) findViewById(R.id.et_name_reg);
         btn_register = (Button) findViewById(R.id.btn_register);
+        LL_pwd_reg = (LinearLayout) findViewById(R.id.LL_pwd_reg);
+        LL_pwd_confirm_reg = (LinearLayout) findViewById(R.id.LL_pwd_confirm_reg);
+        LL_name_reg = (LinearLayout) findViewById(R.id.LL_name_reg);
+        LL_btn_reg = (LinearLayout) findViewById(R.id.LL_btn_reg);
+        LL_userinfo_reg = (LinearLayout) findViewById(R.id.LL_userinfo_reg);
 
         Intent intent = getIntent();
         final String phonenum = intent.getStringExtra("phonenum");
@@ -62,6 +76,32 @@ public class Register_userinfo extends SwipeBackActivity {
                 }
             }
         });
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.7f + 0.5f));
+        LL_userinfo_reg.setLayoutParams(params);
+
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        LL_pwd_reg.setLayoutParams(params1);
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params2.setMargins(0,(int) (Constant.displayHeight * 0.03f + 0.5f),0,0);
+        LL_pwd_confirm_reg.setLayoutParams(params2);
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params3.setMargins(0,(int) (Constant.displayHeight * 0.03f + 0.5f),0,0);
+        LL_name_reg.setLayoutParams(params3);
+        LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.8f + 0.5f),
+                (int) (Constant.displayHeight * 0.06f + 0.5f));
+        params4.setMargins(0,(int) (Constant.displayHeight * 0.07f + 0.5f),0,0);
+        LL_btn_reg.setLayoutParams(params4);
+
     }
 }
 
