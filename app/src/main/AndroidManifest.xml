@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -41,7 +40,8 @@
         <activity
             android:name="com.example.hhhhentai.UseTool.WeatherActivity"
             android:theme="@android:style/Theme.Translucent" />
-        <activity android:name="com.example.hhhhentai.UseTool.ExpressageActivity"></activity>
+        <activity android:name="com.example.hhhhentai.UseTool.ExpressageActivity" />
+        <activity android:name="com.example.hhhhentai.UseTool.SchoolDataActivity"></activity>
     </application>
 
 </manifest>

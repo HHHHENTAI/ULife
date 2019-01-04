@@ -16,6 +16,7 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
 import com.example.hhhhentai.UseTool.ExpressageActivity;
+import com.example.hhhhentai.UseTool.SchoolDataActivity;
 import com.example.hhhhentai.UseTool.WeatherActivity;
 import com.example.hhhhentai.ulife.R;
 
@@ -155,6 +156,27 @@ public class Fragment_life_tools extends Fragment {
         Gv_Toolgridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position) {
+                    case 0:
+
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        Intent schooldataintent=new Intent(context,SchoolDataActivity.class);
+                        startActivity(schooldataintent);
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+
+
+                }
 
             }
         });
