@@ -239,14 +239,13 @@ public class Forget extends SwipeBackActivity{
         @Override
         public void onTick(long millisUntilFinished) {
             btn_SMS_for.setClickable(false);
-            btn_SMS_for.setText("("+millisUntilFinished / 1000 +") 秒后可重新发送");
+            btn_SMS_for.setText(""+millisUntilFinished / 1000 +" s");
         }
 
         @Override
         public void onFinish() {
             btn_SMS_for.setText("重新获取验证码");
             btn_SMS_for.setClickable(true);
-
         }
     }
 }

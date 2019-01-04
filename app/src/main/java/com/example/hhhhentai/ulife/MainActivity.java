@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ import com.example.hhhhentai.background.CustomVideoView;
 public class MainActivity extends SwipeBackActivity implements View.OnClickListener {
 
     private CustomVideoView videoview;
-    private LinearLayout LL_all,LL_password,LL_sign_in,LL_sign_up;
+    private LinearLayout LL_account,LL_all,LL_password,LL_sign_in,LL_sign_up,LL_fr,LL_for;
     private Button btn_sign_up,btn_sign_in;
     private EditText et_account,et_password;
     private TextView tv_pwd_for;
@@ -53,16 +54,28 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         initView();
     }
     private void initView() {
+        LL_account = (LinearLayout) findViewById(R.id.LL_account);
         LL_all = (LinearLayout) findViewById(R.id.LL_all);
         LL_password = (LinearLayout) findViewById(R.id.LL_password);
         LL_sign_in = (LinearLayout) findViewById(R.id.LL_sign_in);
         LL_sign_up = (LinearLayout) findViewById(R.id.LL_sign_up);
+        LL_fr = (LinearLayout) findViewById(R.id.LL_fr);
+        LL_for = (LinearLayout) findViewById(R.id.LL_for);
         btn_sign_in = (Button) findViewById(R.id.btn_sign_in);
         btn_sign_up = (Button) findViewById(R.id.btn_sign_up);
         et_account = (EditText) findViewById(R.id.et_account);
         et_password = (EditText) findViewById(R.id.et_password);
         tv_pwd_for = (TextView)findViewById(R.id.tv_pwd_for);
         cb_pwd_rem = (CheckBox)findViewById(R.id.cb_pwd_rem);
+
+        //取得设置好的drawable对象
+        Drawable drawable = this.getResources().getDrawable(R.drawable.checkbox_style);
+
+        //设置drawable对象的大小
+        drawable.setBounds(0,0,20,20);
+
+        //设置CheckBox对象的位置，对应为左、上、右、下
+        cb_pwd_rem.setCompoundDrawables(drawable,null,null,null);
 
         SharedPreferences preferences = getSharedPreferences("data",MODE_PRIVATE);
         String acc = preferences.getString("account","");
@@ -153,33 +166,40 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         LL_all.setLayoutParams(params);
 
         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        params1.setMargins(0,(int) (Constant.displayHeight * 0.04f + 0.5f),0,(int) (Constant.displayHeight * 0.01f + 0.5f));
-        LL_password.setLayoutParams(params1);
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params1.setMargins(0,(int) (Constant.displayHeight * 0.02f + 0.5f),0,(int) (Constant.displayHeight * 0.01f + 0.5f));
+        LL_account.setLayoutParams(params1);
 
         LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayWidth * 0.7f + 0.5f),
-                (int) (Constant.displayHeight * 0.08f + 0.5f));
-        btn_sign_up.setLayoutParams(params2);
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params2.setMargins(0,(int) (Constant.displayHeight * 0.02f + 0.5f),0,0);
+        LL_password.setLayoutParams(params2);
 
         LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayWidth * 0.7f + 0.5f),
-                (int) (Constant.displayHeight * 0.08f + 0.5f));
-        btn_sign_in.setLayoutParams(params3);
+                (int) (Constant.displayHeight * 0.06f + 0.5f));
+        params3.setMargins(0,(int) (Constant.displayHeight * 0.02f + 0.5f),0,0);
+        LL_fr.setLayoutParams(params3);
 
         LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        params4.setMargins(0,(int) (Constant.displayHeight * 0.2f + 0.5f),0,0);
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.08f + 0.5f));
+        params4.setMargins(0,(int) (Constant.displayHeight * 0.1f + 0.5f),0,0);
         LL_sign_in.setLayoutParams(params4);
 
         LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.08f + 0.5f));
         params5.setMargins(0,(int) (Constant.displayHeight * 0.02f + 0.5f),0,0);
         LL_sign_up.setLayoutParams(params5);
 
+        LinearLayout.LayoutParams params6 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params6.setMargins(0,(int) (Constant.displayHeight * 0.02f + 0.5f),0,0);
+        LL_for.setLayoutParams(params6);
 
 
         // 播放

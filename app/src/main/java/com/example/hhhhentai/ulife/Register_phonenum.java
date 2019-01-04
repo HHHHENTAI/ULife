@@ -223,7 +223,7 @@ public class Register_phonenum extends SwipeBackActivity {
         @Override
         public void onTick(long millisUntilFinished) {
             btn_SMS_reg.setClickable(false);
-            btn_SMS_reg.setText("("+millisUntilFinished / 1000 +") 秒后可重新发送");
+            btn_SMS_reg.setText(""+millisUntilFinished / 1000 +" s");
         }
 
         @Override
