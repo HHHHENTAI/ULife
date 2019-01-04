@@ -15,6 +15,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -40,6 +41,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -67,12 +69,19 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         et_password = (EditText) findViewById(R.id.et_password);
         tv_pwd_for = (TextView)findViewById(R.id.tv_pwd_for);
         cb_pwd_rem = (CheckBox)findViewById(R.id.cb_pwd_rem);
+        btn_sign_in.setTextSize(Constant.displayHeight * 0.02f);
+        btn_sign_up.setTextSize(Constant.displayHeight * 0.02f);
+        tv_pwd_for.setTextSize(Constant.displayHeight * 0.02f);
+        cb_pwd_rem.setTextSize(Constant.displayHeight * 0.018f);
+        et_account.setTextSize(Constant.displayHeight * 0.02f);
+        et_password.setTextSize(Constant.displayHeight * 0.02f);
+
 
         //取得设置好的drawable对象
         Drawable drawable = this.getResources().getDrawable(R.drawable.checkbox_style);
 
         //设置drawable对象的大小
-        drawable.setBounds(0,0,20,20);
+        drawable.setBounds(0,0,(int) (Constant.displayHeight * 0.02f),(int) (Constant.displayHeight * 0.02f));
 
         //设置CheckBox对象的位置，对应为左、上、右、下
         cb_pwd_rem.setCompoundDrawables(drawable,null,null,null);
@@ -168,7 +177,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         });
 
         videoview = (CustomVideoView) findViewById(R.id.cvv_background);
-        videoview.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.shipin2));
+        videoview.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.shipin));
 
         //布局设置
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

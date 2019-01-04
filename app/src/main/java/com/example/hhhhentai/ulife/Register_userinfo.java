@@ -46,6 +46,11 @@ public class Register_userinfo extends SwipeBackActivity {
         LL_btn_reg = (LinearLayout) findViewById(R.id.LL_btn_reg);
         LL_userinfo_reg = (LinearLayout) findViewById(R.id.LL_userinfo_reg);
 
+        et_pwd_reg.setTextSize(Constant.displayHeight * 0.02f);
+        et_pwd_confirm_reg.setTextSize(Constant.displayHeight * 0.02f);
+        et_name_reg.setTextSize(Constant.displayHeight * 0.02f);
+        btn_register.setTextSize(Constant.displayHeight * 0.02f);
+
         Intent intent = getIntent();
         final String phonenum = intent.getStringExtra("phonenum");
 

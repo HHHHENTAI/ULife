@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@color/skyblue"
         tools:context=".Forget"
     android:orientation="vertical"
     android:gravity="center">
@@ -27,9 +27,10 @@
                 android:layout_height="match_parent"
                 android:hint="请输入手机号"
                 android:textSize="18sp"
-                android:textColorHint="#acbbff"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
                 android:gravity="center"
-                android:background="@null"
+                android:background="@drawable/edittext_line"
                 />
 
         </LinearLayout>
@@ -47,11 +48,12 @@
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:hint="请输入验证码"
-                android:textColorHint="#acbbff"
+                android:textColorHint="#ffffff"
                 android:textSize="18sp"
+                android:textColor="#ffffff"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:background="@null"/>
+                android:background="@drawable/edittext_line"/>
 
             <Button
                 android:id="@+id/btn_SMS_for"
@@ -60,7 +62,8 @@
                 android:text="发送验证码"
                 android:layout_alignParentRight="true"
                 android:textSize="18sp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/login_btn"/>
 
         </LinearLayout>
 
@@ -77,10 +80,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="请输入新密码"
+                android:gravity="center"
                 android:textSize="18sp"
-                android:textColorHint="#acbbff"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
                 android:inputType="textPassword"
-                />
+                android:background="@drawable/edittext_line"/>
 
         </LinearLayout>
 
@@ -94,8 +99,7 @@
             android:layout_height="match_parent"
             android:text="确认修改密码"
             android:textSize="18sp"
-            android:layout_below="@id/LL_pwd_for"
-            />
+            android:background="@drawable/login_btn"/>
 
     </LinearLayout>
 

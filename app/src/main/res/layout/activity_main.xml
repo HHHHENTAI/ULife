@@ -37,7 +37,7 @@
                 android:textSize="18sp"
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
-                android:background="@null"/>
+                android:background="@drawable/edittext_line"/>
 
         </LinearLayout>
 
@@ -57,7 +57,7 @@
                 android:inputType="textPassword"
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
-                android:background="@null"/>
+                android:background="@drawable/edittext_line"/>
 
         </LinearLayout>
 
@@ -87,6 +87,7 @@
             android:gravity="center">
             <Button
                 android:id="@+id/btn_sign_in"
+                android:background="@drawable/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="sign in"
@@ -102,6 +103,7 @@
                 android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/login_btn"
                 android:text="sign up"
                 />
         </LinearLayout>

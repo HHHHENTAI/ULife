@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@color/skyblue"
         tools:context=".Register_userinfo"
     android:orientation="vertical"
     android:gravity="center">
@@ -27,9 +27,10 @@
                 android:layout_height="match_parent"
                 android:hint="请输入密码"
                 android:textSize="18sp"
-                android:textColorHint="#acbbff"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
                 android:inputType="textPassword"
-                />
+                android:background="@drawable/edittext_line"/>
 
         </LinearLayout>
 
@@ -46,9 +47,10 @@
             android:layout_height="match_parent"
             android:hint="请确认密码"
             android:textSize="18sp"
-            android:textColorHint="#acbbff"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
             android:inputType="textPassword"
-            />
+            android:background="@drawable/edittext_line"/>
 
     </LinearLayout>
 
@@ -65,8 +67,9 @@
                 android:layout_height="match_parent"
                 android:hint="请输入昵称"
                 android:textSize="18sp"
-                android:textColorHint="#acbbff"
-                />
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:background="@drawable/edittext_line"/>
 
         </LinearLayout>
 
@@ -80,7 +83,7 @@
             android:layout_height="match_parent"
             android:text="确定注册"
             android:textSize="18sp"
-            />
+            android:background="@drawable/login_btn"/>
 
     </LinearLayout>
     </LinearLayout>

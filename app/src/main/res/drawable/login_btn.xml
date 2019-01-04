@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/login_pressed"/>
+        android:drawable="@drawable/login_style_pressed"/>
     <item
         android:state_pressed="false"
-        android:drawable="@drawable/login_normal"/>
+        android:drawable="@drawable/login_style_normal"/>
 
 </selector>

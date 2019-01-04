@@ -66,6 +66,12 @@ public class Register_phonenum extends SwipeBackActivity {
         LL_phone_reg = (LinearLayout) findViewById(R.id.LL_phone_reg);
         LL_SMS_reg = (LinearLayout) findViewById(R.id.LL_SMS_reg);
         LL_btn_next = (LinearLayout)findViewById(R.id.LL_btn_next);
+
+        et_phone_reg.setTextSize(Constant.displayHeight * 0.02f);
+        et_SMS_reg.setTextSize(Constant.displayHeight * 0.02f);
+        btn_next.setTextSize(Constant.displayHeight * 0.02f);
+        btn_SMS_reg.setTextSize(Constant.displayHeight * 0.02f);
+
         for(int i = 0; i < 6;i++){
             sms = sms+(int)(Math.random()*10)+"";
         }

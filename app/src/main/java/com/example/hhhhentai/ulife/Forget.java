@@ -21,6 +21,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -46,7 +47,7 @@ public class Forget extends SwipeBackActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget);
         //数据库
@@ -74,6 +75,13 @@ public class Forget extends SwipeBackActivity{
         et_pwd_for = (EditText) findViewById(R.id.et_pwd_for);
         btn_SMS_for = (Button) findViewById(R.id.btn_SMS_for);
         btn_forget = (Button) findViewById(R.id.btn_forget);
+
+        et_phone_for.setTextSize(Constant.displayHeight * 0.02f);
+        et_SMS_for.setTextSize(Constant.displayHeight * 0.02f);
+        et_pwd_for.setTextSize(Constant.displayHeight * 0.02f);
+        btn_SMS_for.setTextSize(Constant.displayHeight * 0.02f);
+        btn_forget.setTextSize(Constant.displayHeight * 0.02f);
+
         btn_SMS_for.setOnClickListener(new OnClickListener() {
             //处理从json转过来的字符串
             Handler mHandler = new Handler() {
