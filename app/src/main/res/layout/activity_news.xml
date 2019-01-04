@@ -25,7 +25,7 @@
                 <ImageView
                     android:id="@+id/news_back"
                     android:clickable="true"
-                    android:src="@drawable/ic_launcher_background"
+                    android:src="@drawable/icon_nav_back"
                     android:layout_width="50dp"
                     android:layout_height="50dp" />
                 <TextView
