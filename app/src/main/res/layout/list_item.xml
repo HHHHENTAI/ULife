@@ -1,67 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:background="@color/white"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
         android:layout_margin="5dp"
         android:layout_marginRight="20dp"
-        android:layout_toLeftOf="@id/list_img">
+        android:layout_toLeftOf="@id/list_img"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/list_title"
             android:layout_width="match_parent"
-            android:layout_weight="4"
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_marginLeft="40dp"
+            android:layout_weight="3"
             android:text="资讯内容"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+
+            />
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_height="0dp">
+            android:orientation="horizontal">
+
             <TextView
-                android:layout_marginLeft="20dp"
                 android:id="@+id/list_classify"
-                android:text="分类"
-                android:textSize="10sp"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-            <LinearLayout
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@mipmap/ic_launcher"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:id="@+id/list_browse_num"
-                    android:text="浏览次数"
-                    android:textSize="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <TextView
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:id="@+id/list_time"
-                android:text="新闻时间"
-                android:layout_width="0dp"
-                android:textSize="10sp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content" />
+                android:text="分类"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/list_browse_num"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="2"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/list_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:text="新闻时间"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -69,11 +79,11 @@
 
 
     <ImageView
+        android:id="@+id/list_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_margin="5dp"
-        android:id="@+id/list_img"
-        android:layout_alignParentRight="true"
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:src="@mipmap/ic_launcher" />
 </RelativeLayout>

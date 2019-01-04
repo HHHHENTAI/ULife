@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -38,7 +40,6 @@ public class tab_item_fragment extends Fragment {
 
     private List<news_class> mdatas;
     private news_Adapter newsAdapter;
-
 
 
     @Override
@@ -76,8 +77,14 @@ public class tab_item_fragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                       TextView tv_title =  view.findViewById(R.id.list_title);
                       String news_title= tv_title.getText().toString();
+                     /*    获取单个item的Adapter    */
+                      ListView listView = (ListView) adapterView;
+                    ListAdapter listAdapter = listView.getAdapter();
+                    news_class newsClass = (news_class) listAdapter.getItem(i);
+                    String news_time =  newsClass.getNews_time();
+
                       TextView tv_time = view.findViewById(R.id.list_time);
-                      String news_time = tv_time.getText().toString();
+
                       Intent intent= new Intent(context,newsActivity.class);
                       intent.putExtra("news_title",news_title);//新闻标题
                       intent.putExtra("news_time",news_time);//新闻时间
@@ -124,27 +131,37 @@ public class tab_item_fragment extends Fragment {
     private void data_to_adapter(String classify) {
         //1.todo 定义数据源
         //todo 查询数据库  获取id等信息
-
         mdatas = new ArrayList<news_class>();
+        Cursor cursor = null;
+        if(classify.equals("推荐"))
+        {
+            cursor = database_news.query_newsinfo(null,null,null,null,null,"SendId_int desc");
+
+        }
+
         // Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);
-        Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);
-          while(cursor.moveToNext())
-          {
+        else
+        {
+            //todo 添加到数据源
+            cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);
 
-              String title = cursor.getString(cursor.getColumnIndex("NewsTitle_text"));
-              String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
-              Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
-              Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
-              String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
-              news_class news = new  news_class(title,tokyohot,class_fy,time,R.drawable.ic_launcher_background);
-              mdatas.add(news);
+        }
 
-          }
-        //todo 添加到数据源
+        while(cursor.moveToNext())
+        {
+
+            String title = cursor.getString(cursor.getColumnIndex("NewsTitle_text"));
+            String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
+            Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
+            Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
+            String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
+            news_class news = new  news_class(title,tokyohot,class_fy,time,R.drawable.ic_launcher_background);
+            mdatas.add(news);
+
+        }
 
 
         //todo 配置数据源
-
         newsAdapter = new news_Adapter(context,mdatas,listView);
         listView.setAdapter(newsAdapter);
     }

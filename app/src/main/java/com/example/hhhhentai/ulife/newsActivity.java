@@ -2,11 +2,15 @@ package com.example.hhhhentai.ulife;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.hhhhentai.DbHelp.DbHelp;
 
 import DbHelp_ZXK.Database_News;
 import DbHelp_ZXK.DbHelp_NEWS;
@@ -15,7 +19,8 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
 
     private DbHelp_NEWS help_news;
     private Database_News database_news;
-
+    private DbHelp help_user;
+    private SQLiteDatabase database_user;
     private ImageView news_back;
 
     private TextView news_title;
@@ -38,7 +43,14 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             //cursor 默认下标是-1
             content.setText(cursor.getString(cursor.getColumnIndex("NewsContent_text")));
             news_title.setText(cursor.getString(cursor.getColumnIndex("NewsTitle_text")));
-            news_time.setText(cursor.getString(cursor.getColumnIndex("NewsTime_text")));
+            String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
+            Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);
+            user.setText(cursor1.getString(cursor.getColumnIndex("name")));
+            String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
+            String hour = t.substring(8,10);
+            String minute = t.substring(10,12);
+            news_time.setText(hour+":"+minute);
+
         }
 
 
@@ -107,8 +119,10 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
         news_back=findViewById(R.id.news_back);
         //创建信息的数据库
         help_news = new DbHelp_NEWS(this);
+        help_user= new DbHelp(this);
         //获取数据可读写对象
         database_news = new Database_News(help_news);
+        database_user=help_user.getWritableDatabase();
 
     }
 
