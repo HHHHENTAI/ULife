@@ -105,7 +105,7 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
 
     private void getData() {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("image", null);
+        map.put("image", "");
         map.put("text", "");
         Map<String, Object> map1 = new HashMap<String, Object>();
         map.put("image", R.drawable.ic_launcher_background);
