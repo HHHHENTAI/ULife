@@ -24,17 +24,18 @@ public class Database_News {
     }
 
 
-    public byte[] readImage() {
-        Cursor cur = database_news.query("NewsInfo", new String[]{"_id", "avatar"}, null, null, null, null, null);
-        byte[] imgData = null;
-        if (cur.moveToNext()) {
-            //将Blob数据转化为字节数组
-            imgData = cur.getBlob(cur.getColumnIndex("avatar"));
-        }
-        return imgData;
-    }
+//    public byte[] readImage() {
+//        Cursor cur = database_news.query("NewsInfo", new String[]{"_id", "avatar"}, null, null, null, null, null);
+//        byte[] imgData = null;
+//        if (cur.moveToNext()) {
+//            //将Blob数据转化为字节数组
+//            imgData = cur.getBlob(cur.getColumnIndex("avatar"));
+//        }
+//        return imgData;
+//    }
 
 
+    //TODO start咨询表的增删改查
     public void insert_newsinfo(int NewsId_int, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, byte[] NewsImage_blob, int NewsHot_int, String NewsTime_text) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
@@ -53,7 +54,8 @@ public class Database_News {
         database_news.delete("NewsInfo ", "NewsId_int=?", new String[]{delete});
     }
 
-    public void update_newsinfo(int NewsId_oldint, int NewsId_newint, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, byte[] NewsImage_blob, int NewsHot_int, String NewsTime_text) {
+    public void update_newsinfo(int NewsId_oldint, int NewsId_newint, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text,
+                                String NewsClass_text, byte[] NewsImage_blob, int NewsHot_int, String NewsTime_text) {
         ContentValues values_update = new ContentValues();
         values_update.put("NewsId_int", NewsId_newint);
         values_update.put("SendusrPhone_text", SendusrPhone_text);
@@ -69,6 +71,7 @@ public class Database_News {
         //如果第三四个参数为null，那就将每条记录都改掉
         database_news.update("NewsInfo", values_update, "NewsId_int=?", new String[]{NewsId_oldint + ""});
     }
+
     public void update_news_count(String title,String time,int NewsHot_int)
     {
         ContentValues values_update = new ContentValues();
@@ -79,8 +82,9 @@ public class Database_News {
     public Cursor query_newsinfo(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
         return database_news.query("NewsInfo", columns, selection, selectionArgs, groupBy, having, orderBy);
     }
+    //TODO end咨询表的增删改查
 
-
+    //TODO start浏览历史表的增删改查
     public void insert_historyinfo(int SeeId_int, String SeePhone_text, int SeeNewsID_int) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
@@ -105,5 +109,69 @@ public class Database_News {
     public Cursor query_historyinfo() {
         return database_news.query("SeeHistory", null, null, null, null, null, null);
     }
+    //TODO end浏览历史表的增删改查
+
+    //TODO start个人信息表的增删改查
+//    String CREATE_SQL_PersonInfo="create table PersonInfo" +
+//            "(PersonPhone_text text primary key," +
+//            "PersonImage_blob BLOB not null," +
+//            "PersonSig_text text," +
+//            "PersonName_text text not null," +
+//            "PersonSex_text text not null," +
+//            "PersonBirth_text text," +
+//            "PeronJob_text text," +
+//            "PersonSchool_text text," +
+//            "PersonLocation_text text," +
+//            "PersonHome_text text," +
+//            "PersonOffice_text text not null," +
+//            "PersonShow_text text," +
+//            "PersonPip_text text)";
+    public void insert_personinfo(String PersonPhone_text, byte[] PersonImage_blob, String PersonSig_text, String PersonName_text, String PersonSex_text,
+                                  String PersonBirth_text, String PeronJob_text, String PersonSchool_text, String PersonLocation_text, String PersonHome_text,
+                                  String PersonOffice_text, String PersonShow_text, String PersonPip_text) {
+        ContentValues values_insert = new ContentValues();
+        values_insert.put("PersonPhone_text", PersonPhone_text);
+        values_insert.put("PersonImage_blob", PersonImage_blob);
+        values_insert.put("PersonSig_text", PersonSig_text);
+        values_insert.put("PersonName_text", PersonName_text);
+        values_insert.put("PersonSex_text", PersonSex_text);
+        values_insert.put("PersonBirth_text", PersonBirth_text);
+        values_insert.put("PeronJob_text", PeronJob_text);
+        values_insert.put("PersonSchool_text", PersonSchool_text);
+        values_insert.put("PersonLocation_text", PersonLocation_text);
+        values_insert.put("PersonHome_text", PersonHome_text);
+        values_insert.put("PersonOffice_text", PersonOffice_text);
+        values_insert.put("PersonShow_text", PersonShow_text);
+        values_insert.put("PersonPip_text", PersonPip_text);
+        database_news.insert("PersonInfo", null, values_insert);
+    }
+
+    public void delete_personinfo(String delete) {
+        database_news.delete("PersonInfo ", "PersonPhone_text=?", new String[]{delete});
+    }
+
+    public void update_personinfo(String PersonPhone_text, byte[] PersonImage_blob, String PersonSig_text, String PersonName_text, String PersonSex_text,
+                                  String PersonBirth_text, String PeronJob_text, String PersonSchool_text, String PersonLocation_text, String PersonHome_text,
+                                  String PersonOffice_text, String PersonShow_text, String PersonPip_text) {
+        ContentValues values_update = new ContentValues();
+        values_update.put("PersonPhone_text", PersonPhone_text);
+        values_update.put("PersonImage_blob", PersonImage_blob);
+        values_update.put("PersonSig_text", PersonSig_text);
+        values_update.put("PersonName_text", PersonName_text);
+        values_update.put("PersonSex_text", PersonSex_text);
+        values_update.put("PersonBirth_text", PersonBirth_text);
+        values_update.put("PeronJob_text", PeronJob_text);
+        values_update.put("PersonSchool_text", PersonSchool_text);
+        values_update.put("PersonLocation_text", PersonLocation_text);
+        values_update.put("PersonHome_text", PersonHome_text);
+        values_update.put("PersonOffice_text", PersonOffice_text);
+        values_update.put("PersonShow_text", PersonShow_text);
+        values_update.put("PersonPip_text", PersonPip_text);
+    }
+
+    public Cursor query_personinfo(String PersonPhone_text) {
+        return database_news.query("PersonInfo", null, "PersonPhone_text = ?", new String[]{PersonPhone_text}, null, null, null);
+    }
+    //TODO end个人信息表的增删改查
 
 }

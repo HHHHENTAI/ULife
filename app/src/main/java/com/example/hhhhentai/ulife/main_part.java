@@ -177,7 +177,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 //路径例子：path = "/storage/emulated/0/data/test.jpg";
                 byte[] NewsImage_blob = bitmabToBytes(path);
                 //NewsImage_blob = test;
-               // database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_blob, NewsHot_int, NewsTime_text);
+                database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_blob, NewsHot_int, NewsTime_text);
                 //TODO TEST_END:赵效慷：测试插入数据结束
 
 

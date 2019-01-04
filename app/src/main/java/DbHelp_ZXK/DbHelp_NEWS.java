@@ -39,16 +39,7 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
                 "NewsHot_int integer not null," +
                 "NewsTime_text text not null)";
 
-        String CREATE_SQL = "create table user(name integer primary key,"+
-                "signature text,"+
-                "birthday text,"+
-                "sex text,"+
-                "emil text,"+
-                "remark text,"+
-                "hometown text)";
-
         db.execSQL(CREATE_SQL_NewsInfo);
-        db.execSQL(CREATE_SQL);
 
 //        SeeId	Integer	自动增长	标识ID
 //        SeePhone	Text	非空	浏览账号
@@ -58,6 +49,35 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
                 "SeeNewsID_int integer not null)";
         db.execSQL(CREATE_SQL_SeeHistory);
 
+//        InfoId	Integer	自动增长	标识ID//删除这个了
+//        PersonPhone	Text	主键	个人账号
+//        PersonImage	Integer	非空	个人头像
+//        PersonSig	Text		个人签名
+//        PersonName	Text	非空	个人昵称
+//        PersonSex	Text	非空	个人性别
+//        PersonBirth	Text		个人生日
+//        PeronJob	Text		个人职业
+//        PersonSchool	Text		个人学校
+//        PersonLocation	Text		个人所在地
+//        PersonHome	Text		个人故乡
+//        PersonOffice	Text	非空	个人邮箱
+//        PersonShow	Text		个人说明
+//        PersonPip	Text		个人名片
+        String CREATE_SQL_PersonInfo = "create table PersonInfo" +
+                "(PersonPhone_text text primary key," +
+                "PersonImage_blob BLOB not null," +
+                "PersonSig_text text," +
+                "PersonName_text text not null," +
+                "PersonSex_text text not null," +
+                "PersonBirth_text text," +
+                "PeronJob_text text," +
+                "PersonSchool_text text," +
+                "PersonLocation_text text," +
+                "PersonHome_text text," +
+                "PersonOffice_text text not null," +
+                "PersonShow_text text," +
+                "PersonPip_text text)";
+        db.execSQL(CREATE_SQL_PersonInfo);
     }
 
     @Override

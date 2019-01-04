@@ -120,7 +120,7 @@ public class tab_item_fragment extends Fragment {
     /*    初始化   */
     private void init(View view) {
 
-        listView= view.findViewById(R.id.list_show);
+        listView = view.findViewById(R.id.list_show);
         //创建信息的数据库
         help_news = new DbHelp_NEWS(context);
         //获取数据可读写对象
