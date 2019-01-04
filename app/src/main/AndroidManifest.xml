@@ -42,6 +42,8 @@
             android:theme="@android:style/Theme.Translucent" />
         <activity android:name="com.example.hhhhentai.UseTool.ExpressageActivity" />
         <activity android:name="com.example.hhhhentai.UseTool.SchoolDataActivity"></activity>
+
+        <activity android:name=".PictureActivity"></activity>
     </application>
 
 </manifest>
