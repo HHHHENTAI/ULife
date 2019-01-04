@@ -3,6 +3,8 @@ package com.example.hhhhentai.ulife;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import com.example.hhhhentai.DbHelp.DbHelp;
 
 import DbHelp_ZXK.Database_News;
 import DbHelp_ZXK.DbHelp_NEWS;
+import main_fragment.fragment.Bitmap_handle;
 
 public class newsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,10 +25,11 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
     private DbHelp help_user;
     private SQLiteDatabase database_user;
     private ImageView news_back;
-
+    private Bitmap_handle bitmap_handle;
     private TextView news_title;
     private TextView user;
     private ImageView user_pic;
+    private ImageView news_pic;
     private TextView news_time;
     private TextView content;
     @Override
@@ -43,8 +47,11 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             //cursor 默认下标是-1
             content.setText(cursor.getString(cursor.getColumnIndex("NewsContent_text")));
             news_title.setText(cursor.getString(cursor.getColumnIndex("NewsTitle_text")));
+            byte[] imgData = null;
+            imgData = bitmap_handle.readImage(cursor);
+            Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+            news_pic.setImageBitmap(imagebitmap);
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
-            Log.i("jjj", "onCreate: " + user_num);
             Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);
 
             if(cursor1.moveToFirst())
@@ -123,6 +130,8 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
         news_title=findViewById(R.id.news_title);
         content =findViewById(R.id.news_content);
         news_back=findViewById(R.id.news_back);
+        news_pic = findViewById(R.id.news_pic);
+        bitmap_handle = new Bitmap_handle();
         news_back.setOnClickListener(this);
         //创建信息的数据库
         help_news = new DbHelp_NEWS(this);

@@ -81,9 +81,9 @@ public class tab_item_fragment extends Fragment {
                       String news_title= tv_title.getText().toString();
                      /*    获取单个item的Adapter    */
                       ListView listView = (ListView) adapterView;
-                    ListAdapter listAdapter = listView.getAdapter();
-                    news_class newsClass = (news_class) listAdapter.getItem(i);
-                    String news_time =  newsClass.getNews_time();
+                      ListAdapter listAdapter = listView.getAdapter();
+                      news_class newsClass = (news_class) listAdapter.getItem(i);
+                      String news_time =  newsClass.getNews_time();
 
                       TextView tv_time = view.findViewById(R.id.list_time);
 
@@ -163,15 +163,12 @@ public class tab_item_fragment extends Fragment {
             String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
             news_class news = new news_class(title, tokyohot, class_fy, time, imgData);
             mdatas.add(news);
-
         }
-
 
         //todo 配置数据源
         newsAdapter = new news_Adapter(context,mdatas,listView);
         listView.setAdapter(newsAdapter);
     }
-
 
     /* Bundle 传参数 */
     public static tab_item_fragment newInstance(int position,String user_num)
