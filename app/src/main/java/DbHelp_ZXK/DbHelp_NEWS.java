@@ -35,7 +35,7 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
                 "NewsTitle_text text not null," +
                 "NewsContent_text text not null," +
                 "NewsClass_text text not null," +
-                "NewsImage_blob BLOB not null," +
+                "NewsImage_blob MEDIUMBLOB not null," +
                 "NewsHot_int integer not null," +
                 "NewsTime_text text not null)";
 
@@ -65,7 +65,7 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
 //        PersonPip	Text		个人名片
         String CREATE_SQL_PersonInfo = "create table PersonInfo" +
                 "(PersonPhone_text text primary key," +
-                "PersonImage_blob BLOB not null," +
+                "PersonImage_blob MEDIUMBLOB not null," +
                 "PersonSig_text text," +
                 "PersonName_text text not null," +
                 "PersonSex_text text not null," +

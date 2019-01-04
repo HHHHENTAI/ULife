@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hhhhentai.ulife.PictureActivity;
 import com.example.hhhhentai.ulife.R;
@@ -41,7 +43,7 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
     ImageView iv_picture;
     ImageView iv_cancle;
     Button btn_send;
-    String [] get=new String[5];
+    String [] get={"","","","",""};
     Context context;
     private TextView myTextView;
     private Spinner mySpinner;
@@ -101,29 +103,23 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         iv_cancle.setOnClickListener(this);
         btn_send=view.findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
+
     }
 
     private void getData() {
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("image", null);
-        map.put("text", "1");
         Map<String, Object> map1 = new HashMap<String, Object>();
-        map.put("image", R.drawable.ic_launcher_background);
-        map.put("text", "北京");
+        map1.put("image", R.drawable.ic_launcher_background);
+        map1.put("text", "学习");
         Map<String, Object> map2 = new HashMap<String, Object>();
         map2.put("image", R.drawable.a6b);
-        map2.put("text", "上海");
+        map2.put("text", "游戏");
         Map<String, Object> map3 = new HashMap<String, Object>();
         map3.put("image", R.drawable.ic_launcher_background);
-        map3.put("text", "广州");
-        Map<String, Object> map4 = new HashMap<String, Object>();
-        map4.put("image", R.drawable.ic_launcher_background);
-        map4.put("text", "深圳");
-        dataList.add(map);
+        map3.put("text", "生活");
         dataList.add(map1);
         dataList.add(map2);
         dataList.add(map3);
-        dataList.add(map4);
+
     }
 
     @Nullable
@@ -146,6 +142,13 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
             case R.id.btn_send:
                 title=et_title.getText().toString();
                 content=et_content.getText().toString();
+                if(TextUtils.isEmpty(et_title.getText())){
+                    Toast.makeText(context,"标题不能为空!",Toast.LENGTH_LONG).show();
+                }
+                if(TextUtils.isEmpty(et_content.getText())){
+                    Toast.makeText(context,"内容不能为空!",Toast.LENGTH_LONG).show();
+                }
+                if(!TextUtils.isEmpty(et_title.getText())&&!TextUtils.isEmpty(et_content.getText())){
                 //时间戳
                 Calendar calendar = Calendar.getInstance();
                 String ymd = calendar.get(Calendar.YEAR) * 10000 + (calendar.get(Calendar.MONTH) + 1) * 100 + calendar.get(Calendar.DAY_OF_MONTH) + "";
@@ -164,13 +167,21 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                         database_news.insert_newsinfo(i,"12345678901",title,content,"生活",imgtest,0,NewsTime_text);
                     }
                 }
+                    String  pathtest = null;
+                    byte[] imgtest={};
+                   /* imgtest = bitmap_handle.bitmabToBytes(pathtest);*/
+                    database_news.insert_newsinfo(0,"12345678901",title,content,"生活",imgtest,0,NewsTime_text);
 
-                //database_news.insert_newsinfo(0,"12345678901",title,content,"生活",imgtest,0,NewsTime_text);
+                }
+
                 break;
 
-            case R.id.btn_cancle:
-                et_title.setText("");
-                et_content.setText("");
+            case R.id.iv_cancle:
+                et_title.setText(null);
+                et_content.setText(null);
+                for(int i=0;i<5;i++){
+                    get[i]="";
+                }
                 break;
         }
     }
