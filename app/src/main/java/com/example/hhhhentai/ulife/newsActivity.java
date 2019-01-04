@@ -46,10 +46,14 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
             Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);
             user.setText(cursor1.getString(cursor.getColumnIndex("name")));
-            String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
-            String hour = t.substring(8,10);
-            String minute = t.substring(10,12);
-            news_time.setText(hour+":"+minute);
+            if(cursor1.moveToFirst())
+            {
+                String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
+                String hour = t.substring(8,10);
+                String minute = t.substring(10,12);
+                news_time.setText(hour+":"+minute);
+            }
+
 
         }
 
