@@ -26,14 +26,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:layout_gravity="center"
-                android:scaleType="fitCenter"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_test" />
 
             <TextView
                 android:id="@+id/Tv_Toolshowsentence"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="25dp" />
         </LinearLayout>
 
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_below="@id/Li_ToolShow"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:orientation="vertical">
 
             <!--生活工具-->
