@@ -98,7 +98,7 @@ public class Register_userinfo extends SwipeBackActivity {
         LL_name_reg.setLayoutParams(params3);
         LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayWidth * 0.8f + 0.5f),
-                (int) (Constant.displayHeight * 0.06f + 0.5f));
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
         params4.setMargins(0,(int) (Constant.displayHeight * 0.07f + 0.5f),0,0);
         LL_btn_reg.setLayoutParams(params4);
 

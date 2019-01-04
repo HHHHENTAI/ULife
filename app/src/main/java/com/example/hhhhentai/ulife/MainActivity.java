@@ -3,11 +3,13 @@ package com.example.hhhhentai.ulife;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -34,9 +36,6 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
     private CheckBox cb_pwd_rem;
     private DbHelp help;
     private SQLiteDatabase database;
-
-    public MainActivity() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +144,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         });
 
         videoview = (CustomVideoView) findViewById(R.id.cvv_background);
-        videoview.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.shipin));
+        videoview.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.shipin2));
 
         //布局设置
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

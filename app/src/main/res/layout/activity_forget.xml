@@ -60,7 +60,10 @@
                 android:text="发送验证码"
                 android:layout_alignParentRight="true"
                 android:textSize="18sp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeTextType="uniform"/>
 
         </LinearLayout>
 
@@ -92,7 +95,7 @@
             android:id="@+id/btn_forget"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="找回密码"
+            android:text="确认修改密码"
             android:textSize="18sp"
             android:layout_below="@id/LL_pwd_for"
             />

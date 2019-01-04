@@ -209,7 +209,7 @@ public class Register_phonenum extends SwipeBackActivity {
 
         LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayWidth * 0.8f + 0.5f),
-                (int) (Constant.displayHeight * 0.06f + 0.5f));
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
         params3.setMargins(0,(int) (Constant.displayHeight * 0.09f + 0.5f),0,0);
         LL_btn_next.setLayoutParams(params3);
     }
