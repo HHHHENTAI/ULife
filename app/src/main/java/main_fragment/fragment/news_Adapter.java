@@ -107,6 +107,7 @@ public class news_Adapter extends BaseAdapter {
         Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
         holder.news_img.setImageBitmap(imagebitmap);
         holder.news_img.setMaxHeight(listView.getHeight() / 5);
+        holder.news_img.setMaxWidth(listView.getHeight() / 5);
         return convertView;
     }
 
