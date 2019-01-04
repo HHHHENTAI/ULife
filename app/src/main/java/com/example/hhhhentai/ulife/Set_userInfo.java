@@ -67,7 +67,7 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2)
                     {
-                        String date = i+"-"+i1+"-"+i2;
+                        String date = i+"-"+(i1+1)+"-"+i2;
                         tv_userInfo_birthday.setText(date);
                     }
                 },

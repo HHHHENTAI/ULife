@@ -1,5 +1,6 @@
 package main_fragment.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.hhhhentai.ulife.ChangeHeadphoto;
 import com.example.hhhhentai.ulife.History;
 import com.example.hhhhentai.ulife.R;
 import com.example.hhhhentai.ulife.Set_userInfo;
@@ -21,6 +24,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener
 {
     //用户手机号
     private String user_num;
+    private Context context;
 
 
     /* Bundle 传参数 */
@@ -40,6 +44,11 @@ public class Fragment_user extends Fragment implements View.OnClickListener
         return view;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
@@ -52,9 +61,12 @@ public class Fragment_user extends Fragment implements View.OnClickListener
         LinearLayout ll_history = (LinearLayout) view.findViewById(R.id.ll_history);
         LinearLayout ll_seting = (LinearLayout) view.findViewById(R.id.ll_seting);
         LinearLayout ll_set_userInfo = (LinearLayout) view.findViewById(R.id.ll_set_userInfo);
+        ImageView iv_user_headPhoto = (ImageView) view.findViewById(R.id.iv_user_headPhoto);
+
         ll_history.setOnClickListener(this);
         ll_seting.setOnClickListener(this);
         ll_set_userInfo.setOnClickListener(this);
+        iv_user_headPhoto.setOnClickListener(this);
 
     }
 
@@ -78,6 +90,13 @@ public class Fragment_user extends Fragment implements View.OnClickListener
            case R.id.ll_set_userInfo:
            {
                Intent intent = new Intent(getActivity(),Set_userInfo.class);
+               startActivity(intent);
+               break;
+           }
+           case R.id.iv_user_headPhoto:
+           {
+               Intent intent = new Intent(getActivity(),ChangeHeadphoto.class);
+
                startActivity(intent);
                break;
            }

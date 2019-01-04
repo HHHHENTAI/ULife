@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MyApplication"
@@ -40,6 +41,7 @@
         <activity
             android:name="com.example.hhhhentai.UseTool.WeatherActivity"
             android:theme="@android:style/Theme.Translucent" />
+        <activity android:name=".ChangeHeadphoto"></activity>
         <activity android:name="com.example.hhhhentai.UseTool.ExpressageActivity" />
         <activity android:name="com.example.hhhhentai.UseTool.SchoolDataActivity"></activity>
 
