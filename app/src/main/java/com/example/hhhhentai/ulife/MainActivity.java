@@ -146,6 +146,17 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
             }
         });
 
+        btn_sign_up.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                String insert = "INSERT INTO user(account,password,name,phone)VALUES ('12345678910','123','nick','12345678910')";
+                database.execSQL(insert);
+                et_account.setText("12345678910");
+                et_password.setText("123");
+                return true;
+            }
+        });
+
         tv_pwd_for.setOnClickListener(new View.OnClickListener() {
 
             @Override
