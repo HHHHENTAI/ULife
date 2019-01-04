@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
+import com.example.hhhhentai.UseTool.ExpressageActivity;
 import com.example.hhhhentai.UseTool.WeatherActivity;
 import com.example.hhhhentai.ulife.R;
 
@@ -98,6 +99,8 @@ public class Fragment_life_tools extends Fragment {
                         startActivity(weatherintent);
                         break;
                     case 1:
+                        Intent expressageintent=new Intent(context,ExpressageActivity.class);
+                        startActivity(expressageintent);
                         break;
                     case 2:
                         break;
