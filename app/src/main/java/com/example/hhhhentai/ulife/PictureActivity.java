@@ -65,6 +65,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
                 Log.i("TAG","照片");
                 Intent intent1 =new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 Log.i("TAG","000");
+                intent1.setType("image/*");
                 startActivityForResult(intent1,IMAGE);
                 break;
             //TODO 调用摄像头(未完成)

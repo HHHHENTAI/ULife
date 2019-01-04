@@ -146,6 +146,7 @@ public class tab_item_fragment extends Fragment {
         //todo 查询数据库  获取id等信息
         mdatas = new ArrayList<news_class>();
         Cursor cursor = null;
+
         if(classify.equals("推荐"))
         {
             cursor = database_news.query_newsinfo(null,null,null,null,null,"SendId_int desc");
@@ -159,11 +160,8 @@ public class tab_item_fragment extends Fragment {
             cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,"SendId_int desc");
 
         }
-        if(cursor.moveToFirst())
-        {
             while(cursor.moveToNext())
             {
-
                 String title = cursor.getString(cursor.getColumnIndex("NewsTitle_text"));
                 String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
                 Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
@@ -174,8 +172,9 @@ public class tab_item_fragment extends Fragment {
                 String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
                 news_class news = new news_class(title, tokyohot, class_fy, time, imgData);
                 mdatas.add(news);
+
             }
-        }
+
         //todo 配置数据源
         newsAdapter = new news_Adapter(context,mdatas,listView);
         listView.setAdapter(newsAdapter);

@@ -19,7 +19,7 @@
             android:theme="@android:style/Theme.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <category android:name="android.intent.category.DEFAULT"></category>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,7 +43,11 @@
         <activity android:name="com.example.hhhhentai.UseTool.ExpressageActivity" />
         <activity android:name="com.example.hhhhentai.UseTool.SchoolDataActivity"></activity>
 
-        <activity android:name=".PictureActivity"></activity>
+        <activity android:name=".PictureActivity">
+            <intent-filter >
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

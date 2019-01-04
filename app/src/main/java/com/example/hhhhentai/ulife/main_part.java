@@ -177,7 +177,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 //路径例子：path = "/storage/emulated/0/data/test.jpg";
                 byte[] NewsImage_blob = bitmabToBytes(path);
                 //NewsImage_blob = test;
-                //database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_blob, NewsHot_int, NewsTime_text);
+               // database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_blob, NewsHot_int, NewsTime_text);
                 //TODO TEST_END:赵效慷：测试插入数据结束
 
 
@@ -192,6 +192,29 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 //Log.i("update", "修改了数据");
                 //TODO TEST_END:赵效慷：测试修改数据结束
 
+              /*  //TODO TEST_START:赵效慷：测试查询数据
+                Cursor cursor = database_news.query_newsinfo(null, null, null, null, null, null);
+                int i = 0;
+                byte[] imgData = null;
+                while (cursor.moveToNext()) {
+                    i++;
+                    String test_phonenum = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
+                    Log.i("qurry:phonenum", test_phonenum);
+                    //将Blob数据转化为字节数组
+                    imgData = readImage(cursor);
+                    if (imgData != null) {
+                        //将字节数组转化为位图
+                        Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+
+                        //TODO 注意：iv_test.setImageBitmap(imagebitmap);即可
+
+                        Log.i("imgbyte", imgData.toString());
+                    } else {
+                        Log.i("imgbyte", "不成功");
+                    }
+                }
+                Log.i("i", i + "");
+                //TODO TEST_END:赵效慷：测试查询数据结束*/
                 //TODO TEST_START:赵效慷：测试查询数据
 //                Cursor cursor = database_news.query_newsinfo(null, null, null, null, null, null);
 //                int i = 0;
