@@ -159,18 +159,19 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 } else {
                     NewsTime_text = ymd + hms;
                 }
+                    Log.i("jjj", "onClick: "+NewsTime_text);
                 for(int i=0;i<5;i++){
                     if(!get[i].equals("")){
                         String  pathtest = get[i];
                         byte[] imgtest={};
                         imgtest = bitmap_handle.bitmabToBytes(pathtest);
-                        database_news.insert_newsinfo(i,"12345678901",title,content,"生活",imgtest,0,NewsTime_text);
+                        database_news.insert_newsinfo(i,"12345678910",title,content,"生活",imgtest,0,NewsTime_text);
                     }
                 }
                     String  pathtest = null;
                     byte[] imgtest={};
                    /* imgtest = bitmap_handle.bitmabToBytes(pathtest);*/
-                    database_news.insert_newsinfo(0,"12345678901",title,content,"生活",imgtest,0,NewsTime_text);
+                    database_news.insert_newsinfo(0,"12345678910",title,content,"生活",imgtest,0,NewsTime_text);
 
                 }
 

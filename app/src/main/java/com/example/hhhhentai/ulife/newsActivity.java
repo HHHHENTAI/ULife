@@ -47,7 +47,6 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
          Cursor cursor = database_news.query_newsinfo(null,"NewsTitle_text = ? and NewsTime_text = ?",new String[]{title,time},null,null,null);
         if(cursor.moveToFirst()){
             //cursor 默认下标是-1
-
             content.setText(cursor.getString(cursor.getColumnIndex("NewsContent_text")));
             news_title.setText(cursor.getString(cursor.getColumnIndex("NewsTitle_text")));
             int news_hot = cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
@@ -58,16 +57,23 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
             news_pic.setImageBitmap(imagebitmap);
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
+            Log.i("jjj", "onCreate: "+user_num);
             Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);
-
+            String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
+            Log.i("jjj", "onCreate: "+t);
+            String hour = t.substring(8,10);
+            String minute = t.substring(10,12);
+            news_time.setText(hour+":"+minute);
+            Log.i("jjj", "onCreate: "+hour+":"+minute);
             if(cursor1.moveToFirst())
             {
                 user.setText(cursor1.getString(cursor1.getColumnIndex("name")));
-                String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
-                String hour = t.substring(8,10);
-                String minute = t.substring(10,12);
-                news_time.setText(hour+":"+minute);
             }
+            else
+            {
+                Log.i("jjj", "onCreate: "+"else");
+            }
+
         }
     }
 
