@@ -11,8 +11,9 @@ import android.widget.TextView;
 
 import com.example.hhhhentai.JsonGet.GetWeatherData;
 import com.example.hhhhentai.ulife.R;
+import com.example.hhhhentai.ulife.SwipeBackActivity;
 
-public class WeatherActivity extends AppCompatActivity implements View.OnClickListener {
+public class WeatherActivity extends SwipeBackActivity implements View.OnClickListener {
 
     private EditText Et_weathercityname;
     private Button Bt_weatherquery;

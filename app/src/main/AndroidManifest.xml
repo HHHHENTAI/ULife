@@ -30,7 +30,7 @@
         <activity android:name=".History" />
         <activity android:name=".Seting" />
         <activity android:name=".Set_userInfo" />
-        <activity android:name="com.example.hhhhentai.UseTool.WeatherActivity"></activity>
+        <activity android:name="com.example.hhhhentai.UseTool.WeatherActivity" android:theme="@android:style/Theme.Translucent"></activity>
     </application>
 
 </manifest>
