@@ -98,12 +98,10 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
                 finish();*/
 
 
-
                 break;
 
             case R.id.btn_cancle:
-                Intent intent3=new Intent(PictureActivity.this,MainActivity.class);
-                startActivity(intent3);
+                finish();
                 break;
         }
 
