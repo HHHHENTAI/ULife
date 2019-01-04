@@ -90,13 +90,14 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         cb_pwd_rem.setCompoundDrawables(drawable,null,null,null);
 
         SharedPreferences preferences = getSharedPreferences("data",MODE_PRIVATE);
-//        Boolean loged = preferences.getBoolean("loged",false);
-//        String ac = preferences.getString("acc","");
-//        if(loged){
-//            Intent intent = new Intent(MainActivity.this, main_part.class);
-//            intent.putExtra("phonenum",ac);
-//            startActivity(intent);
-//        }
+        Boolean loged = preferences.getBoolean("loged",false);
+        String ac = preferences.getString("acc","");
+        if(loged){
+            Intent intent = new Intent(MainActivity.this, main_part.class);
+            intent.putExtra("phonenum",ac);
+            startActivity(intent);
+            finish();
+        }
         String acc = preferences.getString("account","");
         String pass = preferences.getString("password","");
         boolean isRemember_password = preferences.getBoolean("remember_password",false);
@@ -145,14 +146,15 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
                         editor.putBoolean("remember_password", false);
                         editor.commit();
                     }
-//                    SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
-//                    editor.putBoolean("loged",true);
-//                    editor.putString("acc",account);
-//                    editor.commit();
+                    SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
+                    editor.putBoolean("loged",true);
+                    editor.putString("acc",account);
+                    editor.commit();
                     Intent intent = new Intent(MainActivity.this, main_part.class);
                     intent.putExtra("phonenum",account);
                     startActivity(intent);
                     finish();
+
                 }else{
                     Toast.makeText(MainActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }
