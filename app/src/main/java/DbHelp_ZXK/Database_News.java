@@ -69,6 +69,12 @@ public class Database_News {
         //如果第三四个参数为null，那就将每条记录都改掉
         database_news.update("NewsInfo", values_update, "NewsId_int=?", new String[]{NewsId_oldint + ""});
     }
+    public void update_news_count(String title,String time,int NewsHot_int)
+    {
+        ContentValues values_update = new ContentValues();
+        values_update.put("NewsHot_int", NewsHot_int+1);
+        database_news.update("NewsInfo", values_update, "NewsTitle_text = ? and NewsTime_text = ?", new String[]{title,time});
+    }
 
     public Cursor query_newsinfo(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
         return database_news.query("NewsInfo", columns, selection, selectionArgs, groupBy, having, orderBy);

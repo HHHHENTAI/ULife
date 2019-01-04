@@ -116,7 +116,6 @@ public class tab_item_fragment extends Fragment {
         }
     }
 
-
     /*    初始化   */
     private void init(View view) {
 
@@ -128,7 +127,6 @@ public class tab_item_fragment extends Fragment {
 
         bitmap_handle = new Bitmap_handle();
     }
-
 
     /*     适配器设置   */
     private void data_to_adapter(String classify) {
@@ -142,11 +140,11 @@ public class tab_item_fragment extends Fragment {
 
         }
 
-        // Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);
+        // Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,"SendId_int desc");
         else
         {
             //todo 添加到数据源
-            cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);
+            cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,"SendId_int desc");
 
         }
 
