@@ -36,6 +36,9 @@ public class tab_item_fragment extends Fragment {
     private ListView listView;
     private Context context;
 
+    private List<news_class> mdatas;
+    private news_Adapter newsAdapter;
+
 
 
     @Override
@@ -44,7 +47,6 @@ public class tab_item_fragment extends Fragment {
         this.context=context;
     }
 
-    private   List<Map<String,Object>> data = new ArrayList<Map<String, Object>>();//列表数据源
 
     public tab_item_fragment(){}
 
@@ -132,33 +134,28 @@ public class tab_item_fragment extends Fragment {
 
               }*/
 
-
+        mdatas = new ArrayList<news_class>();
         // Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);
         Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);
           while(cursor.moveToNext())
           {
+
               String title = cursor.getString(cursor.getColumnIndex("NewsTitle_text"));
               String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
               Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
               Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
               String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
+              news_class news = new  news_class(title,tokyohot,class_fy,time,R.drawable.ic_launcher_background);
+              mdatas.add(news);
 
-              HashMap<String,Object> map = new HashMap<String, Object>();
-              map.put("news_title",title);
-              map.put("news_classify",class_fy);
-              map.put("news_browse_count",tokyohot);
-              map.put("news_img",R.drawable.ic_launcher_background);
-              map.put("news_time",time);
-              data.add(map);
           }
         //todo 添加到数据源
 
 
         //todo 配置数据源
-        String from[] = {"news_title","news_classify","news_browse_count","news_img","news_time"};
-        int to[] = {R.id.list_title,R.id.list_classify,R.id.list_browse_num,R.id.list_img,R.id.list_time};
-        SimpleAdapter adapter = new SimpleAdapter(context,data,R.layout.list_item,from,to);
-        listView.setAdapter(adapter);
+
+        newsAdapter = new news_Adapter(context,mdatas,listView);
+        listView.setAdapter(newsAdapter);
     }
 
 
