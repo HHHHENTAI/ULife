@@ -1,7 +1,6 @@
 package com.example.hhhhentai.ulife;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -19,7 +18,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Blob;
 import java.util.Calendar;
 
 import DbHelp_ZXK.Database_News;
@@ -145,7 +143,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
             case R.id.btn_show:
                 ft.replace(R.id.content, fragment_show);
                 btn_show.setImageResource(R.drawable.news_icon_2);
-                btn_upload.setImageResource(R.drawable.ic_launcher_background);
+                btn_upload.setImageResource(R.drawable.add_i1);
                 btn_life_tools.setImageResource(R.drawable.ic_launcher_background);
                 btn_user.setImageResource(R.drawable.user_icon1);
                 //TODO 消息具体活动界面--赵效慷  江守鑫
@@ -221,7 +219,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
             case R.id.btn_upload:
                 ft.replace(R.id.content, fragment_upload);
                 btn_show.setImageResource(R.drawable.news_icon_1);
-                btn_upload.setImageResource(R.mipmap.ic_launcher);
+                btn_upload.setImageResource(R.drawable.add_i2);
                 btn_life_tools.setImageResource(R.drawable.ic_launcher_background);
                 btn_user.setImageResource(R.drawable.user_icon1);
                 //TODO 发布具体活动界面--余劲龙
@@ -230,7 +228,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
             case R.id.btn_life_tools:
                 ft.replace(R.id.content, fragment_life_tools);
                 btn_show.setImageResource(R.drawable.news_icon_1);
-                btn_upload.setImageResource(R.drawable.ic_launcher_background);
+                btn_upload.setImageResource(R.drawable.add_i1);
                 btn_life_tools.setImageResource(R.mipmap.ic_launcher);
                 btn_user.setImageResource(R.drawable.user_icon1);
                 //TODO 工具具体活动界面--盛光明
@@ -239,7 +237,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
             case R.id.btn_user:
                 ft.replace(R.id.content, fragment_user);
                 btn_show.setImageResource(R.drawable.news_icon_1);
-                btn_upload.setImageResource(R.drawable.ic_launcher_background);
+                btn_upload.setImageResource(R.drawable.add_i1);
                 btn_life_tools.setImageResource(R.drawable.ic_launcher_background);
                 btn_user.setImageResource(R.drawable.user_icon2);
                 //TODO 我的具体活动界面--张松
