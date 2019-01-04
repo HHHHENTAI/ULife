@@ -22,6 +22,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener
     //用户手机号
     private String user_num;
 
+
     /* Bundle 传参数 */
     public static Fragment_user newInstance(String user_num)
     {
@@ -41,12 +42,13 @@ public class Fragment_user extends Fragment implements View.OnClickListener
 
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
         super.onViewCreated(view, savedInstanceState);
 
         //获取用户手机号
         user_num=getArguments().getString("user_num");
-       // Log.i("jjj", "onViewCreated: "+user_num);
+
         LinearLayout ll_history = (LinearLayout) view.findViewById(R.id.ll_history);
         LinearLayout ll_seting = (LinearLayout) view.findViewById(R.id.ll_seting);
         LinearLayout ll_set_userInfo = (LinearLayout) view.findViewById(R.id.ll_set_userInfo);
@@ -55,8 +57,6 @@ public class Fragment_user extends Fragment implements View.OnClickListener
         ll_set_userInfo.setOnClickListener(this);
 
     }
-
-
 
     @Override
     public void onClick(View view)

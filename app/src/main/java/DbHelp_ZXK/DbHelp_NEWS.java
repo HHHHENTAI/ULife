@@ -11,7 +11,8 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
     public static final String DB_NAME = "NEWS_INFO.db";
     public static final int VERSION = 1;
 
-    public DbHelp_NEWS(@Nullable Context context) {
+    public DbHelp_NEWS(@Nullable Context context)
+    {
         super(context, DB_NAME, null, VERSION);
     }
 
@@ -37,7 +38,17 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
                 "NewsImage_int integer not null," +
                 "NewsHot_int integer not null," +
                 "NewsTime_text text not null)";
+
+        String CREATE_SQL = "create table user(name integer primary key,"+
+                "signature text,"+
+                "birthday text,"+
+                "sex text,"+
+                "emil text,"+
+                "remark text,"+
+                "hometown text)";
+
         db.execSQL(CREATE_SQL_NewsInfo);
+        db.execSQL(CREATE_SQL);
 
 //        SeeId	Integer	自动增长	标识ID
 //        SeePhone	Text	非空	浏览账号x

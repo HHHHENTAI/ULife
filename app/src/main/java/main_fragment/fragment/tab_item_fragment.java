@@ -124,15 +124,6 @@ public class tab_item_fragment extends Fragment {
     private void data_to_adapter(String classify) {
         //1.todo 定义数据源
         //todo 查询数据库  获取id等信息
-        /*  if(classify.equals("推荐"))
-          {
-
-          }
-          else
-              {
-
-
-              }*/
 
         mdatas = new ArrayList<news_class>();
         // Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,null);

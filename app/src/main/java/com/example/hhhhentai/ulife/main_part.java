@@ -147,6 +147,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 //TODO TEST_END:赵效慷：测试查询数据结束
 
                 break;
+
             case R.id.btn_upload:
                 ft.replace(R.id.content, fragment_upload);
                 btn_show.setImageResource(R.drawable.ic_launcher_background);

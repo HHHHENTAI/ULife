@@ -20,6 +20,7 @@
 
             <ImageView
                 android:id="@+id/iv_seting_return"
+                android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
