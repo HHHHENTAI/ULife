@@ -20,11 +20,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.ulife.PictureActivity;
 import com.example.hhhhentai.ulife.R;
 import com.example.hhhhentai.ulife.path;
@@ -40,25 +42,27 @@ import DbHelp_ZXK.DbHelp_NEWS;
 
 //TODO 赵效慷and江守鑫---
 public class Fragment_upload extends Fragment implements View.OnClickListener {
-    EditText et_title;
+
     String title;
-    EditText et_content;
     String content;
     String family;
     String phone;
-    ImageView iv_picture;
-    ImageView iv_cancle;
+
     ImageView[] send_iv=new ImageView[5];
-    Button btn_send;
     String[] get = {"", "", "", "", ""};
     Context context;
-    private TextView myTextView;
-    private Spinner mySpinner;
     private SimpleAdapter adapter;
     private List<Map<String, Object>> dataList;
     private DbHelp_NEWS dbHelp_news;
     private Database_News database_news;
     private Bitmap_handle bitmap_handle;
+
+    private LinearLayout LL_send,LL_send_out,LL_cancel,LL_family,LL_title,LL_content,LL_group;
+    private TextView tv_send,tv_family,myTextView,tv_content;
+    private Button btn_send;
+    private Spinner mySpinner;
+    private EditText et_title,et_content;
+    private ImageView iv_picture,iv_cancle;
 
     @Override
     public void onAttach(Context context) {
@@ -69,6 +73,10 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constant.displayWidth = displayMetrics.widthPixels;
+        Constant.displayHeight = displayMetrics.heightPixels;
         //初始化
         init(view);
 
@@ -84,7 +92,13 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
 
         dataList = new ArrayList<Map<String, Object>>();
         getData();
-        myTextView = view.findViewById(R.id.tv_title);
+//        private LinearLayout LL_send,LL_cancel,LL_family,LL_title,LL_content,LL_group;
+//        private TextView tv_send,tv_family,tv_title,tv_content;
+//        private Button btn_send;
+//        private Spinner mySpinner;
+//        private EditText et_title,et_content;
+//        private ImageView iv_picture,iv_cancle;
+
         mySpinner = (Spinner) view.findViewById(R.id.spinner);
         // 第二步：为下拉列表定义一个适配器，这里就用到里前面定义的list。
         adapter = new SimpleAdapter(context, dataList, R.layout.item, new String[]{"image", "text"}, new int[]{R.id.iv_img, R.id.tv});
@@ -111,11 +125,11 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
 
     //初始化
     private void init(View view) {
-        et_title = view.findViewById(R.id.et_title);
-        et_content = view.findViewById(R.id.et_content);
-        iv_picture = view.findViewById(R.id.iv_picture);
+        et_title = view.findViewById(R.id.et_title);////////////////
+        et_content = view.findViewById(R.id.et_content);////////////////////
+        iv_picture = view.findViewById(R.id.iv_picture);////////////////////
         iv_picture.setOnClickListener(this);
-        iv_cancle = view.findViewById(R.id.iv_cancle);
+        iv_cancle = view.findViewById(R.id.iv_cancle);/////////////////////
         iv_cancle.setOnClickListener(this);
         btn_send = view.findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
@@ -124,6 +138,116 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         send_iv[2] = view.findViewById(R.id.send_iv_three);
         send_iv[3] = view.findViewById(R.id.send_iv_fore);
         send_iv[4] = view.findViewById(R.id.send_iv_five);
+
+        LL_send = view.findViewById(R.id.send);/////////////////////////
+        LL_send_out = view.findViewById(R.id.LL_send_out);////////////////////////
+        LL_cancel = view.findViewById(R.id.LL_cancel);//////////////////////////
+        LL_family = view.findViewById(R.id.family);////////////////////////////
+        LL_title = view.findViewById(R.id.title);////////////////////////
+        LL_content = view.findViewById(R.id.content);/////////////////////////
+        LL_group = view.findViewById(R.id.LL_group);////////////////////////
+
+        tv_send = view.findViewById(R.id.tv_send);////////////////////////////
+        myTextView = view.findViewById(R.id.tv_title);/////////////////////////////
+        tv_family = view.findViewById(R.id.tv_family);//////////////////////
+        tv_content = view.findViewById(R.id.tv_content);////////////////
+
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.1f + 0.5f));
+        params1.setMargins(0,0,0,0);
+        LL_send.setLayoutParams(params1);
+
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayHeight * 0.1f + 0.5f),
+                (int) (Constant.displayHeight * 0.1f + 0.5f));
+        params2.setMargins(0,0,0,0);
+        LL_cancel.setLayoutParams(params2);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayHeight * 0.06f + 0.5f),
+                (int) (Constant.displayHeight * 0.06f + 0.5f));
+        params3.setMargins(0,0,0,0);
+        iv_cancle.setLayoutParams(params3);
+
+        LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayHeight * 0.1f + 0.5f),
+                (int) (Constant.displayHeight * 0.1f + 0.5f));
+        params4.setMargins(0,0,0,0);
+        LL_send_out.setLayoutParams(params4);
+
+        LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayHeight * 0.06f + 0.5f),
+                (int) (Constant.displayWidth * 0.06f + 0.5f));
+        params5.setMargins(0,0,0,0);
+        btn_send.setLayoutParams(params5);
+
+        LinearLayout.LayoutParams params6 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth-(Constant.displayHeight * 0.1f + 0.5f)*2),
+                (int) (Constant.displayHeight * 0.1f + 0.5f));
+        params6.setMargins(0,0,0,0);
+        tv_send.setLayoutParams(params6);
+
+
+        LinearLayout.LayoutParams params7 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params7.setMargins(0,0,0,0);
+        LL_family.setLayoutParams(params7);
+
+        LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.2f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params8.setMargins(0,0,0,0);
+        tv_family.setLayoutParams(params8);
+
+        LinearLayout.LayoutParams params9 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params9.setMargins(0,0,0,0);
+        LL_title.setLayoutParams(params9);
+
+        LinearLayout.LayoutParams params10 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.2f + 0.5f),
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params10.setMargins(0,0,0,0);
+        myTextView.setLayoutParams(params10);
+
+        LinearLayout.LayoutParams params11 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.03f + 0.5f));
+        params11.setMargins(0,0,0,0);
+        et_title.setLayoutParams(params11);
+
+        LinearLayout.LayoutParams params12 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.3f + 0.5f));
+        params12.setMargins(0,0,0,0);
+        LL_content.setLayoutParams(params12);
+
+        LinearLayout.LayoutParams params13 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.2f + 0.5f),
+                (int) (Constant.displayHeight * 0.1f + 0.5f));
+        params13.setMargins(0,0,0,0);
+        tv_content.setLayoutParams(params13);
+
+        LinearLayout.LayoutParams params14 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.7f + 0.5f),
+                (int) (Constant.displayHeight * 0.3f + 0.5f));
+        params14.setMargins(0, 0,0,0);
+        et_content.setLayoutParams(params14);
+
+        LinearLayout.LayoutParams params15 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        params15.setMargins(0,0,0,0);
+        LL_group.setLayoutParams(params15);
+
+        LinearLayout.LayoutParams params16 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayHeight * 0.1f + 0.5f),
+                (int) (Constant.displayHeight * 0.1f + 0.5f));
+        params16.setMargins(0,0,0,0);
+        iv_picture.setLayoutParams(params16);
     }
 
     private void getData() {

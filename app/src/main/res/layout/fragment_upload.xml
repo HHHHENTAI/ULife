@@ -1,83 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
 
-    <RelativeLayout
+
+    <LinearLayout
         android:id="@+id/send"
         android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/iv_cancle"
+        <LinearLayout
+            android:id="@+id/LL_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_weight="1"
-            android:src="@drawable/ajx" />
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/iv_cancle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ajx" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tv_send"
-
-
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_weight="10"
             android:gravity="center"
-            android:text="发消息"
+            android:text="发资讯"
             android:textColor="@color/black"
             android:textSize="30sp" />
+<LinearLayout
+    android:id="@+id/LL_send_out"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/snow"
+        android:layout_centerVertical="true"
+        android:text="发送" />
+</LinearLayout>
 
-        <Button
-            android:layout_alignParentRight="true"
-            android:id="@+id/btn_send"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/snow"
-            android:layout_centerVertical="true"
-            android:layout_weight="1"
-            android:text="发送" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <LinearLayout
         android:id="@+id/family"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/send">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_family"
-            android:layout_width="55dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:gravity="center"
             android:text="类别:"
             android:textSize="20sp" />
 
         <Spinner
-            android:layout_centerHorizontal="true"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
             android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/title"
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/family">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="55dp"
-            android:layout_height="29dp"
-
-            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="标题:"
             android:textSize="20dp" />
 
@@ -85,51 +91,35 @@
             android:id="@+id/et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_title" />
-    </RelativeLayout>
+            android:background="#eeeeee"/>
+    </LinearLayout>
 
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <LinearLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_content"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
-            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="内容:"
             android:textSize="20dp" />
 
         <EditText
             android:id="@+id/et_content"
-            android:layout_width="331dp"
-            android:layout_height="216dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="-2dp"
-            android:gravity="top"
-            android:layout_toRightOf="@id/tv_content" />
-    </RelativeLayout>
-
-
-
-    <ImageView
-        android:id="@+id/iv_picture"
-        android:layout_width="79dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="0dp"
-        android:src="@drawable/af3" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#eeeeee"/>
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/LL_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/content"
-        android:layout_above="@id/iv_picture"
         >
         <ImageView
             android:layout_width="wrap_content"
@@ -162,4 +152,10 @@
             android:layout_weight="1"
             />
     </LinearLayout>
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/af3"
+        android:layout_gravity="center"/>
+</LinearLayout>

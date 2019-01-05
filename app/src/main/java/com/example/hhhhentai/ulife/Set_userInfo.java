@@ -12,18 +12,24 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.hhhhentai.Constant.Constant;
 
 import java.util.Calendar;
 
 import DbHelp_ZXK.Database_News;
 import DbHelp_ZXK.DbHelp_NEWS;
 
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
+
 public class Set_userInfo extends AppCompatActivity implements View.OnClickListener {
     ImageView iv_userInfo_return, iv_userInfo_birthday, iv_userInfo_sex;
     Button btn_userInfo_sure;
     TextView tv_userInfo_birthday, tv_userInfo_sex;
+    private TextView tv_per;
     EditText et_PersonName;
     EditText et_PersonSig;
     EditText et_PersonSchool;
@@ -61,6 +67,16 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
         et_PersonHome = (EditText) findViewById(R.id.et_PersonHome);
         et_PersonOffice = (EditText) findViewById(R.id.et_PersonOffice);
         et_PersonShow = (EditText) findViewById(R.id.et_PersonShow);
+
+        tv_per = (TextView)findViewById(R.id.tv_per);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int) (Constant.displayHeight * 0.5f/12.4f + 0.5f),
+                (int) (Constant.displayHeight * 0.5f/12.4f + 0.5f));
+        params.setMargins((int) (Constant.displayWidth * 0.03f + 0.5f),0,0,0);
+        iv_userInfo_return.setLayoutParams(params);
+
+        tv_per.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.04f);
 
         iv_userInfo_return.setOnClickListener(this);
         btn_userInfo_sure.setOnClickListener(this);
