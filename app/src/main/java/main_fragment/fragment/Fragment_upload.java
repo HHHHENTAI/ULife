@@ -41,6 +41,8 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
     String title;
     EditText et_content;
     String content;
+    String family;
+    String phone;
     ImageView iv_picture;
     ImageView iv_cancle;
     Button btn_send;
@@ -84,6 +86,10 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                       /* String s=adapterView.getItemAtPosition(i).toString();*/
+                       TextView tv_test=view.findViewById(R.id.tv);
+                       family=tv_test.getText().toString();
+
 
             }
 
@@ -164,15 +170,16 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 for(int i=0;i<5;i++){
                     if(!get[i].equals("")){
                         String  pathtest = get[i];
-                       /* Bitmap imgtest;
-                        imgtest = bitmap_handle.pictureTobitmap(pathtest);*/
-                        database_news.insert_newsinfo(i,"12345678910",title,content,"生活",pathtest,0,NewsTime_text);
+                        byte[] imgtest={};
+                        imgtest = bitmap_handle.bitmabToBytes(pathtest);
+                        phone = getArguments().getString("user_num");
+                        database_news.insert_newsinfo(i,phone,title,content,family,get[i],0,NewsTime_text);
                     }
                 }
                     String  pathtest = null;
                     byte[] imgtest={};
                    /* imgtest = bitmap_handle.bitmabToBytes(pathtest);*/
-                    database_news.insert_newsinfo(0,"12345678910",title,content,"生活",pathtest,0,NewsTime_text);
+                    database_news.insert_newsinfo(0,"12345678910",title,content,family,"",0,NewsTime_text);
 
                 }
 
@@ -200,5 +207,14 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
             get[4]=p.getfive();
 
         }
+    }
+    /* Bundle 传参数 */
+    public static Fragment_upload newInstance(String user_num)
+    {
+        Bundle bundle =new Bundle();
+        bundle.putString("user_num",user_num);
+        Fragment_upload item = new Fragment_upload();
+        item.setArguments(bundle);
+        return item;
     }
 }

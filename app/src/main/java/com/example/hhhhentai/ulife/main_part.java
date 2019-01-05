@@ -138,7 +138,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         //开始事务
         ft = manager.beginTransaction();
         Fragment fragment_show = new Fragment_show().newInstance(user_phone_num);
-        Fragment fragment_upload = new Fragment_upload();
+        Fragment fragment_upload = new Fragment_upload().newInstance(user_phone_num);
         Fragment fragment_life_tools = new Fragment_life_tools();
         Fragment fragment_user = new Fragment_user().newInstance(user_phone_num);
         switch (view.getId()) {

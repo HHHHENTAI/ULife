@@ -1,23 +1,31 @@
 package com.example.hhhhentai.ulife;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+
+import static java.security.AccessController.getContext;
 
 public class PictureActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,6 +45,11 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+            StrictMode.VmPolicy.Builder builder=new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+        }
         iv_add=findViewById(R.id.iv_add);
         iv_add.setOnClickListener(this);
         iv[0] = findViewById(R.id.iv_one);
@@ -53,7 +66,9 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
         btn_cancal=findViewById(R.id.btn_cancle);
         btn_cancal.setOnClickListener(this);
 
-
+       for(int i=0;i<5;i++){
+           setsize(iv[i]);
+       }
     }
 
     @Override
@@ -68,8 +83,9 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
                 intent1.setType("image/*");
                 startActivityForResult(intent1,IMAGE);
                 break;
-            //TODO 调用摄像头(未完成)
+            //TODO 调用摄像头
             case R.id.btn_camera:
+
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(new File(Environment.getExternalStorageDirectory(),IMAGE_NAME)));
                 startActivityForResult(intent,REQUEST_CODE_CAMERA);
@@ -89,15 +105,6 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
                 intent2.putExtras(bundle);
                 setResult(10,intent2);
                 finish();
-
-
-               /* //TODO传递数据
-                Intent backIntent= getIntent();
-                backIntent.putExtra("test","hello");
-                setResult(10 ,backIntent);
-                finish();*/
-
-
                 break;
 
             case R.id.btn_cancle:
@@ -131,7 +138,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
         }
         if(requestCode==REQUEST_CODE_CROP){
             Bitmap bm = data.getExtras().getParcelable("data");
-            iv[1].setImageBitmap(bm);
+            iv[0].setImageBitmap(bm);
         }
 
 
@@ -149,6 +156,21 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
         startActivityForResult(intent,REQUEST_CODE_CROP);
 
     }
+
+    //设置图片的宽高
+    public void setsize(ImageView iv_size){
+        ViewGroup.LayoutParams params;
+        params=iv_size.getLayoutParams();
+        iv_size.setAdjustViewBounds(true);
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(dm);
+        Integer h = dm.heightPixels;//屏幕高度
+        Integer w = dm.widthPixels;  //屏幕宽度
+        params.height=h/6;
+        params.width=w/5;
+    }
+
 
     //加载图片
     private void showImage(String imagePath){

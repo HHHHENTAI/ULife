@@ -39,7 +39,6 @@
             android:background="@color/snow"
             android:layout_centerVertical="true"
             android:layout_weight="1"
-
             android:text="发送" />
     </RelativeLayout>
 
