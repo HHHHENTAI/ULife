@@ -202,21 +202,25 @@
 
         <ImageView
             android:id="@+id/iv_history"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:src="@drawable/mine_history"/>
 
         <TextView
             android:id="@+id/tv_history"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:gravity="center_vertical"
-            android:text="历史"/>
+            android:text="历史"
+            android:textSize="30dp"/>
 
         <ImageView
             android:id="@+id/iv_his"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:src="@drawable/icon_enter"/>
     </LinearLayout>
 
@@ -239,21 +243,25 @@
 
         <ImageView
             android:id="@+id/iv_setting"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:src="@drawable/icon_setting"/>
 
         <TextView
             android:id="@+id/tv_setting"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:gravity="center_vertical"
+            android:textSize="30dp"
             android:text="设置"/>
 
         <ImageView
             android:id="@+id/iv_set"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:src="@drawable/icon_enter"/>
     </LinearLayout>
 
@@ -275,28 +283,32 @@
 
         <ImageView
             android:id="@+id/iv_personinfo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:src="@drawable/mine_editperson"/>
 
         <TextView
             android:id="@+id/tv_personinfo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:gravity="center_vertical"
+            android:textSize="30dp"
             android:text="编辑个人资料"/>
 
         <ImageView
             android:id="@+id/iv_per"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:src="@drawable/icon_enter"/>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#cccccc"
-        />
+        android:background="#cccccc" />
 
 
     //空白TextView，增加边距
