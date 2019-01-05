@@ -13,8 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hhhhentai.DbHelp.DbHelp;
@@ -70,17 +73,33 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
 
             //加载图片
             img_path = bitmap_handle.readImage(cursor);
-            Bitmap imgbitmap = bitmap_handle.pictureTobitmap(img_path);
-            DisplayMetrics dm = new DisplayMetrics();
-            WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
-            wm.getDefaultDisplay().getMetrics(dm);
-            mScreenHeight = dm.heightPixels;//屏幕高度
-            mScreenWeight = dm.widthPixels;  //屏幕宽度
-            news_pic.setMaxWidth(mScreenWeight);
-            news_pic.setMinimumWidth(mScreenWeight);
-            news_pic.setMaxHeight(mScreenWeight);
-            news_pic.setImageBitmap(imgbitmap);
-            news_pic.setAdjustViewBounds(true);
+            if(img_path.equals(""))
+            {
+
+            }
+            else
+            {
+                Bitmap imgbitmap = bitmap_handle.pictureTobitmap(img_path);
+                DisplayMetrics dm = new DisplayMetrics();
+                WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+                wm.getDefaultDisplay().getMetrics(dm);
+                mScreenHeight = dm.heightPixels;//屏幕高度
+                mScreenWeight = dm.widthPixels;  //屏幕宽度
+                news_pic.setMaxWidth(mScreenWeight);
+                news_pic.setMinimumWidth(mScreenWeight);
+                news_pic.setMaxHeight(mScreenWeight);
+                news_pic.setImageBitmap(imgbitmap);
+                news_pic.setAdjustViewBounds(true);
+                ViewGroup.MarginLayoutParams margin = new ViewGroup.MarginLayoutParams(
+                        news_pic.getLayoutParams());
+                margin.setMargins(0, 0, 0, 0);// 在左边距100像素，顶边距100像素的位置显示图片
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                        margin);
+                layoutParams.width = mScreenWeight;// 设置图片的高度
+                //layoutParams.width = 400; // 设置图片的宽度
+                news_pic.setLayoutParams(layoutParams);
+            }
+
 
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
 
