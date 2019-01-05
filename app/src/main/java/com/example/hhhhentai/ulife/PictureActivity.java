@@ -32,6 +32,7 @@ import org.xutils.common.util.FileUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Calendar;
 
 import static java.security.AccessController.getContext;
 
@@ -39,7 +40,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
 
     //调用系统相册-选择图片
     private static final  int IMAGE=2;
-    public static final String IMAGE_NAME = "pic.jpg";
+    public static String IMAGE_NAME = "pic.jpg";
     public static final int REQUEST_CODE_CAMERA = 11;
     public static final int REQUEST_CODE_CROP = 12;
     private static final int RESULT_CODE_STARTCAMERA =13 ;
@@ -97,6 +98,16 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
                 if(count<5) {
                     if(PackageManager.PERMISSION_GRANTED==ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)){
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        Calendar calendar = Calendar.getInstance();
+                        String ymd = calendar.get(Calendar.YEAR) * 10000 + (calendar.get(Calendar.MONTH) + 1) * 100 + calendar.get(Calendar.DAY_OF_MONTH) + "";
+                        String hms = calendar.get(Calendar.HOUR_OF_DAY) * 10000 + calendar.get(Calendar.MINUTE) * 100 + calendar.get(Calendar.SECOND) + "";
+                        String NewsTime_text = "";
+                        if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
+                            NewsTime_text = ymd + "0" + hms;
+                        } else {
+                            NewsTime_text = ymd + hms;
+                        }
+                        IMAGE_NAME=NewsTime_text+IMAGE_NAME;
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath()+"/"+IMAGE_NAME)));
                         startActivityForResult(intent, REQUEST_CODE_CAMERA);
                     }
