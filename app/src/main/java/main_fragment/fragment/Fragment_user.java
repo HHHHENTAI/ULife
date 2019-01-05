@@ -55,6 +55,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
     private TextView tv_history,tv_setting,tv_personinfo;
     private TextView tv_publish,tv_publish_c,tv_follow,tv_follow_c,tv_fans,tv_fans_c,tv_message,tv_message_c;
     private LinearLayout LL_p,LL_head;
+    private String headimg;
 
 
     /* Bundle 传参数 */
@@ -219,11 +220,18 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         Cursor cursor1 = database_news.query_publish_news(user_num);
         int publish_num = cursor1.getCount();
         pub_num.setText(""+publish_num);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         Cursor cursor = database_news.query_personinfo(user_num);
         cursor.moveToFirst();
         String PersonName_text = cursor.getString(cursor.getColumnIndex("PersonName_text"));
         String PersonSig_text = cursor.getString(cursor.getColumnIndex("PersonSig_text"));
         String PersonImage_blob = cursor.getString(cursor.getColumnIndex("PersonImage_blob"));
+        headimg = PersonImage_blob;
         //昵称与签名
         tv_user_name.setText(PersonName_text);
         tv_user_info.setText(PersonSig_text);
@@ -265,6 +273,8 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
             }
             case R.id.iv_user_headPhoto: {
                 Intent intent = new Intent(getActivity(), ChangeHeadphoto.class);
+                Log.i("headimg  Fragment_user", headimg);
+                intent.putExtra("headimg", headimg);
                 intent.putExtra("user_num", user_num);
                 startActivityForResult(intent, 1);
                 break;
@@ -306,7 +316,6 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
                         Bitmap bitmap = BitmapFactory.decodeStream(fis);
                         iv_user_headPhoto.setImageBitmap(bitmap);
                     }
-
                 }
                 break;
         }

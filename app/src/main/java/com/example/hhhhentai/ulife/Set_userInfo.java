@@ -167,13 +167,15 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
                 String PersonPhone = intent.getStringExtra("user_num");
                 String PersonName = et_PersonName.getText().toString();
                 String PersonSig = et_PersonSig.getText().toString();
-                String PersonBirth = tv_userInfo_sex.getText().toString();
+                String PersonBirth = tv_userInfo_birthday.getText().toString();
                 String PersonSex = tv_userInfo_sex.getText().toString();
                 String PersonSchool = et_PersonSchool.getText().toString();
                 String PersonHome = et_PersonHome.getText().toString();
                 String PersonOffice = et_PersonOffice.getText().toString();
                 String PersonShow = et_PersonShow.getText().toString();
                 database_news.update_personinfo(PersonPhone, PersonName, PersonSig, PersonBirth, PersonSex, PersonSchool, PersonHome, PersonOffice, PersonShow, "", "");
+                Toast.makeText(this, "修改成功", Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
 

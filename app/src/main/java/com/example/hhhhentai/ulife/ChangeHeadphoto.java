@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -50,6 +51,7 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
     private Database_News database_news;
     Intent intent;
     String PersonPhone;
+    String headimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -80,6 +82,16 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
 
         intent = getIntent();
         PersonPhone = intent.getStringExtra("user_num");
+        headimg = intent.getStringExtra("headimg");
+        Log.i("headimg", headimg + "7");
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(headimg);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(fis);
+        iv_headphoto.setImageBitmap(bitmap);
     }
 
 

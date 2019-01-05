@@ -86,6 +86,7 @@ public class Database_News {
     public Cursor query_newsinfo(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
         return database_news.query("NewsInfo", columns, selection, selectionArgs, groupBy, having, orderBy);
     }
+
     //TODO end咨询表的增删改查
 
     //TODO start浏览历史表的增删改查
