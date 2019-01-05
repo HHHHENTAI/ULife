@@ -28,6 +28,9 @@ import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 import com.example.hhhhentai.background.CustomVideoView;
 
+import DbHelp_ZXK.Database_News;
+import DbHelp_ZXK.DbHelp_NEWS;
+
 import static android.util.TypedValue.COMPLEX_UNIT_PX;
 
 public class MainActivity extends SwipeBackActivity implements View.OnClickListener {
@@ -46,6 +49,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SysApplication.getInstance().addActivity(this);
 
         help = new DbHelp(this);
         database = help.getWritableDatabase();

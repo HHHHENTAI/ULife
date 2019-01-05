@@ -46,6 +46,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_part);
+        SysApplication.getInstance().addActivity(this);
         init();
 
         //接收登录页面传来的用户登录信息 —— 手机号

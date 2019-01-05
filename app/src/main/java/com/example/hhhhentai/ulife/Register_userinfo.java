@@ -18,6 +18,9 @@ import android.widget.Toast;
 import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.DbHelp.DbHelp;
 
+import DbHelp_ZXK.Database_News;
+import DbHelp_ZXK.DbHelp_NEWS;
+
 import static android.util.TypedValue.COMPLEX_UNIT_PX;
 
 public class Register_userinfo extends SwipeBackActivity {
@@ -27,6 +30,9 @@ public class Register_userinfo extends SwipeBackActivity {
     private LinearLayout LL_userinfo_reg,LL_pwd_reg,LL_pwd_confirm_reg,LL_name_reg,LL_btn_reg;
     private DbHelp help;
     private SQLiteDatabase database;
+
+    private DbHelp_NEWS dbHelp_news;
+    private Database_News database_news;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -76,8 +82,14 @@ public class Register_userinfo extends SwipeBackActivity {
                 }else{
                     help = new DbHelp(Register_userinfo.this);
                     database = help.getWritableDatabase();
+                    dbHelp_news=new DbHelp_NEWS(Register_userinfo.this);
+                    database_news=new Database_News(dbHelp_news);
+
                     String insert = "INSERT INTO user(account,password,name,phone)VALUES ('"+phonenum+"','"+password+"','"+name+"','"+phonenum+"')";
                     database.execSQL(insert);
+
+                    database_news.insert_personinfo(phonenum,"",name,"","","","","","","","","");
+
                     Toast.makeText(Register_userinfo.this, "注冊成功", Toast.LENGTH_SHORT).show();
                     finish();
                 }
