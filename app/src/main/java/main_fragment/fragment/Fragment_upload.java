@@ -92,12 +92,6 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
 
         dataList = new ArrayList<Map<String, Object>>();
         getData();
-//        private LinearLayout LL_send,LL_cancel,LL_family,LL_title,LL_content,LL_group;
-//        private TextView tv_send,tv_family,tv_title,tv_content;
-//        private Button btn_send;
-//        private Spinner mySpinner;
-//        private EditText et_title,et_content;
-//        private ImageView iv_picture,iv_cancle;
 
         mySpinner = (Spinner) view.findViewById(R.id.spinner);
         // 第二步：为下拉列表定义一个适配器，这里就用到里前面定义的list。

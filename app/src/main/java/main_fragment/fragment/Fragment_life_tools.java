@@ -110,6 +110,7 @@ public class Fragment_life_tools extends Fragment {
         params3.setMargins(0,0,0,0);
         Im_ToolshowPicture.setLayoutParams(params3);
 
+
         Tv_Toolshowsentence.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
         Tv_Tooltitle1.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
         Tv_Tooltitle2.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
@@ -141,7 +142,6 @@ public class Fragment_life_tools extends Fragment {
         map14.put("content", "地图");
         data1.add(map14);
 
-
         //创建学习工具栏适配器
         String[] from1 = {"icon", "content"};
         int[] to1 = {R.id.Im_Toolicon, R.id.Tv_Toolcontent};
@@ -169,8 +169,6 @@ public class Fragment_life_tools extends Fragment {
                         break;
                     default:
                         break;
-
-
                 }
 
             }
@@ -198,7 +196,6 @@ public class Fragment_life_tools extends Fragment {
         map24.put("icon", R.drawable.tool_schooldate);
         map24.put("content", "校历");
         data2.add(map24);
-
 
         //创建学习工具栏适配器
         String[] from2 = {"icon", "content"};
@@ -234,4 +231,3 @@ public class Fragment_life_tools extends Fragment {
 
     }
 }
-
