@@ -129,9 +129,6 @@ public class news_Adapter extends BaseAdapter {
              // 设置图片的位置
              holder.news_img.setVisibility(View.VISIBLE);
 
-
-
-
              holder.news_img.setAdjustViewBounds(true);
          }
 
