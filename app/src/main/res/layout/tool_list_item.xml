@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
 
+
     android:background="@drawable/backgroundline">
 
     <!--盛光明编写的工具栏的GridView的每一项的布局-->
