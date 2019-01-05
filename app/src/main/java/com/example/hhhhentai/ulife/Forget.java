@@ -136,7 +136,7 @@ public class Forget extends SwipeBackActivity{
                                     conn.setReadTimeout(5000);
                                     conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                                     String data = "accountSid=" + accountSid
-                                            + "&templateid=1173023947"
+                                            + "&templateid=1184945969"
                                             + "&param="+sms+",5"
                                             + "&to=" + phonenum
                                             + "&timestamp=" + timestamp

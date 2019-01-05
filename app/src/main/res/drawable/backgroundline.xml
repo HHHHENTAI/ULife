@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <!-- 连框颜色值 -->
-    <item>
-        <shape>
-            <solid android:color="#CCCCCC" />
-            <corners 
-                android:radius="5dp"/>
-        </shape>
-    </item>
-    <!-- 主体背景颜色值 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:bottom="1dp"
-        android:left="1dp"
-        android:right="1dp"
-        android:top="1dp">
-
-        <!-- 边框里面背景颜色 白色 -->
-        <shape>
-            <solid android:color="#ffffff" />
-            <corners 
-                android:radius="5dp"/>
-        </shape>
-    </item>
-
-</layer-list>
+        android:state_pressed="true"
+        android:drawable="@drawable/backgroundline_pressed"/>
+    <item
+        android:state_pressed="false"
+        android:drawable="@drawable/backgroundline_normal"/>
+</selector>

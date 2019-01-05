@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.example.hhhhentai.Constant.Constant;
 import com.example.hhhhentai.JsonGet.GetToolShow;
 import com.example.hhhhentai.UseTool.ExpressageActivity;
 import com.example.hhhhentai.UseTool.SchoolDataActivity;
@@ -28,6 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
+
 //TODO 赵效慷and江守鑫---  盛光明加入了工具栏界面，并设置了天气的监听
 public class Fragment_life_tools extends Fragment {
     private GridView Gv_Toolgridview1;
@@ -37,6 +42,10 @@ public class Fragment_life_tools extends Fragment {
     private TextView Tv_Toolshowsentence;
 
     private Context context;
+
+    private LinearLayout Li_ToolShow,LL_Tooltitle1,LL_Tooltitle2;
+    private TextView Tv_Tooltitle1,Tv_Tooltitle2;
+
 
     @Override
     public void onAttach(Context context) {
@@ -59,11 +68,52 @@ public class Fragment_life_tools extends Fragment {
     }
 
     private void init(View view) {
+//        private LinearLayout Li_ToolShow,LL_Tooltitle1,LL_Tooltitle2;
+//        private TextView Tv_Tooltitle1,Tv_Tooltitle2;
         Gv_Toolgridview1 = (GridView) view.findViewById(R.id.Gv_Toolgridview1);
         Gv_Toolgridview2 = (GridView) view.findViewById(R.id.Gv_Toolgridview2);
 
         Im_ToolshowPicture =(ImageView)view.findViewById(R.id.Im_ToolshowPicture);
         Tv_Toolshowsentence=(TextView)view.findViewById(R.id.Tv_Toolshowsentence);
+        Li_ToolShow = (LinearLayout) view.findViewById(R.id.Li_ToolShow);
+        LL_Tooltitle1 = (LinearLayout) view.findViewById(R.id.LL_Tooltitle1);
+        LL_Tooltitle2 = (LinearLayout) view.findViewById(R.id.LL_Tooltitle2);
+        Tv_Tooltitle1 = (TextView) view.findViewById(R.id.Tv_Tooltitle1);
+        Tv_Tooltitle2 = (TextView) view.findViewById(R.id.Tv_Tooltitle2);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constant.displayWidth = displayMetrics.widthPixels;
+        Constant.displayHeight = displayMetrics.heightPixels;
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.35f + 0.5f));
+        params.setMargins(0,0,0,0);
+        Li_ToolShow.setLayoutParams(params);
+
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params1.setMargins((int) (Constant.displayWidth * 0.01f + 0.5f),0,0,0);
+        LL_Tooltitle1.setLayoutParams(params1);
+
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.07f + 0.5f));
+        params2.setMargins((int) (Constant.displayWidth * 0.01f + 0.5f),0,0,0);
+        LL_Tooltitle2.setLayoutParams(params2);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) (Constant.displayHeight * 0.25f + 0.5f));
+        params3.setMargins(0,0,0,0);
+        Im_ToolshowPicture.setLayoutParams(params3);
+
+
+        Tv_Toolshowsentence.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        Tv_Tooltitle1.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+        Tv_Tooltitle2.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
 
         //获取网络图片
 
