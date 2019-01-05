@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.example.hhhhentai.ulife.R;
 
@@ -104,8 +105,11 @@ public class Database_News {
         database_news.insert("SeeHistory", null, values_insert);
     }
 
-    public void delete_historyinfo(String SeePhone_text, String NewsTitle_text, String NewsTime_text) {
-        database_news.delete("SeeHistory ", "SeePhone_text = ? and NewsTitle_text=? and NewsTime_text=?", new String[]{SeePhone_text, NewsTitle_text, NewsTime_text});
+    public void delete_historyinfo()
+    {
+        //database_news.delete("SeeHistory ", "SeePhone_text = ?", new String[]{SeePhone_text});
+        database_news.delete("SeeHistory",null,null);
+        Log.i("tree2","54321");
     }
 
 //    public void update_historyinfo(int SeeId_oldint, int SeeId_newint, String SeePhone_text, int SeeNewsID_int) {
@@ -118,7 +122,7 @@ public class Database_News {
 
     public Cursor query_historyinfo(String SeePhone_text) {
 
-        return database_news.query("SeeHistory", null, "SeePhone_text = ?", new String[]{SeePhone_text}, null, null, null);
+        return database_news.query("SeeHistory", null, "SeePhone_text = ?", new String[]{SeePhone_text}, null, null, "SeeId_int desc");
     }
     //TODO end浏览历史表的增删改查
 

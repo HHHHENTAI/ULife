@@ -253,6 +253,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
             }
             case R.id.ll_seting: {
                 Intent intent = new Intent(getActivity(), Seting.class);
+                intent.putExtra("user_num", user_num);
                 startActivity(intent);
                 break;
             }
@@ -280,18 +281,26 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         switch (requestCode) {
             case 1:
-                if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK)
+                {
                     imagePath = data.getStringExtra("imagePath");
-                    if (imagePath.equals("")) {
+                    if (imagePath.equals(""))
+                    {
                         Toast.makeText(context, "头像路径无效，未更新！", Toast.LENGTH_SHORT).show();
-                    } else {
+                    }
+                    else
+                        {
                         FileInputStream fis = null;
-                        try {
+                        try
+                        {
                             fis = new FileInputStream(imagePath);
-                        } catch (FileNotFoundException e) {
+                        }
+                        catch (FileNotFoundException e)
+                        {
                             e.printStackTrace();
                         }
                         Bitmap bitmap = BitmapFactory.decodeStream(fis);
@@ -302,4 +311,5 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
 }
