@@ -36,7 +36,7 @@ public class Database_News {
 
 
     //TODO start咨询表的增删改查
-    public void insert_newsinfo(int NewsId_int, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, String  NewsImage_blob, int NewsHot_int, String NewsTime_text) {
+    public void insert_newsinfo(int NewsId_int, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, String NewsImage_blob, int NewsHot_int, String NewsTime_text) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
         values_insert.put("NewsId_int", NewsId_int);
@@ -72,11 +72,10 @@ public class Database_News {
         database_news.update("NewsInfo", values_update, "NewsId_int=?", new String[]{NewsId_oldint + ""});
     }
 
-    public void update_news_count(String title,String time,int NewsHot_int)
-    {
+    public void update_news_count(String title, String time, int NewsHot_int) {
         ContentValues values_update = new ContentValues();
-        values_update.put("NewsHot_int", NewsHot_int+1);
-        database_news.update("NewsInfo", values_update, "NewsTitle_text = ? and NewsTime_text = ?", new String[]{title,time});
+        values_update.put("NewsHot_int", NewsHot_int + 1);
+        database_news.update("NewsInfo", values_update, "NewsTitle_text = ? and NewsTime_text = ?", new String[]{title, time});
     }
 
     public Cursor query_newsinfo(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
@@ -114,9 +113,9 @@ public class Database_News {
 //        database_news.update("SeeHistory", values_update, "SeeId_int=?", new String[]{SeeId_oldint + ""});
 //    }
 
-//    public Cursor query_historyinfo() {
-//        return database_news.query("SeeHistory", null, null, null, null, null, null);
-//    }
+    public Cursor query_historyinfo(String SeePhone_text) {
+        return database_news.query("SeeHistory", null, "SeePhone_text = ?", new String[]{SeePhone_text}, null, null, null);
+    }
     //TODO end浏览历史表的增删改查
 
     //TODO start个人信息表的增删改查
@@ -174,6 +173,12 @@ public class Database_News {
         values_update.put("PersonHome_text", PersonHome_text);
         values_update.put("PersonOffice_text", PersonOffice_text);
         values_update.put("PersonShow_text", PersonShow_text);
+        database_news.update("PersonInfo", values_update, "PersonPhone_text = ?", new String[]{PersonPhone_text});
+    }
+
+    public void update_personinfo_personimage(String PersonPhone_text, String PersonImage_blob) {
+        ContentValues values_update = new ContentValues();
+        values_update.put("PersonImage_blob", PersonImage_blob);
         database_news.update("PersonInfo", values_update, "PersonPhone_text = ?", new String[]{PersonPhone_text});
     }
 

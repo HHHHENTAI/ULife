@@ -72,7 +72,6 @@ public class Bitmap_handle {
     //读照片路径
     public String readImage(Cursor cursor) {
         String imgData = null;
-        //将Blob数据转化为字节数组
         imgData = cursor.getString(cursor.getColumnIndex("NewsImage_blob"));
         return imgData;
     }

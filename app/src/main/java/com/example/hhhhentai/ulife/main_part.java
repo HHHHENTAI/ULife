@@ -86,52 +86,52 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         database_news = new Database_News(help_news);
     }
 
-    //图片转为二进制数据
-    public byte[] bitmabToBytes(String path) {
+//    //图片转为二进制数据
+//    public byte[] bitmabToBytes(String path) {
+//
+//        //将图片转化为位图
+//        FileInputStream fis = null;
+//        try {
+//            //例子
+//            //fis = new FileInputStream("/storage/emulated/0/data/test.jpg");
+//            fis = new FileInputStream(path);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        if (fis == null) {
+//            Log.i("错误", "照片路径错误");
+//            return new byte[0];
+//        }
+//        Bitmap bitmap = BitmapFactory.decodeStream(fis);
+//        int size = bitmap.getWidth() * bitmap.getHeight() * 4;
+//
+//        //创建一个字节数组输出流,流的大小为size
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
+//        try {
+//            //设置位图的压缩格式，质量为100%，并放入字节数组输出流中
+//            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+//            //将字节数组输出流转化为字节数组byte[]
+//            byte[] imagedata = baos.toByteArray();
+//            return imagedata;
+//        } catch (Exception e) {
+//        } finally {
+//            try {
+//                bitmap.recycle();
+//                baos.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return new byte[0];
+//    }
 
-        //将图片转化为位图
-        FileInputStream fis = null;
-        try {
-            //例子
-            //fis = new FileInputStream("/storage/emulated/0/data/test.jpg");
-            fis = new FileInputStream(path);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (fis == null) {
-            Log.i("错误", "照片路径错误");
-            return new byte[0];
-        }
-        Bitmap bitmap = BitmapFactory.decodeStream(fis);
-        int size = bitmap.getWidth() * bitmap.getHeight() * 4;
-
-        //创建一个字节数组输出流,流的大小为size
-        ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
-        try {
-            //设置位图的压缩格式，质量为100%，并放入字节数组输出流中
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-            //将字节数组输出流转化为字节数组byte[]
-            byte[] imagedata = baos.toByteArray();
-            return imagedata;
-        } catch (Exception e) {
-        } finally {
-            try {
-                bitmap.recycle();
-                baos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return new byte[0];
-    }
-
-    //读照片
-    public byte[] readImage(Cursor cursor) {
-        byte[] imgData = null;
-        //将Blob数据转化为字节数组
-        imgData = cursor.getBlob(cursor.getColumnIndex("NewsImage_blob"));
-        return imgData;
-    }
+//    //读照片
+//    public byte[] readImage(Cursor cursor) {
+//        byte[] imgData = null;
+//        //将Blob数据转化为字节数组
+//        imgData = cursor.getBlob(cursor.getColumnIndex("NewsImage_blob"));
+//        return imgData;
+//    }
 
     @Override
     public void onClick(View view) {
@@ -153,30 +153,30 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
 
                 //TODO TEST_START:赵效慷：测试插入数据
                 //使用 ContentValues 来对要添加的数据进行组装
-                ContentValues values_insert = new ContentValues();
-                // 开始组装第一条数据
-                int NewsId_int = 0;
-                String SendusrPhone_text = "13645356724";
-                String NewsTitle_text = "震惊！武汉大学生在如皋做这种事！";
-                String NewsContent_text = "武汉理工大学！！！";
-                String NewsClass_text = "生活";
-                //Blob NewsImage_blob = ;
-                int NewsHot_int = 7;
-                //时间戳
-                Calendar calendar = Calendar.getInstance();
-                String ymd = calendar.get(Calendar.YEAR) * 10000 + (calendar.get(Calendar.MONTH) + 1) * 100 + calendar.get(Calendar.DAY_OF_MONTH) + "";
-                String hms = calendar.get(Calendar.HOUR_OF_DAY) * 10000 + calendar.get(Calendar.MINUTE) * 100 + calendar.get(Calendar.SECOND) + "";
-                String NewsTime_text = "";
-                if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
-                    NewsTime_text = ymd + "0" + hms;
-                } else {
-                    NewsTime_text = ymd + hms;
-                }
-                Log.i("timestamp", NewsTime_text);
+//                ContentValues values_insert = new ContentValues();
+//                // 开始组装第一条数据
+//                int NewsId_int = 0;
+//                String SendusrPhone_text = "13645356724";
+//                String NewsTitle_text = "震惊！武汉大学生在如皋做这种事！";
+//                String NewsContent_text = "武汉理工大学！！！";
+//                String NewsClass_text = "生活";
+//                //Blob NewsImage_blob = ;
+//                int NewsHot_int = 7;
+//                //时间戳
+//                Calendar calendar = Calendar.getInstance();
+//                String ymd = calendar.get(Calendar.YEAR) * 10000 + (calendar.get(Calendar.MONTH) + 1) * 100 + calendar.get(Calendar.DAY_OF_MONTH) + "";
+//                String hms = calendar.get(Calendar.HOUR_OF_DAY) * 10000 + calendar.get(Calendar.MINUTE) * 100 + calendar.get(Calendar.SECOND) + "";
+//                String NewsTime_text = "";
+//                if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
+//                    NewsTime_text = ymd + "0" + hms;
+//                } else {
+//                    NewsTime_text = ymd + hms;
+//                }
+//                Log.i("timestamp", NewsTime_text);
                 //存入照片
-                String path = "/storage/emulated/0/data/test.jpg";
-                //路径例子：path = "/storage/emulated/0/data/test.jpg";
-                byte[] NewsImage_blob = bitmabToBytes(path);
+//                String path = "/storage/emulated/0/data/test.jpg";
+//                //路径例子：path = "/storage/emulated/0/data/test.jpg";
+//                byte[] NewsImage_blob = bitmabToBytes(path);
                 //NewsImage_blob = test;
                // database_news.insert_newsinfo(NewsId_int, SendusrPhone_text, NewsTitle_text, NewsContent_text, NewsClass_text, NewsImage_blob, NewsHot_int, NewsTime_text);
                 //TODO TEST_END:赵效慷：测试插入数据结束

@@ -31,6 +31,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import DbHelp_ZXK.Database_News;
+import DbHelp_ZXK.DbHelp_NEWS;
+
 public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickListener
 {
     ImageView iv_headPhoto_takePhoto,iv_headPhoto_choose,iv_headPhoto_cancel,iv_changeHeadPhoto_return,iv_headphoto;
@@ -43,7 +46,10 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
     final static int ICON =2;
     final static int CAMERAPRESS =3;
     final static int ICONPRESS=4;
-
+    private DbHelp_NEWS help_news;
+    private Database_News database_news;
+    Intent intent;
+    String PersonPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,6 +72,12 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
         iv_headPhoto_choose.setOnClickListener(this);
         iv_headPhoto_cancel.setOnClickListener(this);
 
+        //数据库操作封装函数
+        help_news=new DbHelp_NEWS(this);
+        database_news = new Database_News(help_news);
+
+        intent = getIntent();
+        PersonPhone = intent.getStringExtra("user_num");
     }
 
 
@@ -161,9 +173,20 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
             }
             case R.id.iv_changeHeadPhoto_return:
             {
+                Intent intent1 = new Intent();
+                intent1.putExtra("imagePath",imagePath);
+                setResult(RESULT_OK,intent1);
                 finish();
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent1 = new Intent();
+        intent1.putExtra("imagePath",imagePath);
+        setResult(RESULT_OK,intent1);
+        finish();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -182,6 +205,7 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
                     bitmapdown = bitmap1;
                     iv_headphoto.setImageBitmap(bitmapdown);
                     Log.i("chenzhu","imagePath"+imagePath);
+                    database_news.update_personinfo_personimage(PersonPhone,imagePath);
                 }
                 catch (FileNotFoundException e)
                 {
@@ -206,7 +230,7 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
                 bitmapdown = bitmap;
                 iv_headphoto.setImageBitmap(bitmapdown);
                 Log.d("chenzhu","imagePath"+imagePath);
-
+                database_news.update_personinfo_personimage(PersonPhone,imagePath);
                 break;
             }
         }
