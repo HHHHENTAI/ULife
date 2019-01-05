@@ -216,6 +216,7 @@
                     android:layout_height="wrap_content"
                     android:text="穿衣建议:"
                     android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/Tv_weatherdress"
                     android:layout_width="match_parent"
