@@ -80,7 +80,9 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             //添加图片
             case R.id.iv_add:
                 //调用相册
+                Log.i("TAG","照片");
                 Intent intent1 =new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Log.i("TAG","000");
                 intent1.setType("image/*");
                 startActivityForResult(intent1,IMAGE);
                 break;
@@ -121,6 +123,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
         super.onActivityResult(requestCode, resultCode, data);
         //获取图片路径
         if (requestCode==IMAGE && resultCode== Activity.RESULT_OK && data!=null ){
+            Log.i("TAG","yanzheng");
             Uri selectedImage =data.getData();
             String[] filePathColumns={MediaStore.Images.Media.DATA};
             Cursor c=getContentResolver().query(selectedImage,filePathColumns,null,null,null);
@@ -131,7 +134,6 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             c.close();
         }
         if(requestCode==REQUEST_CODE_CAMERA){
-
             File file = new File(Environment.getExternalStorageDirectory(),IMAGE_NAME);
             zommPicture(Uri.fromFile(file));
 
@@ -143,6 +145,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             ip[count]=Environment.getExternalStorageDirectory().getPath()+"/"+IMAGE_NAME;
             count++;
         }
+
 
 
     }
@@ -176,6 +179,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
 
     //加载图片
     private void showImage(String imagePath){
+
         Bitmap bm=BitmapFactory.decodeFile(imagePath);
         if(count<5){
             ip[count]=imagePath;
