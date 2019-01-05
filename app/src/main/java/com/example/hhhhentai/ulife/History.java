@@ -1,9 +1,11 @@
 package com.example.hhhhentai.ulife;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -41,23 +43,25 @@ public class History extends AppCompatActivity implements View.OnClickListener
 
         bitmap_handle = new Bitmap_handle();
 
+        Intent intent = getIntent();
+        String user_name = intent.getStringExtra("user_num");
+
         //创建信息的数据库
         help_news = new DbHelp_NEWS(this);
         //获取数据可读写对象
         database_news = new Database_News(help_news);
 
         mdatas = new ArrayList<news_class>();
-        Cursor cursor = database_news.query_newsinfo(null, null, null, null, null, null);
+        Cursor cursor = database_news.query_historyinfo(user_name);
+        Log.i("tree",user_name);
             while(cursor.moveToNext())
             {
-
                 String title = cursor.getString(cursor.getColumnIndex("NewsTitle_text"));
                 String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
                 Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
                 //测试图片
                 String imgData = null;
                 imgData = bitmap_handle.readImage(cursor);
-                //Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
                 String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
                 news_class news = new news_class(title, tokyohot, class_fy, time, imgData);
                 mdatas.add(news);

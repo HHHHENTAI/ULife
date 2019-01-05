@@ -36,7 +36,7 @@ public class Database_News {
 
 
     //TODO start咨询表的增删改查
-    public void insert_newsinfo(int NewsId_int, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, String NewsImage_blob, int NewsHot_int, String NewsTime_text) {
+    public void insert_newsinfo(int NewsId_int, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text, String  NewsImage_blob, int NewsHot_int, String NewsTime_text) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
         values_insert.put("NewsId_int", NewsId_int);
