@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/mintcream"
     tools:context=".Set_userInfo">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#838b8b"
+            android:background="#fff"
             android:gravity="center_vertical">
 
             <ImageView
@@ -34,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="个人资料"
-                android:textColor="#fff"/>
+                android:textSize="25dp"
+                android:textColor="#000"/>
         </LinearLayout>
 
         <LinearLayout
@@ -219,7 +220,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="bottom"
+               android:gravity="center_vertical"
                 android:text="  个 人 说 明" />
 
             <EditText

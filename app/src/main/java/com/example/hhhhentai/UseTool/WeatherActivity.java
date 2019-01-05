@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ public class WeatherActivity extends SwipeBackActivity implements View.OnClickLi
     private TextView Tv_weatherdress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         init();

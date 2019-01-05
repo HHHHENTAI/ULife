@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.example.hhhhentai.JsonGet.GetExpressageData;
 import com.example.hhhhentai.ulife.R;
 
 public class ExpressageActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     private ImageView Im_expressagequit;
     private Button Bt_expressagequery;
@@ -26,6 +28,7 @@ public class ExpressageActivity extends AppCompatActivity implements View.OnClic
     private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expressage);
         init();
