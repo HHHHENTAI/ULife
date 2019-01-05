@@ -85,12 +85,13 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             //TODO 调用摄像头
             case R.id.btn_camera:
+                if(count<5) {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath()+"/"+IMAGE_NAME)));
+                    startActivityForResult(intent, REQUEST_CODE_CAMERA);
+                }  else Toast.makeText(PictureActivity.this,"最多选择五张照片",Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(new File(Environment.getExternalStorageDirectory(),IMAGE_NAME)));
-                startActivityForResult(intent,REQUEST_CODE_CAMERA);
-
-                break;
+            break;
             //传递图片路径
             case R.id.btn_finish:
                 Intent intent2=getIntent();
@@ -131,6 +132,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             c.close();
         }
         if(requestCode==REQUEST_CODE_CAMERA){
+
             File file = new File(Environment.getExternalStorageDirectory(),IMAGE_NAME);
             zommPicture(Uri.fromFile(file));
 
@@ -138,7 +140,9 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
         }
         if(requestCode==REQUEST_CODE_CROP){
             Bitmap bm = data.getExtras().getParcelable("data");
-            iv[0].setImageBitmap(bm);
+            iv[count].setImageBitmap(bm);
+            ip[count]=Environment.getExternalStorageDirectory().getPath()+"/"+IMAGE_NAME;
+            count++;
         }
 
 
