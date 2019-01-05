@@ -141,10 +141,6 @@ public class Fragment_life_tools extends Fragment {
         map14.put("content", "地图");
         data1.add(map14);
 
-        HashMap<String, Object> map15 = new HashMap<String, Object>();
-        map15.put("icon", R.drawable.tool_bill);
-        map15.put("content", "账单");
-        data1.add(map15);
 
         //创建学习工具栏适配器
         String[] from1 = {"icon", "content"};
@@ -170,8 +166,6 @@ public class Fragment_life_tools extends Fragment {
                     case 2:
                         break;
                     case 3:
-                        break;
-                    case 4:
                         break;
                     default:
                         break;
@@ -205,10 +199,6 @@ public class Fragment_life_tools extends Fragment {
         map24.put("content", "校历");
         data2.add(map24);
 
-        HashMap<String, Object> map25 = new HashMap<String, Object>();
-        map25.put("icon", R.drawable.tool_application);
-        map25.put("content", "应用");
-        data2.add(map25);
 
         //创建学习工具栏适配器
         String[] from2 = {"icon", "content"};
@@ -233,8 +223,6 @@ public class Fragment_life_tools extends Fragment {
                     case 3:
                         Intent schooldataintent=new Intent(context,SchoolDataActivity.class);
                         startActivity(schooldataintent);
-                        break;
-                    case 4:
                         break;
                     default:
                         break;
