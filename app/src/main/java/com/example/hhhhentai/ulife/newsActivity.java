@@ -79,9 +79,9 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             news_pic.setMaxWidth(mScreenWeight);
             news_pic.setMinimumWidth(mScreenWeight);
             news_pic.setMaxHeight(mScreenWeight);
-
             news_pic.setImageBitmap(imgbitmap);
             news_pic.setAdjustViewBounds(true);
+
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
 
             Cursor cursor1 = database_user.query("user", null, "account = ?", new String[]{user_num}, null, null, null);

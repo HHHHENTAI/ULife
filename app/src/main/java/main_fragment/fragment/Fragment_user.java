@@ -25,6 +25,7 @@ import com.example.hhhhentai.ulife.History;
 import com.example.hhhhentai.ulife.R;
 import com.example.hhhhentai.ulife.Set_userInfo;
 import com.example.hhhhentai.ulife.Seting;
+import com.example.hhhhentai.ulife.publishActivity;
 
 import static android.util.TypedValue.COMPLEX_UNIT_PX;
 
@@ -47,6 +48,8 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
     private TextView tv_user_name;
     private TextView tv_user_info;
     private String imagePath;
+    private LinearLayout publish;
+     private  TextView pub_num;
 
     private ImageView iv_history,iv_his,iv_setting,iv_set,iv_personinfo,iv_per;
     private TextView tv_history,tv_setting,tv_personinfo;
@@ -88,7 +91,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         //数据库操作封装函数
         help_news = new DbHelp_NEWS(context);
         database_news = new Database_News(help_news);
-
+        pub_num =view.findViewById(R.id.tv_publish);
         //获取用户手机号
         user_num = getArguments().getString("user_num");
 
@@ -205,12 +208,17 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         LL_head.setLayoutParams(params9);
 
 
+        publish = view.findViewById(R.id.ll_publish);
+        publish.setOnClickListener(this);
         ll_history.setOnClickListener(this);
         ll_seting.setOnClickListener(this);
         ll_set_userInfo.setOnClickListener(this);
         iv_user_headPhoto.setOnClickListener(this);
 
         Log.d("user_num", user_num);
+        Cursor cursor1 = database_news.query_publish_news(user_num);
+        int publish_num = cursor1.getCount();
+        pub_num.setText(""+publish_num);
         Cursor cursor = database_news.query_personinfo(user_num);
         cursor.moveToFirst();
         String PersonName_text = cursor.getString(cursor.getColumnIndex("PersonName_text"));
@@ -219,6 +227,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         //昵称与签名
         tv_user_name.setText(PersonName_text);
         tv_user_info.setText(PersonSig_text);
+
         //头像
         if (PersonImage_blob == null) {
             Log.i("imagePath", "onViewCreated: " + PersonImage_blob);
@@ -258,7 +267,14 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
                 intent.putExtra("user_num", user_num);
                 startActivityForResult(intent, 1);
                 break;
+
             }
+            case R.id.ll_publish:
+                Intent intent = new Intent(getActivity(), publishActivity.class);
+                intent.putExtra("user_num", user_num);
+                startActivity(intent);
+
+                break;
         }
 
     }

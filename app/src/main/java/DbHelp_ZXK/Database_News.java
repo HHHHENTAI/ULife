@@ -78,6 +78,10 @@ public class Database_News {
         database_news.update("NewsInfo", values_update, "NewsTitle_text = ? and NewsTime_text = ?", new String[]{title, time});
     }
 
+    public Cursor query_publish_news(String user_num)
+    {
+        return database_news.query("NewsInfo", null, "SendusrPhone_text = ?", new String[]{user_num}, null, null, "SendId_int desc");
+    }
     public Cursor query_newsinfo(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
         return database_news.query("NewsInfo", columns, selection, selectionArgs, groupBy, having, orderBy);
     }
