@@ -70,6 +70,7 @@ public class History extends AppCompatActivity implements View.OnClickListener
         //todo 配置数据源
         newsAdapter = new news_Adapter(History.this,mdatas,lv_history);
         lv_history.setAdapter(newsAdapter);
+
     }
 
     @Override

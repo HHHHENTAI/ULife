@@ -91,6 +91,7 @@ public class news_Adapter extends BaseAdapter {
 
         holder.news_classify.setText(bean.getNews_classify());
 
+
         holder.news_browse_count.setText("" + bean.getNews_browse_count());
 
         String path = bean.getNews_img();
