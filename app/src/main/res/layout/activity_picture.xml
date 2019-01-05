@@ -27,7 +27,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="50dp"
-        android:src="@drawable/a6b" />
+        android:src="@mipmap/yjl_picture" />
 
     <Button
 
@@ -37,7 +37,7 @@
         android:layout_alignTop="@+id/iv_add"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
-        android:background="@drawable/a6b"
+        android:background="@mipmap/yjl_camera"
 
 
         />

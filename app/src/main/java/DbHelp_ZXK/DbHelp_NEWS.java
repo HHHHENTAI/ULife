@@ -24,18 +24,18 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
 //        NewsTitle	Text	非空	新闻标题
 //        NewsContent	Text	非空	新闻内容
 //        NewsClass	Text	非空	新闻分类
-//        NewsImage	Integer  非空	新闻图片
+//        NewsImage	Integer  	新闻图片
 //        NewsHot	Integer	非空	新闻热度
 //        NewsTime	Text	非空	发布时间
 
         String CREATE_SQL_NewsInfo = "create table NewsInfo(" +
                 "SendId_int integer primary key autoincrement," +
-                "NewsId_int integer not null," +
+                "NewsId_int integer," +
                 "SendusrPhone_text text not null," +
                 "NewsTitle_text text not null," +
                 "NewsContent_text text not null," +
                 "NewsClass_text text not null," +
-                "NewsImage_blob text not null," +
+                "NewsImage_blob text," +
                 "NewsHot_int integer not null," +
                 "NewsTime_text text not null)";
         db.execSQL(CREATE_SQL_NewsInfo);
