@@ -61,17 +61,11 @@ public class news_Adapter extends BaseAdapter {
         ViewHolder holder = null;
 
         news_class bean = mDatas.get(position);
-        String img_tag = bean.getNews_img();
 
         if (convertView == null) {
-            if (img_tag.equals("")) {
-                convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
-                holder = new ViewHolder();
-            } else {
-                convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
-                holder = new ViewHolder();
-            }
 
+            convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
+            holder = new ViewHolder();
             holder.news_title = (TextView) convertView.findViewById(R.id.list_title);
             holder.news_time = (TextView) convertView.findViewById(R.id.list_time);
             holder.news_browse_count = (TextView) convertView.findViewById(R.id.list_browse_num);
