@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/mintcream"
     android:orientation="vertical">
 
         <!--盛光明编写的工具栏界面-->
@@ -22,6 +22,8 @@
             <TextView
                 android:id="@+id/Tv_Toolshowsentence"
                 android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:textSize="18sp" />
@@ -37,6 +39,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
             <!--生活工具-->
@@ -60,7 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:numColumns="4"></GridView>
+                android:numColumns="4"
+                android:horizontalSpacing="10dp"></GridView>
 
             <!--学习工具-->
             <LinearLayout
@@ -83,7 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:numColumns="4">
+                android:numColumns="4"
+                android:horizontalSpacing="10dp">
             </GridView>
 
         </LinearLayout>

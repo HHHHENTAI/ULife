@@ -227,7 +227,6 @@ public class Fragment_life_tools extends Fragment {
                     default:
                         break;
 
-
                 }
 
             }

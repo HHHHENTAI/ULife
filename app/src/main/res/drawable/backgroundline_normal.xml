@@ -11,14 +11,14 @@
     </item>
     <!-- 主体背景颜色值 -->
     <item
-        android:bottom="0dp"
+        android:bottom="1dp"
         android:left="1dp"
-        android:right="0dp"
+        android:right="1dp"
         android:top="1dp">
 
         <!-- 边框里面背景颜色 白色 -->
         <shape>
-            <solid android:color="#ffffff" />
+            <solid android:color="@color/mintcream" />
             <corners 
                 android:radius="5dp"/>
         </shape>

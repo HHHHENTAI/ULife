@@ -8,155 +8,168 @@
     tools:context="com.example.hhhhentai.UseTool.ExpressageActivity">
 
     <LinearLayout
-        android:id="@+id/Ll_expressageTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/white"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/Im_expressagequit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/icon_quit" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="快递查询"
-            android:textColor="#000"
-            android:textSize="25sp" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/V_esplit"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_below="@id/Ll_expressageTitle"
-        android:background="@color/colorPrimary" />
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/V_esplit"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/Li_expressagecp"
+            android:id="@+id/Ll_expressageTitle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="15dp"
             android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:background="@color/white"
             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/Im_expressagequit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/icon_quit" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="3dp"
-                android:layout_weight="3"
-                android:background="@drawable/textview_border"
-                android:gravity="center"
-                android:text="快递公司:"
+                android:layout_weight="8"
+                android:gravity="center_vertical"
+                android:text="快递查询"
                 android:textColor="#000"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/Et_expressagecp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:background="@drawable/textview_border"
-                android:gravity="center"
-                android:hint="请输入快递公司名"
-                android:maxLines="1"
-                android:text="申通"
-                android:textColor="#000"
-                android:textColorHint="@color/lightblue"
                 android:textSize="25sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/Li_expressagenum"
+        <View
+            android:id="@+id/V_esplit"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="3dp"
-                android:layout_weight="3"
-                android:background="@drawable/textview_border"
-                android:gravity="center"
-                android:text="快递单号:"
-                android:textColor="#000"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/Et_expressagenum"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="3dp"
-                android:layout_weight="5"
-                android:background="@drawable/textview_border"
-                android:gravity="center"
-                android:hint="请输入快递的单号"
-                android:maxLines="1"
-                android:text="3392110977509"
-                android:textColorHint="@color/lightblue"
-                android:textSize="25sp" />
-        </LinearLayout>
+            android:layout_height="4dp"
+            android:layout_below="@id/Ll_expressageTitle"
+            android:background="@color/colorPrimary" />
 
         <LinearLayout
-            android:id="@+id/Li_expressagequery"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_weight="10"
+            android:layout_below="@id/V_esplit"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/Bt_expressagequery"
+            <LinearLayout
+                android:id="@+id/Li_expressagecp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="查询"
-                android:textColor="#000"
-                android:textSize="25sp" />
-        </LinearLayout>
+                android:layout_height="0dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/Li_expressageinfo"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="7"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:text="快递公司:"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
-            android:gravity="center"
-            android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/Et_expressagecp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:hint="请输入快递公司名"
+                    android:maxLines="1"
+                    android:text="申通"
+                    android:textColor="#000"
+                    android:textColorHint="@color/lightblue"
+                    android:textSize="25sp" />
+            </LinearLayout>
 
-            <ListView
-                android:id="@+id/Lv_expressagelist"
+            <LinearLayout
+                android:id="@+id/Li_expressagenum"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-            </ListView>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:text="快递单号:"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
+
+                <EditText
+                    android:id="@+id/Et_expressagenum"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:hint="请输入快递的单号"
+                    android:maxLines="1"
+                    android:text="3392110977509"
+                    android:textColorHint="@color/lightblue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Li_expressagequery"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/Bt_expressagequery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="查询"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Li_expressageinfo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="7"
+
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/Lv_expressagelist"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="match_parent">
+
+                </ListView>
+            </LinearLayout>
+
         </LinearLayout>
+
 
     </LinearLayout>
+
 
 </RelativeLayout>
