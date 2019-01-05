@@ -170,6 +170,9 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 for(int i=0;i<5;i++){
                     if(!get[i].equals("")){
                         String  pathtest = get[i];
+
+
+                       // database_news.insert_newsinfo(i,"12345678910",title,content,"生活",pathtest,0,NewsTime_text);
                         byte[] imgtest={};
                         imgtest = bitmap_handle.bitmabToBytes(pathtest);
                         phone = getArguments().getString("user_num");

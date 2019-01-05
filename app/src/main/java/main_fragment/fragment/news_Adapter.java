@@ -15,6 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hhhhentai.ulife.R;
@@ -59,10 +60,21 @@ public class news_Adapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        if (convertView == null) {
 
-            convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
-            holder = new ViewHolder();
+        news_class bean = mDatas.get(position);
+        String img_tag = bean.getNews_img();
+
+        if (convertView == null) {
+            if(img_tag.equals(""))
+            {
+                convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
+                holder = new ViewHolder();
+            }
+            else {
+                convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
+                holder = new ViewHolder();
+            }
+
             holder.news_title = (TextView) convertView.findViewById(R.id.list_title);
             holder.news_time = (TextView) convertView.findViewById(R.id.list_time);
             holder.news_browse_count = (TextView) convertView.findViewById(R.id.list_browse_num);
@@ -83,7 +95,7 @@ public class news_Adapter extends BaseAdapter {
             //else里面说明，convertView已经被复用了，说明convertView中已经设置过tag了，即holder
             holder = (ViewHolder) convertView.getTag();
         }
-        news_class bean = mDatas.get(position);
+
         holder.news_title.setText(bean.getNews_title());
         //holder.news_title.setTextSize((mScreenWeight/14));
 
@@ -92,20 +104,37 @@ public class news_Adapter extends BaseAdapter {
         String month = t.substring(4, 6);
         String day = t.substring(6, 8);
         holder.news_time.setText(year + "/" + month + "/" + day);
-        //  holder.news_time.setTextSize((mScreenWeight/21));
 
         holder.news_classify.setText(bean.getNews_classify());
-        // holder.news_classify.setTextSize((mScreenWeight/21));
+
 
         holder.news_browse_count.setText("" + bean.getNews_browse_count());
 
          String path= bean.getNews_img();
+         if(path.equals(""))
+         {
+             holder.news_img.setMaxWidth(0);
+             holder.news_img.setAdjustViewBounds(true);
+         }
+         else
+         {
+             Log.i("jjj", "getView: "+"123");
+             Bitmap img_bitmap  = null;
+             img_bitmap = bitmap_handle.pictureTobitmap(path);
+             holder.news_img.setImageBitmap(img_bitmap);
+             holder.news_img.setMaxHeight(listView.getHeight() / 5);
+             holder.news_img.setMaxWidth(listView.getHeight() / 5);
+             holder.news_img.setScaleType(ImageView.ScaleType.FIT_XY);
+             //holder.news_img.setMinimumWidth(listView.getHeight() / 5);
+             // 设置图片的位置
+             holder.news_img.setVisibility(View.VISIBLE);
 
-         Bitmap img_bitmap  = null;img_bitmap = bitmap_handle.pictureTobitmap(path);
-        holder.news_img.setImageBitmap(img_bitmap);
-        holder.news_img.setMaxHeight(listView.getHeight() / 5);
-        holder.news_img.setMaxWidth(listView.getHeight() / 5);
-        holder.news_img.setAdjustViewBounds(true);
+
+
+
+             holder.news_img.setAdjustViewBounds(true);
+         }
+
         return convertView;
     }
 
@@ -121,10 +150,5 @@ public class news_Adapter extends BaseAdapter {
         TextView news_classify;
         ImageView news_img;
     }
-    private class ViewHolder_no_pic{
-        TextView news_title;
-        TextView news_browse_count;
-        TextView news_time;
-        TextView news_classify;
-    }
+
 }
