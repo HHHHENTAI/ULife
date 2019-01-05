@@ -60,8 +60,8 @@ public class news_Adapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
 
+            convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
             holder = new ViewHolder();
             holder.news_title = (TextView) convertView.findViewById(R.id.list_title);
             holder.news_time = (TextView) convertView.findViewById(R.id.list_time);
@@ -78,12 +78,6 @@ public class news_Adapter extends BaseAdapter {
             AbsListView.LayoutParams lp = new AbsListView.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listView.getHeight() / 5);
             convertView.setLayoutParams(lp);
 
-
-           /* LinearLayout ll = convertView.findViewById(R.id.list_layout);
-            ViewGroup.LayoutParams linearParams = (ViewGroup.LayoutParams) ll.getLayoutParams();
-            linearParams.height = screenWidth * 250 / 460;
-//                linearParams.gravity = Gravity.CENTER_VERTICAL;
-            ll.setLayoutParams(linearParams);*/
             convertView.setTag(holder);
         } else {
             //else里面说明，convertView已经被复用了，说明convertView中已经设置过tag了，即holder
@@ -106,12 +100,8 @@ public class news_Adapter extends BaseAdapter {
         holder.news_browse_count.setText("" + bean.getNews_browse_count());
 
          String path= bean.getNews_img();
-        Log.i("jjj", "getView: "+path);
-             Bitmap img_bitmap  = null;
-             img_bitmap = bitmap_handle.pictureTobitmap(path);
 
-        //byte[] imgData = bean.getNews_img();
-        //Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+         Bitmap img_bitmap  = null;img_bitmap = bitmap_handle.pictureTobitmap(path);
         holder.news_img.setImageBitmap(img_bitmap);
         holder.news_img.setMaxHeight(listView.getHeight() / 5);
         holder.news_img.setMaxWidth(listView.getHeight() / 5);
@@ -123,7 +113,6 @@ public class news_Adapter extends BaseAdapter {
     public void notifyDataSetChanged() {
         super.notifyDataSetChanged();
     }
-
     //这个ViewHolder只能服务于当前这个特定的adapter，因为ViewHolder里会指定item的控件，不同的ListView，item可能不同，所以ViewHolder写成一个私有的类
     private class ViewHolder {
         TextView news_title;
@@ -131,5 +120,11 @@ public class news_Adapter extends BaseAdapter {
         TextView news_time;
         TextView news_classify;
         ImageView news_img;
+    }
+    private class ViewHolder_no_pic{
+        TextView news_title;
+        TextView news_browse_count;
+        TextView news_time;
+        TextView news_classify;
     }
 }

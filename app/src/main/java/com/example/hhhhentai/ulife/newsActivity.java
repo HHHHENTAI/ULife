@@ -76,9 +76,11 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);
             String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
             Log.i("jjj", "onCreate: "+t);
+            String month = t.substring(4, 6);
+            String day = t.substring(6, 8);
             String hour = t.substring(8,10);
             String minute = t.substring(10,12);
-            news_time.setText(hour+":"+minute);
+            news_time.setText(month+"/"+day+" " +hour+":"+minute);
             Log.i("jjj", "onCreate: "+hour+":"+minute);
             if(cursor1.moveToFirst())
             {
@@ -92,7 +94,7 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void initView() {
+     private void initView() {
         user = findViewById(R.id.news_user);
         user_pic=findViewById(R.id.news_user_pic);
         news_time =findViewById(R.id.news_time);

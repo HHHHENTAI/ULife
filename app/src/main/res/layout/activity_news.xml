@@ -88,8 +88,9 @@
                 android:layout_margin="10dp"
                 android:layout_marginTop="20dp"
                 android:id="@+id/news_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@color/black"
+                android:textStyle="normal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
