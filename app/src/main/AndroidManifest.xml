@@ -14,7 +14,7 @@
         android:icon="@drawable/ulife_title"
         android:usesCleartextTraffic="true"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher_round"
+        android:roundIcon="@drawable/ulife_title"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
