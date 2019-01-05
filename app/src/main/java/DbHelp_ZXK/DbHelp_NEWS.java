@@ -48,8 +48,12 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
         String CREATE_SQL_SeeHistory = "create table SeeHistory(" +
                 "SeeId_int integer primary key autoincrement," +
                 "SeePhone_text text not null," +
-                "NewsTitle_text text," +
-                "NewsContent_text text," +
+                "PublishPhone_text text not null," +
+                "NewsTitle_text text not null," +
+                "NewsContent_text text not null," +
+                "NewsClass_text text not null," +
+                "NewsImage_blob text," +
+                "NewsHot_int integer not null," +
                 "NewsTime_text text not null)";
         db.execSQL(CREATE_SQL_SeeHistory);
 

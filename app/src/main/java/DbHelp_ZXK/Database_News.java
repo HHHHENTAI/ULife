@@ -84,25 +84,24 @@ public class Database_News {
     //TODO end咨询表的增删改查
 
     //TODO start浏览历史表的增删改查
-    String CREATE_SQL_SeeHistory = "create table SeeHistory(" +
-            "SeeId_int integer primary key autoincrement," +
-            "SeePhone_text text not null," +
-            "NewsTitle_text text not null," +
-            "NewsContent_text text not null," +
-            "NewsTime_text text not null)";
 
-    public void insert_historyinfo(String SeePhone_text, String NewsTitle_text, String NewsContent_text, String NewsTime_text) {
+    public void insert_historyinfo(String SeePhone_text, String PublishPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text,
+                                   String NewsImage_blob, String NewsHot_int, String NewsTime_text) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
         values_insert.put("SeePhone_text", SeePhone_text);
+        values_insert.put("PublishPhone_text", PublishPhone_text);
         values_insert.put("NewsTitle_text", NewsTitle_text);
         values_insert.put("NewsContent_text", NewsContent_text);
+        values_insert.put("NewsClass_text", NewsClass_text);
+        values_insert.put("NewsImage_blob", NewsImage_blob);
+        values_insert.put("NewsHot_int", NewsHot_int);
         values_insert.put("NewsTime_text", NewsTime_text);
         database_news.insert("SeeHistory", null, values_insert);
     }
 
-    public void delete_historyinfo(String NewsTitle_text, String NewsTime_text) {
-        database_news.delete("SeeHistory ", "NewsTitle_text=? and NewsTime_text=?", new String[]{NewsTitle_text, NewsTime_text});
+    public void delete_historyinfo(String SeePhone_text, String NewsTitle_text, String NewsTime_text) {
+        database_news.delete("SeeHistory ", "SeePhone_text = ? and NewsTitle_text=? and NewsTime_text=?", new String[]{SeePhone_text, NewsTitle_text, NewsTime_text});
     }
 
 //    public void update_historyinfo(int SeeId_oldint, int SeeId_newint, String SeePhone_text, int SeeNewsID_int) {

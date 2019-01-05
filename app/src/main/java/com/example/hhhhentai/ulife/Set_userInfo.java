@@ -40,9 +40,7 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_user_info);
-
         //TODO 要从数据库中加载出个人信息
-
         init();
 
     }
