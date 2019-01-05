@@ -1,8 +1,10 @@
 package com.example.hhhhentai.ulife;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,7 +13,10 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -37,6 +42,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
     public static final String IMAGE_NAME = "pic.jpg";
     public static final int REQUEST_CODE_CAMERA = 11;
     public static final int REQUEST_CODE_CROP = 12;
+    private static final int RESULT_CODE_STARTCAMERA =13 ;
     ImageView iv_add;
     Button btn_camera;
     Button btn_finish;
@@ -89,9 +95,17 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
             //TODO 调用摄像头
             case R.id.btn_camera:
                 if(count<5) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath()+"/"+IMAGE_NAME)));
-                    startActivityForResult(intent, REQUEST_CODE_CAMERA);
+                    if(PackageManager.PERMISSION_GRANTED==ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)){
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath()+"/"+IMAGE_NAME)));
+                        startActivityForResult(intent, REQUEST_CODE_CAMERA);
+                    }
+                    else {
+                        Toast.makeText(PictureActivity.this,"请开启权限",Toast.LENGTH_SHORT).show();
+                        String[] perms={Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA};
+                        ActivityCompat.requestPermissions(this,perms,RESULT_CODE_STARTCAMERA);
+                    }
+
                 }  else Toast.makeText(PictureActivity.this,"最多选择五张照片",Toast.LENGTH_SHORT).show();
                 break;
             //传递图片路径
@@ -116,6 +130,26 @@ public class PictureActivity extends AppCompatActivity implements View.OnClickLi
         }
 
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        switch (requestCode){
+            case RESULT_CODE_STARTCAMERA:{
+                boolean cameraAccepted=grantResults[0]==PackageManager.PERMISSION_GRANTED;
+                if(cameraAccepted){
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath()+"/"+IMAGE_NAME)));
+                    startActivityForResult(intent, REQUEST_CODE_CAMERA);
+                } else {
+                    Toast.makeText(PictureActivity.this,"你拒绝了权限",Toast.LENGTH_SHORT).show();
+                }
+            }
+            break;
+            default:
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

@@ -302,7 +302,6 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                         NewsTime_text = ymd + hms;
                     }
 
-                    Log.i("jjj", "onClick: " + NewsTime_text);
                     for (int i = 0; i < 5; i++) {
                         if (!get[i].equals("")) {
                             database_news.insert_newsinfo(i, phone, title, content, family, get[i], 0, NewsTime_text);
@@ -312,6 +311,12 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                         database_news.insert_newsinfo(0, phone, title, content, family, "", 0, NewsTime_text);
                     }
                     Toast.makeText(context,"发送成功",Toast.LENGTH_SHORT).show();
+                    et_title.setText(null);
+                    et_content.setText(null);
+                    for (int i = 0; i < 5; i++) {
+                        get[i] = "";
+                        send_iv[i].setImageDrawable(null);
+                    }
                 }
 
                 break;
