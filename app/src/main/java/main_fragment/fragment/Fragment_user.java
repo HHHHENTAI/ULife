@@ -78,6 +78,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener
            case R.id.ll_history:
            {
                Intent intent = new Intent(getActivity(),History.class);
+               intent.putExtra("user_num", user_num);
                startActivity(intent);
                break;
            }
@@ -90,13 +91,14 @@ public class Fragment_user extends Fragment implements View.OnClickListener
            case R.id.ll_set_userInfo:
            {
                Intent intent = new Intent(getActivity(),Set_userInfo.class);
+               intent.putExtra("user_num", user_num);
                startActivity(intent);
                break;
            }
            case R.id.iv_user_headPhoto:
            {
                Intent intent = new Intent(getActivity(),ChangeHeadphoto.class);
-
+               intent.putExtra("user_num", user_num);
                startActivity(intent);
                break;
            }

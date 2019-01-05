@@ -85,30 +85,38 @@ public class Database_News {
     //TODO end咨询表的增删改查
 
     //TODO start浏览历史表的增删改查
-    public void insert_historyinfo(int SeeId_int, String SeePhone_text, int SeeNewsID_int) {
+    String CREATE_SQL_SeeHistory = "create table SeeHistory(" +
+            "SeeId_int integer primary key autoincrement," +
+            "SeePhone_text text not null," +
+            "NewsTitle_text text not null," +
+            "NewsContent_text text not null," +
+            "NewsTime_text text not null)";
+
+    public void insert_historyinfo(String SeePhone_text, String NewsTitle_text, String NewsContent_text, String NewsTime_text) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
-        values_insert.put("SeeId_int", SeeId_int);
         values_insert.put("SeePhone_text", SeePhone_text);
-        values_insert.put("SeeNewsID_int", SeeNewsID_int);
+        values_insert.put("NewsTitle_text", NewsTitle_text);
+        values_insert.put("NewsContent_text", NewsContent_text);
+        values_insert.put("NewsTime_text", NewsTime_text);
         database_news.insert("SeeHistory", null, values_insert);
     }
 
-    public void delete_historyinfo(String delete) {
-        database_news.delete("SeeHistory ", "SeeId_int=?", new String[]{delete});
+    public void delete_historyinfo(String NewsTitle_text, String NewsTime_text) {
+        database_news.delete("SeeHistory ", "NewsTitle_text=? and NewsTime_text=?", new String[]{NewsTitle_text, NewsTime_text});
     }
 
-    public void update_historyinfo(int SeeId_oldint, int SeeId_newint, String SeePhone_text, int SeeNewsID_int) {
-        ContentValues values_update = new ContentValues();
-        values_update.put("SeeId_int", SeeId_newint);
-        values_update.put("SeePhone_text", SeePhone_text);
-        values_update.put("SeeNewsID_int", SeeNewsID_int);
-        database_news.update("SeeHistory", values_update, "SeeId_int=?", new String[]{SeeId_oldint + ""});
-    }
+//    public void update_historyinfo(int SeeId_oldint, int SeeId_newint, String SeePhone_text, int SeeNewsID_int) {
+//        ContentValues values_update = new ContentValues();
+//        values_update.put("SeeId_int", SeeId_newint);
+//        values_update.put("SeePhone_text", SeePhone_text);
+//        values_update.put("SeeNewsID_int", SeeNewsID_int);
+//        database_news.update("SeeHistory", values_update, "SeeId_int=?", new String[]{SeeId_oldint + ""});
+//    }
 
-    public Cursor query_historyinfo() {
-        return database_news.query("SeeHistory", null, null, null, null, null, null);
-    }
+//    public Cursor query_historyinfo() {
+//        return database_news.query("SeeHistory", null, null, null, null, null, null);
+//    }
     //TODO end浏览历史表的增删改查
 
     //TODO start个人信息表的增删改查
@@ -127,9 +135,9 @@ public class Database_News {
 //            "PersonShow_text text," +
 //            "PersonPip_text text)";
 
-    public void insert_personinfo(String PersonPhone_text, byte[] PersonImage_blob, String PersonSig_text, String PersonName_text, String PersonSex_text,
-                                  String PersonBirth_text, String PeronJob_text, String PersonSchool_text, String PersonLocation_text, String PersonHome_text,
-                                  String PersonOffice_text, String PersonShow_text, String PersonPip_text) {
+    public void insert_personinfo(String PersonPhone_text, String PersonImage_blob, String PersonName_text, String PersonSig_text, String PersonBirth_text,
+                                  String PersonSex_text, String PersonSchool_text, String PersonHome_text, String PersonOffice_text, String PersonShow_text,
+                                  String PeronJob_text, String PersonLocation_text) {
         ContentValues values_insert = new ContentValues();
         values_insert.put("PersonPhone_text", PersonPhone_text);
         values_insert.put("PersonImage_blob", PersonImage_blob);
@@ -143,7 +151,6 @@ public class Database_News {
         values_insert.put("PersonHome_text", PersonHome_text);
         values_insert.put("PersonOffice_text", PersonOffice_text);
         values_insert.put("PersonShow_text", PersonShow_text);
-        values_insert.put("PersonPip_text", PersonPip_text);
         database_news.insert("PersonInfo", null, values_insert);
     }
 
@@ -151,9 +158,9 @@ public class Database_News {
         database_news.delete("PersonInfo ", "PersonPhone_text=?", new String[]{delete});
     }
 
-    public void update_personinfo(String PersonPhone_text, byte[] PersonImage_blob, String PersonSig_text, String PersonName_text, String PersonSex_text,
-                                  String PersonBirth_text, String PeronJob_text, String PersonSchool_text, String PersonLocation_text, String PersonHome_text,
-                                  String PersonOffice_text, String PersonShow_text, String PersonPip_text) {
+    public void update_personinfo(String PersonPhone_text, String PersonImage_blob, String PersonName_text, String PersonSig_text, String PersonBirth_text,
+                                  String PersonSex_text, String PersonSchool_text, String PersonHome_text, String PersonOffice_text, String PersonShow_text,
+                                  String PeronJob_text, String PersonLocation_text) {
         ContentValues values_update = new ContentValues();
         values_update.put("PersonPhone_text", PersonPhone_text);
         values_update.put("PersonImage_blob", PersonImage_blob);
@@ -167,7 +174,7 @@ public class Database_News {
         values_update.put("PersonHome_text", PersonHome_text);
         values_update.put("PersonOffice_text", PersonOffice_text);
         values_update.put("PersonShow_text", PersonShow_text);
-        values_update.put("PersonPip_text", PersonPip_text);
+        database_news.update("PersonInfo", values_update, "PersonPhone_text = ?", new String[]{PersonPhone_text});
     }
 
     public Cursor query_personinfo(String PersonPhone_text) {

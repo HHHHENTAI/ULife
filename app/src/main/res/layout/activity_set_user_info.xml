@@ -51,6 +51,7 @@
                 android:text="  昵 称" />
 
             <EditText
+                android:id="@+id/et_PersonName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
@@ -72,6 +73,7 @@
                 android:text="  签 名" />
 
             <EditText
+                android:id="@+id/et_PersonSig"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
@@ -155,6 +157,7 @@
                 android:text="  学 校" />
 
             <EditText
+                android:id="@+id/et_PersonSchool"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
@@ -176,6 +179,7 @@
                 android:text="  家 乡" />
 
             <EditText
+                android:id="@+id/et_PersonHome"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
@@ -197,6 +201,7 @@
                 android:text="  邮 箱" />
 
             <EditText
+                android:id="@+id/et_PersonOffice"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
@@ -219,6 +224,7 @@
                 android:text="  个 人 说 明" />
 
             <EditText
+                android:id="@+id/et_PersonShow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"

@@ -65,12 +65,11 @@ public class Bitmap_handle {
            // return new byte[0];
         }
         Bitmap bitmap = BitmapFactory.decodeStream(fis);
-
         return bitmap;
     }
 
 
-    //读照片
+    //读照片路径
     public String readImage(Cursor cursor) {
         String imgData = null;
         //将Blob数据转化为字节数组

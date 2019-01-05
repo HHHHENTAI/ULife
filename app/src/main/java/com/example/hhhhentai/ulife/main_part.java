@@ -238,7 +238,6 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
 //                }
 //                Log.i("i", i + "");
                 //TODO TEST_END:赵效慷：测试查询数据结束
-
                 break;
 
             case R.id.btn_upload:
@@ -248,7 +247,6 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 btn_life_tools.setImageResource(R.mipmap.main_tool1);
                 btn_user.setImageResource(R.mipmap.main_mine1);
                 //TODO 发布具体活动界面--余劲龙
-
                 break;
             case R.id.btn_life_tools:
                 ft.replace(R.id.content, fragment_life_tools);
@@ -257,7 +255,6 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 btn_life_tools.setImageResource(R.mipmap.main_tool2);
                 btn_user.setImageResource(R.mipmap.main_mine1);
                 //TODO 工具具体活动界面--盛光明
-
                 break;
             case R.id.btn_user:
                 ft.replace(R.id.content, fragment_user);
@@ -266,7 +263,6 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
                 btn_life_tools.setImageResource(R.mipmap.main_tool1);
                 btn_user.setImageResource(R.mipmap.main_mine2);
                 //TODO 我的具体活动界面--张松
-
                 break;
         }
         ft.commit();
