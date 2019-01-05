@@ -115,6 +115,7 @@ public class news_Adapter extends BaseAdapter {
         holder.news_img.setImageBitmap(img_bitmap);
         holder.news_img.setMaxHeight(listView.getHeight() / 5);
         holder.news_img.setMaxWidth(listView.getHeight() / 5);
+        holder.news_img.setAdjustViewBounds(true);
         return convertView;
     }
 
