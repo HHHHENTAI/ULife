@@ -192,7 +192,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
                 Cursor cursor = database_news.query_personinfo("12345678910");
                 //个人信息表插入
                 if (cursor.getCount() == 0) {
-                    database_news.insert_personinfo("12345678910", "", "", "", "", "", "", "", "", "", "", "");
+                    database_news.insert_personinfo("12345678910", "", "昵 称", "个 人 签 名", "", "", "", "", "", "", "", "");
                 } else {
                     Toast.makeText(MainActivity.this, "管理员用户已存在！", Toast.LENGTH_SHORT).show();
                 }

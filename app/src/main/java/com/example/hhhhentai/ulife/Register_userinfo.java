@@ -88,7 +88,7 @@ public class Register_userinfo extends SwipeBackActivity {
                     String insert = "INSERT INTO user(account,password,name,phone)VALUES ('"+phonenum+"','"+password+"','"+name+"','"+phonenum+"')";
                     database.execSQL(insert);
 
-                    database_news.insert_personinfo(phonenum,"",name,"","","","","","","","","");
+                    database_news.insert_personinfo(phonenum,"",name,"个 人 签 名","","","","","","","","");
 
                     Toast.makeText(Register_userinfo.this, "注冊成功", Toast.LENGTH_SHORT).show();
                     finish();
