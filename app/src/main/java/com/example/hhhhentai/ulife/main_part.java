@@ -10,9 +10,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.example.hhhhentai.Constant.Constant;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -47,6 +51,10 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_part);
         SysApplication.getInstance().addActivity(this);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constant.displayWidth = displayMetrics.widthPixels;
+        Constant.displayHeight = displayMetrics.heightPixels;
         init();
 
         //接收登录页面传来的用户登录信息 —— 手机号
@@ -75,6 +83,24 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         btn_upload = (ImageView) findViewById(R.id.btn_upload);
         btn_life_tools = (ImageView) findViewById(R.id.btn_life_tools);
         btn_user = (ImageView) findViewById(R.id.btn_user);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.15f + 0.5f),
+                (int) (Constant.displayWidth * 0.15f + 0.5f));
+        btn_show.setLayoutParams(params);
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.15f + 0.5f),
+                (int) (Constant.displayWidth * 0.15f + 0.5f));
+        btn_upload.setLayoutParams(params1);
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.15f + 0.5f),
+                (int) (Constant.displayWidth * 0.15f + 0.5f));
+        btn_life_tools.setLayoutParams(params2);
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
+                (int) (Constant.displayWidth * 0.15f + 0.5f),
+                (int) (Constant.displayWidth * 0.15f + 0.5f));
+        btn_user.setLayoutParams(params3);
+
         //设置下方四个控件的监听
         btn_show.setOnClickListener(this);
         btn_upload.setOnClickListener(this);

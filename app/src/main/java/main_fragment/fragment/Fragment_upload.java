@@ -61,10 +61,9 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
 
     private LinearLayout LL_send,LL_send_out,LL_cancel,LL_family,LL_title,LL_content,LL_group;
     private TextView tv_send,tv_family,myTextView,tv_content;
-    private Button btn_send;
     private Spinner mySpinner;
     private EditText et_title,et_content;
-    private ImageView iv_picture,iv_cancle;
+    private ImageView iv_picture,iv_cancle,iv_send;
 
     @Override
     public void onAttach(Context context) {
@@ -127,8 +126,8 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         iv_picture.setOnClickListener(this);
         iv_cancle = view.findViewById(R.id.iv_cancle);/////////////////////
         iv_cancle.setOnClickListener(this);
-        btn_send = view.findViewById(R.id.btn_send);
-        btn_send.setOnClickListener(this);
+        iv_send = view.findViewById(R.id.iv_send);
+        iv_send.setOnClickListener(this);
         send_iv[0] = view.findViewById(R.id.send_iv_one);
         send_iv[1] = view.findViewById(R.id.send_iv_two);
         send_iv[2] = view.findViewById(R.id.send_iv_three);
@@ -173,10 +172,10 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         LL_send_out.setLayoutParams(params4);
 
         LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayHeight * 0.08f + 0.5f),
-                (int) (Constant.displayWidth * 0.08f + 0.5f));
+                (int) (Constant.displayHeight * 0.06f + 0.5f),
+                (int) (Constant.displayHeight * 0.06f + 0.5f));
         params5.setMargins(0,0,0,0);
-        btn_send.setLayoutParams(params5);
+        iv_send.setLayoutParams(params5);
 
         LinearLayout.LayoutParams params6 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayWidth-(Constant.displayHeight * 0.1f + 0.5f)*2),
@@ -267,7 +266,6 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         dataList.add(map1);
         dataList.add(map2);
         dataList.add(map3);
-
     }
 
     @Nullable
@@ -290,7 +288,7 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 startActivityForResult(intent1, 100);
                 break;
             //点击发送
-            case R.id.btn_send:
+            case R.id.iv_send:
                 title = et_title.getText().toString();
                 content = et_content.getText().toString();
                 phone=getArguments().getString("user_num");
