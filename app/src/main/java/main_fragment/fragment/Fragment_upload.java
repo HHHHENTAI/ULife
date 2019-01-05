@@ -40,6 +40,8 @@ import java.util.Map;
 import DbHelp_ZXK.Database_News;
 import DbHelp_ZXK.DbHelp_NEWS;
 
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
+
 //TODO 赵效慷and江守鑫---
 public class Fragment_upload extends Fragment implements View.OnClickListener {
 
@@ -171,8 +173,8 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         LL_send_out.setLayoutParams(params4);
 
         LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayHeight * 0.06f + 0.5f),
-                (int) (Constant.displayWidth * 0.06f + 0.5f));
+                (int) (Constant.displayHeight * 0.08f + 0.5f),
+                (int) (Constant.displayWidth * 0.08f + 0.5f));
         params5.setMargins(0,0,0,0);
         btn_send.setLayoutParams(params5);
 
@@ -181,6 +183,8 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 (int) (Constant.displayHeight * 0.1f + 0.5f));
         params6.setMargins(0,0,0,0);
         tv_send.setLayoutParams(params6);
+
+        tv_send.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.035f);
 
 
         LinearLayout.LayoutParams params7 = new LinearLayout.LayoutParams(
@@ -195,6 +199,8 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
         params8.setMargins(0,0,0,0);
         tv_family.setLayoutParams(params8);
 
+        tv_family.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
+
         LinearLayout.LayoutParams params9 = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 (int) (Constant.displayHeight * 0.07f + 0.5f));
@@ -206,6 +212,8 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 (int) (Constant.displayHeight * 0.07f + 0.5f));
         params10.setMargins(0,0,0,0);
         myTextView.setLayoutParams(params10);
+
+        myTextView.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
 
         LinearLayout.LayoutParams params11 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayWidth * 0.7f + 0.5f),
@@ -224,6 +232,8 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 (int) (Constant.displayHeight * 0.1f + 0.5f));
         params13.setMargins(0,0,0,0);
         tv_content.setLayoutParams(params13);
+
+        tv_content.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
 
         LinearLayout.LayoutParams params14 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayWidth * 0.7f + 0.5f),

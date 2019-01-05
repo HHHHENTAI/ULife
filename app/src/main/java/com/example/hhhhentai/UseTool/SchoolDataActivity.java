@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -16,15 +17,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.hhhhentai.ulife.R;
+import com.example.hhhhentai.ulife.SwipeBackActivity;
 
 import org.xutils.x;
 
-public class SchoolDataActivity extends AppCompatActivity {
+public class SchoolDataActivity extends SwipeBackActivity {
 
     private ImageView Im_schooldate;
     private int dw_h []=new int[2];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_data);
         x.view().inject(this);

@@ -153,7 +153,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         iv_history.setLayoutParams(params);
 
         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayWidth * 0.35f + 0.5f),
+                (int) (Constant.displayWidth * 0.4f + 0.5f),
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         params1.setMargins((int) (Constant.displayWidth * 0.03f + 0.5f),0,0,0);
         tv_history.setLayoutParams(params1);
@@ -161,7 +161,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayHeight * 0.4f/7.5f + 0.5f),
                 (int) (Constant.displayHeight * 0.4f/7.5f + 0.5f));
-        params2.setMargins((int)(0.59*Constant.displayWidth-Constant.displayHeight*0.8f/7.5f),0,0,0);
+        params2.setMargins((int)(0.54*Constant.displayWidth-Constant.displayHeight*0.8f/7.5f),0,0,0);
         iv_his.setLayoutParams(params2);
 
 
@@ -172,7 +172,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         iv_setting.setLayoutParams(params3);
 
         LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayWidth * 0.35f + 0.5f),
+                (int) (Constant.displayWidth * 0.4f + 0.5f),
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         params4.setMargins((int) (Constant.displayWidth * 0.03f + 0.5f),0,0,0);
         tv_setting.setLayoutParams(params4);
@@ -180,7 +180,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayHeight * 0.4f/7.5f + 0.5f),
                 (int) (Constant.displayHeight * 0.4f/7.5f + 0.5f));
-        params5.setMargins((int)(0.59*Constant.displayWidth-Constant.displayHeight*0.8f/7.5f),0,0,0);
+        params5.setMargins((int)(0.54*Constant.displayWidth-Constant.displayHeight*0.8f/7.5f),0,0,0);
         iv_set.setLayoutParams(params5);
 
 
@@ -191,7 +191,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         iv_personinfo.setLayoutParams(params6);
 
         LinearLayout.LayoutParams params7 = new LinearLayout.LayoutParams(
-                (int) (Constant.displayWidth * 0.35f + 0.5f),
+                (int) (Constant.displayWidth * 0.4f + 0.5f),
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         params7.setMargins((int) (Constant.displayWidth * 0.03f + 0.5f),0,0,0);
         tv_personinfo.setLayoutParams(params7);
@@ -199,7 +199,7 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(
                 (int) (Constant.displayHeight * 0.4f/7.5f + 0.5f),
                 (int) (Constant.displayHeight * 0.4f/7.5f + 0.5f));
-        params8.setMargins((int)(0.59*Constant.displayWidth-Constant.displayHeight*0.8f/7.5f),0,0,0);
+        params8.setMargins((int)(0.54*Constant.displayWidth-Constant.displayHeight*0.8f/7.5f),0,0,0);
         iv_per.setLayoutParams(params8);
 
         LinearLayout.LayoutParams params9 = new LinearLayout.LayoutParams(
