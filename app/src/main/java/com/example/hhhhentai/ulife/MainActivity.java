@@ -44,6 +44,10 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
     private DbHelp help;
     private SQLiteDatabase database;
 
+    //信息表
+    private DbHelp_NEWS dbHelp_news;
+    private Database_News database_news;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -53,6 +57,10 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 
         help = new DbHelp(this);
         database = help.getWritableDatabase();
+
+        //信息表的操作
+        dbHelp_news = new DbHelp_NEWS(this);
+        database_news = new Database_News(dbHelp_news);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -180,6 +188,15 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
             public boolean onLongClick(View v) {
                 String insert = "INSERT INTO user(account,password,name,phone)VALUES ('12345678910','123','nick','12345678910')";
                 database.execSQL(insert);
+
+                Cursor cursor = database_news.query_personinfo("12345678910");
+                //个人信息表插入
+                if (cursor.getCount() == 0) {
+                    database_news.insert_personinfo("12345678910", "", "", "", "", "", "", "", "", "", "", "");
+                } else {
+                    Toast.makeText(MainActivity.this, "管理员用户已存在！", Toast.LENGTH_SHORT).show();
+                }
+
                 et_account.setText("12345678910");
                 et_password.setText("123");
                 return true;

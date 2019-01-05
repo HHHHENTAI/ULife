@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +37,7 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
     EditText et_PersonHome;
     EditText et_PersonOffice;
     EditText et_PersonShow;
+    String user_num;
     Calendar cal;
     Intent intent;
 
@@ -48,11 +50,11 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_set_user_info);
         //TODO 要从数据库中加载出个人信息
         init();
-
     }
 
     public void init() {
         intent = getIntent();
+        user_num = intent.getStringExtra("user_num");
         cal = Calendar.getInstance();
         iv_userInfo_return = (ImageView) findViewById(R.id.iv_userInfo_return);
         iv_userInfo_birthday = (ImageView) findViewById(R.id.iv_userInfo_birthday);
@@ -87,6 +89,32 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
         help_news = new DbHelp_NEWS(this);
         //获取数据可读写对象
         database_news = new Database_News(help_news);
+
+        Cursor cursor = database_news.query_personinfo(user_num);
+        cursor.moveToFirst();
+        String PersonName_text = cursor.getString(cursor.getColumnIndex("PersonName_text"));
+        String PersonSig_text = cursor.getString(cursor.getColumnIndex("PersonSig_text"));
+        String PersonBirth_text = cursor.getString(cursor.getColumnIndex("PersonBirth_text"));
+        String PersonSex_text = cursor.getString(cursor.getColumnIndex("PersonSex_text"));
+        String PersonSchool_text = cursor.getString(cursor.getColumnIndex("PersonSchool_text"));
+        String PersonHome_text = cursor.getString(cursor.getColumnIndex("PersonHome_text"));
+        String PersonOffice_text = cursor.getString(cursor.getColumnIndex("PersonOffice_text"));
+        String PersonShow_text = cursor.getString(cursor.getColumnIndex("PersonShow_text"));
+
+        et_PersonName.setText(PersonName_text);
+        et_PersonSig.setText(PersonSig_text);
+        tv_userInfo_birthday.setText(PersonBirth_text);
+        tv_userInfo_sex.setText(PersonSex_text);
+        et_PersonSchool.setText(PersonSchool_text);
+        et_PersonHome.setText(PersonHome_text);
+        et_PersonOffice.setText(PersonOffice_text);
+        et_PersonShow.setText(PersonShow_text);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     @Override
@@ -131,14 +159,12 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
                     }
                 });
                 dialog.create().show();
-
                 break;
             }
 
             case R.id.btn_userInfo_sure: {
                 //TODO 将所有个人的数据插入到数据库中
                 String PersonPhone = intent.getStringExtra("user_num");
-                String PersonImage = "";//填写上个活动传递过来的头像路径
                 String PersonName = et_PersonName.getText().toString();
                 String PersonSig = et_PersonSig.getText().toString();
                 String PersonBirth = tv_userInfo_sex.getText().toString();
@@ -147,7 +173,7 @@ public class Set_userInfo extends AppCompatActivity implements View.OnClickListe
                 String PersonHome = et_PersonHome.getText().toString();
                 String PersonOffice = et_PersonOffice.getText().toString();
                 String PersonShow = et_PersonShow.getText().toString();
-                database_news.update_personinfo(PersonPhone, PersonImage, PersonName, PersonSig, PersonBirth, PersonSex, PersonSchool, PersonHome, PersonOffice, PersonShow, "", "");
+                database_news.update_personinfo(PersonPhone, PersonName, PersonSig, PersonBirth, PersonSex, PersonSchool, PersonHome, PersonOffice, PersonShow, "", "");
             }
         }
 

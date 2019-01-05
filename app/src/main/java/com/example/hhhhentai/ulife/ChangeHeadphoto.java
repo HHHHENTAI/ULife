@@ -61,6 +61,8 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
 
     private void init()
     {
+
+        imagePath = "";
         iv_headphoto = (ImageView)findViewById(R.id.iv_headphoto) ;
         iv_headPhoto_takePhoto = (ImageView)findViewById(R.id.iv_headPhoto_takePhoto);
         iv_headPhoto_choose = (ImageView)findViewById(R.id.iv_headPhoto_choose);
@@ -221,16 +223,20 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
             {
                 DisplayMetrics metric = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(metric);
-                String dst = getPath(this, data.getData());
-                Log.i("tree2",dst);
+                if (data == null) {
+                    Toast.makeText(this, "未选择头像！", Toast.LENGTH_SHORT).show();
+                } else {
+                    String dst = getPath(this, data.getData());
+                    Log.i("tree2", dst);
 
-                imageFile = new File(dst);
-                imagePath = dst;
-                Bitmap bitmap = ThumbnailUtils.extractThumbnail(getBitmapFromFile(imageFile), 1000, 1000);
-                bitmapdown = bitmap;
-                iv_headphoto.setImageBitmap(bitmapdown);
-                Log.d("chenzhu","imagePath"+imagePath);
-                database_news.update_personinfo_personimage(PersonPhone,imagePath);
+                    imageFile = new File(dst);
+                    imagePath = dst;
+                    Bitmap bitmap = ThumbnailUtils.extractThumbnail(getBitmapFromFile(imageFile), 1000, 1000);
+                    bitmapdown = bitmap;
+                    iv_headphoto.setImageBitmap(bitmapdown);
+                    Log.d("chenzhu", "imagePath" + imagePath);
+                    database_news.update_personinfo_personimage(PersonPhone, imagePath);
+                }
                 break;
             }
         }
