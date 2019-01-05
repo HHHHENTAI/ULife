@@ -86,7 +86,7 @@ public class Database_News {
     //TODO start浏览历史表的增删改查
 
     public void insert_historyinfo(String SeePhone_text, String PublishPhone_text, String NewsTitle_text, String NewsContent_text, String NewsClass_text,
-                                   String NewsImage_blob, String NewsHot_int, String NewsTime_text) {
+                                   String NewsImage_blob, Integer NewsHot_int, String NewsTime_text) {
         //使用 ContentValues 来对要添加的数据进行组装
         ContentValues values_insert = new ContentValues();
         values_insert.put("SeePhone_text", SeePhone_text);

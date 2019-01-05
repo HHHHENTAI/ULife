@@ -44,23 +44,33 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         initView();
+        loadData();
+
+    }
+
+    private void loadData() {
         Intent intent = getIntent();
         String title = intent.getStringExtra("news_title");
         String time  = intent.getStringExtra("news_time");
         String news_content;
+        String news_publisher;
+        String img_path;
+        String news_class;
         //todo 检索数据库，找到新闻 记录
-         Cursor cursor = database_news.query_newsinfo(null,"NewsTitle_text = ? and NewsTime_text = ?",new String[]{title,time},null,null,null);
-        if(cursor.moveToFirst()){
+        Cursor cursor = database_news.query_newsinfo(null,"NewsTitle_text = ? and NewsTime_text = ?",new String[]{title,time},null,null,null);
+        if(cursor.moveToFirst()) {
             //cursor 默认下标是-1
-            news_content =cursor.getString(cursor.getColumnIndex("NewsContent_text"));
+            news_content = cursor.getString(cursor.getColumnIndex("NewsContent_text"));
             content.setText(news_content);
             news_title.setText(cursor.getString(cursor.getColumnIndex("NewsTitle_text")));
+            news_publisher =cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
+            news_class=cursor.getString(cursor.getColumnIndex("NewsClass_text"));
             int news_hot = cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
-            database_news.update_news_count(title,time,news_hot);
+            database_news.update_news_count(title, time, news_hot);
+
             //加载图片
-           Bitmap imgbitmap = bitmap_handle.pictureTobitmap(bitmap_handle.readImage(cursor));
-            //imgData = bitmap_handle.readImage(cursor);
-          //  Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+            img_path = bitmap_handle.readImage(cursor);
+            Bitmap imgbitmap = bitmap_handle.pictureTobitmap(img_path);
             DisplayMetrics dm = new DisplayMetrics();
             WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
             wm.getDefaultDisplay().getMetrics(dm);
@@ -73,31 +83,28 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             news_pic.setImageBitmap(imgbitmap);
             news_pic.setAdjustViewBounds(true);
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
-            Log.i("jjj", "onCreate: "+user_num);
-            Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);
-            String t= cursor.getString(cursor.getColumnIndex("NewsTime_text"));
-            Log.i("jjj", "onCreate: "+t);
+
+            Cursor cursor1 = database_user.query("user", null, "account = ?", new String[]{user_num}, null, null, null);
+            String t = cursor.getString(cursor.getColumnIndex("NewsTime_text"));
+
             String month = t.substring(4, 6);
             String day = t.substring(6, 8);
-            String hour = t.substring(8,10);
-            String minute = t.substring(10,12);
-            news_time.setText(month+"/"+day+" " +hour+":"+minute);
-            Log.i("jjj", "onCreate: "+hour+":"+minute);
-            if(cursor1.moveToFirst())
-            {
+            String hour = t.substring(8, 10);
+            String minute = t.substring(10, 12);
+            news_time.setText(month + "/" + day + " " + hour + ":" + minute);
+            Log.i("jjj", "onCreate: " + hour + ":" + minute);
+            if (cursor1.moveToFirst()) {
                 user.setText(cursor1.getString(cursor1.getColumnIndex("name")));
+            } else {
+                Log.i("jjj", "onCreate: " + "else");
             }
-            else
-            {
-                Log.i("jjj", "onCreate: "+"else");
-            }
+
             //记录历史
-           database_news.insert_historyinfo(user_num,title,news_content,time);
-
+            database_news.insert_historyinfo(user_num, news_publisher,title, news_content,news_class,img_path,news_hot+1,time);
         }
-    }
+        }
 
-     private void initView() {
+    private void initView() {
         user = findViewById(R.id.news_user);
         user_pic=findViewById(R.id.news_user_pic);
         news_time =findViewById(R.id.news_time);
