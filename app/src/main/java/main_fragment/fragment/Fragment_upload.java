@@ -3,6 +3,7 @@ package main_fragment.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -163,15 +164,15 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 for(int i=0;i<5;i++){
                     if(!get[i].equals("")){
                         String  pathtest = get[i];
-                        byte[] imgtest={};
-                        imgtest = bitmap_handle.bitmabToBytes(pathtest);
-                        database_news.insert_newsinfo(i,"12345678910",title,content,"生活",imgtest,0,NewsTime_text);
+                       /* Bitmap imgtest;
+                        imgtest = bitmap_handle.pictureTobitmap(pathtest);*/
+                        database_news.insert_newsinfo(i,"12345678910",title,content,"生活",pathtest,0,NewsTime_text);
                     }
                 }
                     String  pathtest = null;
                     byte[] imgtest={};
                    /* imgtest = bitmap_handle.bitmabToBytes(pathtest);*/
-                    database_news.insert_newsinfo(0,"12345678910",title,content,"生活",imgtest,0,NewsTime_text);
+                    database_news.insert_newsinfo(0,"12345678910",title,content,"生活",pathtest,0,NewsTime_text);
 
                 }
 

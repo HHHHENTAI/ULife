@@ -35,7 +35,7 @@ public class DbHelp_NEWS extends SQLiteOpenHelper {
                 "NewsTitle_text text not null," +
                 "NewsContent_text text not null," +
                 "NewsClass_text text not null," +
-                "NewsImage_blob MEDIUMBLOB not null," +
+                "NewsImage_blob text not null," +
                 "NewsHot_int integer not null," +
                 "NewsTime_text text not null)";
 

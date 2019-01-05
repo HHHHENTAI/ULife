@@ -29,6 +29,9 @@ public class news_Adapter extends BaseAdapter {
     private Integer mScreenWeight;
     private Context mcontext;
     private ListView listView;
+    private Bitmap_handle bitmap_handle = new Bitmap_handle();
+
+
 
     public news_Adapter(Context context, List<news_class> list, ListView listView) {
         this.mDatas = list;
@@ -101,11 +104,15 @@ public class news_Adapter extends BaseAdapter {
         // holder.news_classify.setTextSize((mScreenWeight/21));
 
         holder.news_browse_count.setText("" + bean.getNews_browse_count());
-        // holder.news_browse_count.setTextSize((mScreenWeight/21));
 
-        byte[] imgData = bean.getNews_img();
-        Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
-        holder.news_img.setImageBitmap(imagebitmap);
+         String path= bean.getNews_img();
+        Log.i("jjj", "getView: "+path);
+             Bitmap img_bitmap  = null;
+             img_bitmap = bitmap_handle.pictureTobitmap(path);
+
+        //byte[] imgData = bean.getNews_img();
+        //Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+        holder.news_img.setImageBitmap(img_bitmap);
         holder.news_img.setMaxHeight(listView.getHeight() / 5);
         holder.news_img.setMaxWidth(listView.getHeight() / 5);
         return convertView;

@@ -55,7 +55,7 @@ public class History extends AppCompatActivity implements View.OnClickListener
                 String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
                 Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
                 //测试图片
-                byte[] imgData = null;
+                String imgData = null;
                 imgData = bitmap_handle.readImage(cursor);
                 //Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
                 String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));

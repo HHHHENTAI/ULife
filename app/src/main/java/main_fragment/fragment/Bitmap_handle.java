@@ -48,11 +48,33 @@ public class Bitmap_handle {
         return new byte[0];
     }
 
+
+    //照片转成bitmap
+    public Bitmap pictureTobitmap(String path)
+    {
+        FileInputStream fis = null;
+        try {
+            //例子
+            //fis = new FileInputStream("/storage/emulated/0/data/test.jpg");
+            fis = new FileInputStream(path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (fis == null) {
+            Log.i("错误", "照片路径错误");
+           // return new byte[0];
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(fis);
+
+        return bitmap;
+    }
+
+
     //读照片
-    public byte[] readImage(Cursor cursor) {
-        byte[] imgData = null;
+    public String readImage(Cursor cursor) {
+        String imgData = null;
         //将Blob数据转化为字节数组
-        imgData = cursor.getBlob(cursor.getColumnIndex("NewsImage_blob"));
+        imgData = cursor.getString(cursor.getColumnIndex("NewsImage_blob"));
         return imgData;
     }
 }

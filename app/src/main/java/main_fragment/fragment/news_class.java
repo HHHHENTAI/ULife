@@ -4,7 +4,7 @@ import com.example.hhhhentai.ulife.R;
 
 public class news_class {
 
-    private byte[] news_img;
+    private String news_img;
 
     public Integer getNews_browse_count() {
         return news_browse_count;
@@ -35,7 +35,7 @@ public class news_class {
     private  String news_classify;
     private  Integer news_browse_count;
 
-    public news_class(String news_title, Integer news_browse_count, String news_classify, String news_time, byte[] news_img) {
+    public news_class(String news_title, Integer news_browse_count, String news_classify, String news_time, String news_img) {
         this.news_browse_count = news_browse_count;
         this.news_classify = news_classify;
         this.news_img = news_img;
@@ -43,11 +43,11 @@ public class news_class {
         this.news_title = news_title;
     }
 
-    public byte[] getNews_img() {
+    public String getNews_img() {
         return news_img;
     }
 
-    public void setNews_img(byte[] news_img) {
+    public void setNews_img(String news_img) {
         this.news_img = news_img;
     }
 

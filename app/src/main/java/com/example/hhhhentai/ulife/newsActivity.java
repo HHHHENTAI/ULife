@@ -1,6 +1,7 @@
 package com.example.hhhhentai.ulife;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,8 +10,10 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +37,8 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView news_pic;
     private TextView news_time;
     private TextView content;
+    private Integer mScreenHeight;
+    private Integer mScreenWeight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +57,20 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             int news_hot = cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
             database_news.update_news_count(title,time,news_hot);
             //加载图片
-            byte[] imgData = null;
-            imgData = bitmap_handle.readImage(cursor);
-            Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
-            news_pic.setImageBitmap(imagebitmap);
+           Bitmap imgbitmap = bitmap_handle.pictureTobitmap(bitmap_handle.readImage(cursor));
+            //imgData = bitmap_handle.readImage(cursor);
+          //  Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+            DisplayMetrics dm = new DisplayMetrics();
+            WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+            wm.getDefaultDisplay().getMetrics(dm);
+            mScreenHeight = dm.heightPixels;//屏幕高度
+            mScreenWeight = dm.widthPixels;  //屏幕宽度
+            news_pic.setMaxWidth(mScreenWeight);
+            news_pic.setMinimumWidth(mScreenWeight);
+            news_pic.setMaxHeight(mScreenWeight);
+
+            news_pic.setImageBitmap(imgbitmap);
+            news_pic.setAdjustViewBounds(true);
             String user_num = cursor.getString(cursor.getColumnIndex("SendusrPhone_text"));
             Log.i("jjj", "onCreate: "+user_num);
             Cursor cursor1 = database_user.query("user",null,"account = ?",new String[]{user_num},null,null,null);

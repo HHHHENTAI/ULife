@@ -153,7 +153,6 @@ public class tab_item_fragment extends Fragment {
 
         }
 
-        // Cursor cursor = database_news.query_newsinfo(null,"NewsClass_text = ?",new String[]{classify},null,null,"SendId_int desc");
         else
         {
             //todo 添加到数据源
@@ -166,13 +165,11 @@ public class tab_item_fragment extends Fragment {
                 String class_fy =cursor.getString(cursor.getColumnIndex("NewsClass_text"));
                 Integer tokyohot =cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
                 //测试图片
-                byte[] imgData = null;
+                 String imgData = null;
                 imgData = bitmap_handle.readImage(cursor);
-                //Integer imgID =cursor.getInt(cursor.getColumnIndex("NewsImage_int"));
                 String time =cursor.getString(cursor.getColumnIndex("NewsTime_text"));
                 news_class news = new news_class(title, tokyohot, class_fy, time, imgData);
                 mdatas.add(news);
-
             }
 
         //todo 配置数据源
