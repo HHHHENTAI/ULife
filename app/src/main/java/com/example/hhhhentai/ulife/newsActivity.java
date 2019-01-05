@@ -47,12 +47,13 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = getIntent();
         String title = intent.getStringExtra("news_title");
         String time  = intent.getStringExtra("news_time");
-
+        String news_content;
         //todo 检索数据库，找到新闻 记录
          Cursor cursor = database_news.query_newsinfo(null,"NewsTitle_text = ? and NewsTime_text = ?",new String[]{title,time},null,null,null);
         if(cursor.moveToFirst()){
             //cursor 默认下标是-1
-            content.setText(cursor.getString(cursor.getColumnIndex("NewsContent_text")));
+            news_content =cursor.getString(cursor.getColumnIndex("NewsContent_text"));
+            content.setText(news_content);
             news_title.setText(cursor.getString(cursor.getColumnIndex("NewsTitle_text")));
             int news_hot = cursor.getInt(cursor.getColumnIndex("NewsHot_int"));
             database_news.update_news_count(title,time,news_hot);
@@ -90,6 +91,8 @@ public class newsActivity extends AppCompatActivity implements View.OnClickListe
             {
                 Log.i("jjj", "onCreate: "+"else");
             }
+            //记录历史
+           database_news.insert_historyinfo(user_num,title,news_content,time);
 
         }
     }

@@ -110,7 +110,6 @@ public class Fragment_life_tools extends Fragment {
         params3.setMargins(0,0,0,0);
         Im_ToolshowPicture.setLayoutParams(params3);
 
-
         Tv_Toolshowsentence.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
         Tv_Tooltitle1.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
         Tv_Tooltitle2.setTextSize(COMPLEX_UNIT_PX,Constant.displayHeight * 0.02f);
