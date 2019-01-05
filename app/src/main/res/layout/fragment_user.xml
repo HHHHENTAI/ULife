@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/icon_headpicture" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -204,7 +204,7 @@
             android:id="@+id/iv_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/mine_history"/>
+            android:src="@drawable/mine_history"/>
 
         <TextView
             android:id="@+id/tv_history"
@@ -217,7 +217,7 @@
             android:id="@+id/iv_his"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_enter"/>
+            android:src="@drawable/icon_enter"/>
     </LinearLayout>
 
     <View
@@ -241,7 +241,7 @@
             android:id="@+id/iv_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_setting"/>
+            android:src="@drawable/icon_setting"/>
 
         <TextView
             android:id="@+id/tv_setting"
@@ -254,7 +254,7 @@
             android:id="@+id/iv_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_enter"/>
+            android:src="@drawable/icon_enter"/>
     </LinearLayout>
 
     <View
@@ -277,7 +277,7 @@
             android:id="@+id/iv_personinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/mine_editperson"/>
+            android:src="@drawable/mine_editperson"/>
 
         <TextView
             android:id="@+id/tv_personinfo"
@@ -290,7 +290,7 @@
             android:id="@+id/iv_per"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_enter"/>
+            android:src="@drawable/icon_enter"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

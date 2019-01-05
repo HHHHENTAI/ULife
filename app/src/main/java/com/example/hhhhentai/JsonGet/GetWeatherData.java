@@ -112,19 +112,19 @@ public class GetWeatherData extends AsyncTask<String,Void,String>{
 
                 if(weather.indexOf("晴")!=-1)
                 {
-                    Im_weatherpicture.setImageResource(R.mipmap.ic_sun);
+                    Im_weatherpicture.setImageResource(R.drawable.ic_sun);
                 }
                 else if(weather.indexOf("雨")!=-1)
                 {
-                    Im_weatherpicture.setImageResource(R.mipmap.ic_rain);
+                    Im_weatherpicture.setImageResource(R.drawable.ic_rain);
                 }
                 else if(weather.indexOf("雪")!=-1)
                 {
-                    Im_weatherpicture.setImageResource(R.mipmap.ic_snow);
+                    Im_weatherpicture.setImageResource(R.drawable.ic_snow);
                 }
                 else if(weather.indexOf("多云")!=-1)
                 {
-                    Im_weatherpicture.setImageResource(R.mipmap.ic_cloudy);
+                    Im_weatherpicture.setImageResource(R.drawable.ic_cloudy);
                 }
 
                 //风向

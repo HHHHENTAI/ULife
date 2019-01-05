@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:src="@mipmap/icon_quit" />
+                android:src="@drawable/icon_quit" />
 
             <TextView
                 android:layout_width="0dp"
@@ -109,7 +109,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:src="@mipmap/icon_enter"/>
+                android:src="@drawable/icon_enter"/>
 
         </LinearLayout>
 
@@ -140,7 +140,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:src="@mipmap/icon_enter"/>
+                android:src="@drawable/icon_enter"/>
 
         </LinearLayout>
 

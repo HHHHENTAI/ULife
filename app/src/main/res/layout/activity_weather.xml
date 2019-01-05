@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.hhhhentai.UseTool.WeatherActivity"
-    android:background="@color/white">
+    android:background="@color/mintcream">
 
     <LinearLayout
         android:id="@+id/Ll_weatherTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="#838b8b"
+        android:background="@color/white"
         android:layout_marginTop="1dp"
         android:orientation="horizontal">
 
@@ -21,44 +21,50 @@
             android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_quit" />
+            android:src="@drawable/icon_quit" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="天气查询"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:textSize="25sp" />
     </LinearLayout>
 
+    <View
+        android:id="@+id/V_wsplit"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/Ll_weatherTitle"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_below="@id/V_wsplit"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_below="@id/Ll_weatherTitle">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="2"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/Im_weatherpicture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/ic_sun" />
+                android:src="@drawable/ic_sun" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -73,29 +79,36 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_border"
                     android:gravity="center"
                     android:text="城市:"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
 
                 <EditText
                     android:id="@+id/Et_weathercityname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/textview_border"
                     android:gravity="center"
-                    android:maxLines="1"
                     android:hint="请输入城市名"
+                    android:maxLines="1"
+                    android:textColorHint="@color/lightblue"
                     android:textSize="25sp" />
 
                 <Button
                     android:id="@+id/Bt_weatherquery"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="查询"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
 
             </LinearLayout>
@@ -109,23 +122,30 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="3dp"
                     android:layout_weight="1"
+                    android:background="@drawable/textview_border"
                     android:gravity="center"
                     android:text="日期:"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/Tv_weatherdate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:background="@drawable/textview_border"
                     android:gravity="center"
-                    android:text="~"
+                    android:hint="~"
+                    android:textColorHint="@color/lightblue"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -134,22 +154,31 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Li_weatherDate"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/textview_border"
                     android:gravity="center"
+                    android:layout_marginRight="3dp"
                     android:text="温度:"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/Tv_weathertemp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:background="@drawable/textview_border"
                     android:gravity="center"
-                    android:text="~"
+                    android:hint="~"
+                    android:textColorHint="@color/lightblue"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -160,22 +189,31 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Li_weathertemp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/textview_border"
                     android:gravity="center"
+                    android:layout_marginRight="3dp"
                     android:text="天气:"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/Tv_weather"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/textview_border"
                     android:layout_weight="3"
                     android:gravity="center"
-                    android:text="~"
+                    android:hint="~"
+                    android:textColorHint="@color/lightblue"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -185,22 +223,31 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Li_weather"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/textview_border"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_marginRight="3dp"
                     android:text="风向:"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/Tv_weatherwind"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
-                    android:text="~"
+                    android:background="@drawable/textview_border"
+                    android:hint="~"
+                    android:textColorHint="@color/lightblue"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -210,20 +257,29 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/Li_weatherwind"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="穿衣建议:"
+                    android:textColor="#000000"
+                    android:padding="5dp"
+                    android:background="@drawable/textview_border"
                     android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/Tv_weatherdress"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text=""
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/textview_border"
+                    android:hint=""
+                    android:textColorHint="@color/lightblue"
+                    android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>
 

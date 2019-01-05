@@ -58,7 +58,7 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
     //默认添加第一个页面
     private void addFragment() {
         //设置第一个页面下方的第一个控件高亮
-        btn_show.setImageResource(R.mipmap.main_news2);
+        btn_show.setImageResource(R.drawable.main_news2);
         manager = getSupportFragmentManager();
         //开始事务
         ft = manager.beginTransaction();
@@ -145,10 +145,10 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
         switch (view.getId()) {
             case R.id.btn_show:
                 ft.replace(R.id.content, fragment_show);
-                btn_show.setImageResource(R.mipmap.main_news2);
-                btn_upload.setImageResource(R.mipmap.main_add1);
-                btn_life_tools.setImageResource(R.mipmap.main_tool1);
-                btn_user.setImageResource(R.mipmap.main_mine1);
+                btn_show.setImageResource(R.drawable.main_news2);
+                btn_upload.setImageResource(R.drawable.main_add1);
+                btn_life_tools.setImageResource(R.drawable.main_tool1);
+                btn_user.setImageResource(R.drawable.main_mine1);
                 //TODO 消息具体活动界面--赵效慷  江守鑫
 
                 //TODO TEST_START:赵效慷：测试插入数据
@@ -243,26 +243,26 @@ public class main_part extends AppCompatActivity implements View.OnClickListener
 
             case R.id.btn_upload:
                 ft.replace(R.id.content, fragment_upload);
-                btn_show.setImageResource(R.mipmap.main_news1);
-                btn_upload.setImageResource(R.mipmap.main_add2);
-                btn_life_tools.setImageResource(R.mipmap.main_tool1);
-                btn_user.setImageResource(R.mipmap.main_mine1);
+                btn_show.setImageResource(R.drawable.main_news1);
+                btn_upload.setImageResource(R.drawable.main_add2);
+                btn_life_tools.setImageResource(R.drawable.main_tool1);
+                btn_user.setImageResource(R.drawable.main_mine1);
                 //TODO 发布具体活动界面--余劲龙
                 break;
             case R.id.btn_life_tools:
                 ft.replace(R.id.content, fragment_life_tools);
-                btn_show.setImageResource(R.mipmap.main_news1);
-                btn_upload.setImageResource(R.mipmap.main_add1);
-                btn_life_tools.setImageResource(R.mipmap.main_tool2);
-                btn_user.setImageResource(R.mipmap.main_mine1);
+                btn_show.setImageResource(R.drawable.main_news1);
+                btn_upload.setImageResource(R.drawable.main_add1);
+                btn_life_tools.setImageResource(R.drawable.main_tool2);
+                btn_user.setImageResource(R.drawable.main_mine1);
                 //TODO 工具具体活动界面--盛光明
                 break;
             case R.id.btn_user:
                 ft.replace(R.id.content, fragment_user);
-                btn_show.setImageResource(R.mipmap.main_news1);
-                btn_upload.setImageResource(R.mipmap.main_add1);
-                btn_life_tools.setImageResource(R.mipmap.main_tool1);
-                btn_user.setImageResource(R.mipmap.main_mine2);
+                btn_show.setImageResource(R.drawable.main_news1);
+                btn_upload.setImageResource(R.drawable.main_add1);
+                btn_life_tools.setImageResource(R.drawable.main_tool1);
+                btn_user.setImageResource(R.drawable.main_mine2);
                 //TODO 我的具体活动界面--张松
                 break;
         }
