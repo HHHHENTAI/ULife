@@ -114,6 +114,7 @@ public class Database_News {
 //    }
 
     public Cursor query_historyinfo(String SeePhone_text) {
+
         return database_news.query("SeeHistory", null, "SeePhone_text = ?", new String[]{SeePhone_text}, null, null, null);
     }
     //TODO end浏览历史表的增删改查
