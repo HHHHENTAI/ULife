@@ -35,7 +35,7 @@ public class SchoolDataActivity extends AppCompatActivity {
 
     private void loadPicture() {
         Im_schooldate = findViewById(R.id.Im_SchoolData);
-        Im_schooldate.setImageResource(R.drawable.ic_schooldate);
+        Im_schooldate.setImageResource(R.mipmap.ic_schooldate);
 
 
         /*//加载校历

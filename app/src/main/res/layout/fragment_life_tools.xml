@@ -27,7 +27,7 @@
                 android:layout_weight="5"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_test" />
+                android:src="@mipmap/ic_test" />
 
             <TextView
                 android:id="@+id/Tv_Toolshowsentence"

@@ -34,7 +34,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@mipmap/main_news1" />
 
         <ImageView
             android:id="@+id/btn_upload"
@@ -43,7 +43,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@mipmap/main_add1" />
 
         <ImageView
             android:id="@+id/btn_life_tools"
@@ -52,7 +52,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@mipmap/main_tool1" />
 
         <ImageView
             android:id="@+id/btn_user"
@@ -61,7 +61,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@mipmap/main_mine1" />
     </LinearLayout>
 
 

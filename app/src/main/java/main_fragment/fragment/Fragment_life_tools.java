@@ -73,27 +73,27 @@ public class Fragment_life_tools extends Fragment {
         List<Map<String, Object>> data1 = new ArrayList<Map<String, Object>>();
 
         HashMap<String, Object> map11 = new HashMap<String, Object>();
-        map11.put("icon",R.drawable.tool_weather);
+        map11.put("icon",R.mipmap.tool_weather);
         map11.put("content", "天气");
         data1.add(map11);
 
         HashMap<String, Object> map12 = new HashMap<String, Object>();
-        map12.put("icon", R.drawable.tool_expressage);
+        map12.put("icon", R.mipmap.tool_expressage);
         map12.put("content", "快递");
         data1.add(map12);
 
         HashMap<String, Object> map13 = new HashMap<String, Object>();
-        map13.put("icon", R.drawable.tool_lable);
+        map13.put("icon", R.mipmap.tool_lable);
         map13.put("content", "便签");
         data1.add(map13);
 
         HashMap<String, Object> map14 = new HashMap<String, Object>();
-        map14.put("icon", R.drawable.tool_map);
+        map14.put("icon", R.mipmap.tool_map);
         map14.put("content", "地图");
         data1.add(map14);
 
         HashMap<String, Object> map15 = new HashMap<String, Object>();
-        map15.put("icon", R.drawable.tool_bill);
+        map15.put("icon", R.mipmap.tool_bill);
         map15.put("content", "账单");
         data1.add(map15);
 
@@ -137,27 +137,27 @@ public class Fragment_life_tools extends Fragment {
         List<Map<String, Object>> data2 = new ArrayList<Map<String, Object>>();
 
         HashMap<String, Object> map21 = new HashMap<String, Object>();
-        map21.put("icon", R.drawable.tool_course);
+        map21.put("icon", R.mipmap.tool_course);
         map21.put("content", "课程表");
         data2.add(map21);
 
         HashMap<String, Object> map22 = new HashMap<String, Object>();
-        map22.put("icon", R.drawable.tool_grade);
+        map22.put("icon", R.mipmap.tool_grade);
         map22.put("content", "成绩");
         data2.add(map22);
 
         HashMap<String, Object> map23 = new HashMap<String, Object>();
-        map23.put("icon", R.drawable.tool_borrowbook);
+        map23.put("icon", R.mipmap.tool_borrowbook);
         map23.put("content", "借书");
         data2.add(map23);
 
         HashMap<String, Object> map24 = new HashMap<String, Object>();
-        map24.put("icon", R.drawable.tool_schooldate);
+        map24.put("icon", R.mipmap.tool_schooldate);
         map24.put("content", "校历");
         data2.add(map24);
 
         HashMap<String, Object> map25 = new HashMap<String, Object>();
-        map25.put("icon", R.drawable.tool_application);
+        map25.put("icon", R.mipmap.tool_application);
         map25.put("content", "应用");
         data2.add(map25);
 

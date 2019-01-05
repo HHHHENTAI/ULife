@@ -42,7 +42,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@mipmap/icon_looknum"
                     android:layout_width="25dp"
                     android:layout_height="25dp" />
                 <TextView

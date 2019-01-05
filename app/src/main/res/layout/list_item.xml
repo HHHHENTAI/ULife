@@ -55,7 +55,7 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/icon_looknum" />
 
                 <TextView
                     android:id="@+id/list_browse_num"
