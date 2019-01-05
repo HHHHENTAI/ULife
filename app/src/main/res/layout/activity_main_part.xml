@@ -15,7 +15,9 @@
         android:layout_weight="8"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@id/btm_menu"></FrameLayout>
+        android:layout_above="@id/btm_menu">
+
+    </FrameLayout>
     <!--菜单-->
     <!--               主界面   by 江守鑫&&赵效慷                -->
     <LinearLayout
@@ -34,7 +36,8 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_news1" />
+            android:src="@mipmap/main_news1"
+            />
 
         <ImageView
             android:id="@+id/btn_upload"
@@ -43,7 +46,8 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_add1" />
+            android:src="@mipmap/main_add1"
+            />
 
         <ImageView
             android:id="@+id/btn_life_tools"
@@ -52,7 +56,8 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_tool1" />
+            android:src="@mipmap/main_tool1"
+            />
 
         <ImageView
             android:id="@+id/btn_user"
@@ -61,7 +66,8 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_mine1" />
+            android:src="@mipmap/main_mine1"
+            />
     </LinearLayout>
 
 
