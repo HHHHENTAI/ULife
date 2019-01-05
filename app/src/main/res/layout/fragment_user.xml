@@ -5,14 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    //空白TextView，增加边距
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.25"/>
-
     //用户头像签名部分
     <LinearLayout
+        android:id="@+id/LL_head"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -60,13 +55,27 @@
 
     </LinearLayout>
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        android:layout_height="0dp"
+        android:layout_weight="0.25"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        />
 
     //用户使用信息部分
     <LinearLayout
+        android:id="@+id/LL_p"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -77,15 +86,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
+                android:id="@+id/tv_publish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0" />
 
             <TextView
+                android:id="@+id/tv_publish_c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -97,15 +109,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
+                android:id="@+id/tv_follow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0" />
 
             <TextView
+                android:id="@+id/tv_follow_c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -116,15 +131,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
+                android:id="@+id/tv_fans"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0" />
 
             <TextView
+                android:id="@+id/tv_fans_c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -135,15 +153,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
+                android:id="@+id/tv_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0" />
 
             <TextView
+                android:id="@+id/tv_message_c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -152,35 +173,58 @@
     </LinearLayout>
 
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        />
+
     //历史消息部分
     <LinearLayout
         android:id="@+id/ll_history"
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="0dp"
+            android:id="@+id/iv_history"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@mipmap/mine_history"
-            android:layout_gravity="center"/>
+            android:src="@mipmap/mine_history"/>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:id="@+id/tv_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="历史"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:id="@+id/iv_his"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:src="@mipmap/icon_enter"/>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        />
 
 
     //设置部分
@@ -189,29 +233,35 @@
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="0dp"
+            android:id="@+id/iv_setting"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@mipmap/icon_setting"
-            android:layout_gravity="center"/>
+            android:src="@mipmap/icon_setting"/>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="设置"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:id="@+id/iv_set"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:src="@mipmap/icon_enter"/>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        />
 
     //编辑个人资料部分
     <LinearLayout
@@ -219,29 +269,34 @@
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="0dp"
+            android:id="@+id/iv_personinfo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@mipmap/mine_editperson"
-            android:layout_gravity="center"/>
+            android:src="@mipmap/mine_editperson"/>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:id="@+id/tv_personinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="编辑个人资料"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:id="@+id/iv_per"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:src="@mipmap/icon_enter"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        />
 
 
     //空白TextView，增加边距
