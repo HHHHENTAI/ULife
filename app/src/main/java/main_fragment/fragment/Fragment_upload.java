@@ -48,7 +48,7 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
     String phone;
     ImageView iv_picture;
     ImageView iv_cancle;
-    ImageView[] send_iv = new ImageView[5];
+    ImageView[] send_iv=new ImageView[5];
     Button btn_send;
     String[] get = {"", "", "", "", ""};
     Context context;
@@ -130,13 +130,13 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
 
     private void getData() {
         Map<String, Object> map1 = new HashMap<String, Object>();
-        map1.put("image", R.mipmap.yjl_study);
+        map1.put("image", R.drawable.yjl_study);
         map1.put("text", "学习");
         Map<String, Object> map2 = new HashMap<String, Object>();
-        map2.put("image", R.mipmap.yjl_game);
+        map2.put("image", R.drawable.yjl_game);
         map2.put("text", "游戏");
         Map<String, Object> map3 = new HashMap<String, Object>();
-        map3.put("image", R.mipmap.yjl_life);
+        map3.put("image", R.drawable.yjl_life);
         map3.put("text", "生活");
         dataList.add(map1);
         dataList.add(map2);

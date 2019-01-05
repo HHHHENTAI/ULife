@@ -54,7 +54,7 @@ public class GetToolShow extends AsyncTask<String,Void,String>{
         // TODO Auto-generated method stub
         super.onPostExecute(result);
         //接受结果
-        Log.i("ToolGetshow",result);
+       // Log.i("ToolGetshow",result);
         //数据解析
         parseResult(result);
 

@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
 
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <!--内容容器-->
     <FrameLayout
         android:id="@+id/content"
-        android:layout_weight="8"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@id/btm_menu">
+        android:layout_above="@id/btm_menu"
+        android:layout_weight="8">
 
     </FrameLayout>
     <!--菜单-->
@@ -24,8 +24,8 @@
         android:id="@+id/btm_menu"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_alignParentBottom="true"
+        android:layout_weight="1"
         android:background="@color/white"
         android:orientation="horizontal">
 
@@ -36,8 +36,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_news1"
-            />
+            android:src="@drawable/main_news1" />
 
         <ImageView
             android:id="@+id/btn_upload"
@@ -46,8 +45,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_add1"
-            />
+            android:src="@drawable/main_add1" />
 
         <ImageView
             android:id="@+id/btn_life_tools"
@@ -56,8 +54,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_tool1"
-            />
+            android:src="@drawable/main_tool1" />
 
         <ImageView
             android:id="@+id/btn_user"
@@ -66,8 +63,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@mipmap/main_mine1"
-            />
+            android:src="@drawable/main_mine1" />
     </LinearLayout>
 
 
