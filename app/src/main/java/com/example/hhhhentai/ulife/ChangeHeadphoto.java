@@ -84,14 +84,19 @@ public class ChangeHeadphoto extends AppCompatActivity implements View.OnClickLi
         PersonPhone = intent.getStringExtra("user_num");
         headimg = intent.getStringExtra("headimg");
         Log.i("headimg", headimg + "7");
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(headimg);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (headimg.equals("")) {
+
+        } else {
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(headimg);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Bitmap bitmap = BitmapFactory.decodeStream(fis);
+            iv_headphoto.setImageBitmap(bitmap);
         }
-        Bitmap bitmap = BitmapFactory.decodeStream(fis);
-        iv_headphoto.setImageBitmap(bitmap);
+
     }
 
 

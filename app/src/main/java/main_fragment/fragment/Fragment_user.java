@@ -233,8 +233,17 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         String PersonImage_blob = cursor.getString(cursor.getColumnIndex("PersonImage_blob"));
         headimg = PersonImage_blob;
         //昵称与签名
-        tv_user_name.setText(PersonName_text);
-        tv_user_info.setText(PersonSig_text);
+        if (PersonName_text.equals("")) {
+            tv_user_name.setText("昵 称");
+        } else {
+            tv_user_name.setText(PersonName_text);
+        }
+        if (PersonSig_text.equals("")) {
+            tv_user_info.setText("个 人 签 名");
+        } else {
+            tv_user_info.setText(PersonSig_text);
+        }
+
 
         //头像
         if (PersonImage_blob == null) {
