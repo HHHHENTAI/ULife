@@ -33,7 +33,6 @@ public class news_Adapter extends BaseAdapter {
     private Bitmap_handle bitmap_handle = new Bitmap_handle();
 
 
-
     public news_Adapter(Context context, List<news_class> list, ListView listView) {
         this.mDatas = list;
         this.mcontext = context;
@@ -65,12 +64,10 @@ public class news_Adapter extends BaseAdapter {
         String img_tag = bean.getNews_img();
 
         if (convertView == null) {
-            if(img_tag.equals(""))
-            {
+            if (img_tag.equals("")) {
                 convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
                 holder = new ViewHolder();
-            }
-            else {
+            } else {
                 convertView = mInflater.inflate(R.layout.list_item, parent, false); //加载布局
                 holder = new ViewHolder();
             }
@@ -81,12 +78,6 @@ public class news_Adapter extends BaseAdapter {
             holder.news_classify = (TextView) convertView.findViewById(R.id.list_classify);
             holder.news_img = convertView.findViewById(R.id.list_img);
 
-            //获取屏幕高度
-            DisplayMetrics dm = new DisplayMetrics();
-            WindowManager wm = (WindowManager) mcontext.getSystemService(Context.WINDOW_SERVICE);
-            wm.getDefaultDisplay().getMetrics(dm);
-            mScreenHeight = dm.heightPixels;//屏幕高度
-            mScreenWeight = dm.widthPixels;  //屏幕宽度
             AbsListView.LayoutParams lp = new AbsListView.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, listView.getHeight() / 5);
             convertView.setLayoutParams(lp);
 
@@ -97,7 +88,6 @@ public class news_Adapter extends BaseAdapter {
         }
 
         holder.news_title.setText(bean.getNews_title());
-        //holder.news_title.setTextSize((mScreenWeight/14));
 
         String t = bean.getNews_time();
         String year = t.substring(0, 4);
@@ -107,30 +97,25 @@ public class news_Adapter extends BaseAdapter {
 
         holder.news_classify.setText(bean.getNews_classify());
 
-
         holder.news_browse_count.setText("" + bean.getNews_browse_count());
 
-         String path= bean.getNews_img();
-         if(path.equals(""))
-         {
-             holder.news_img.setMaxWidth(0);
-             holder.news_img.setAdjustViewBounds(true);
-         }
-         else
-         {
-             Log.i("jjj", "getView: "+"123");
-             Bitmap img_bitmap  = null;
-             img_bitmap = bitmap_handle.pictureTobitmap(path);
-             holder.news_img.setImageBitmap(img_bitmap);
-             holder.news_img.setMaxHeight(listView.getHeight() / 5);
-             holder.news_img.setMaxWidth(listView.getHeight() / 5);
-             holder.news_img.setScaleType(ImageView.ScaleType.FIT_XY);
-             //holder.news_img.setMinimumWidth(listView.getHeight() / 5);
-             // 设置图片的位置
-             holder.news_img.setVisibility(View.VISIBLE);
+        String path = bean.getNews_img();
+        if (path.equals("")) {
+            holder.news_img.setMaxWidth(0);
+            holder.news_img.setAdjustViewBounds(true);
+        } else {
+            Bitmap img_bitmap = null;
+            img_bitmap = bitmap_handle.pictureTobitmap(path);
+            holder.news_img.setImageBitmap(img_bitmap);
+            holder.news_img.setMaxHeight(listView.getHeight() / 5);
+            holder.news_img.setMaxWidth(listView.getHeight() / 5);
+            holder.news_img.setScaleType(ImageView.ScaleType.FIT_XY);
+            //holder.news_img.setMinimumWidth(listView.getHeight() / 5);
+            // 设置图片的位置
+            holder.news_img.setVisibility(View.VISIBLE);
 
-             holder.news_img.setAdjustViewBounds(true);
-         }
+            holder.news_img.setAdjustViewBounds(true);
+        }
 
         return convertView;
     }
@@ -139,6 +124,7 @@ public class news_Adapter extends BaseAdapter {
     public void notifyDataSetChanged() {
         super.notifyDataSetChanged();
     }
+
     //这个ViewHolder只能服务于当前这个特定的adapter，因为ViewHolder里会指定item的控件，不同的ListView，item可能不同，所以ViewHolder写成一个私有的类
     private class ViewHolder {
         TextView news_title;

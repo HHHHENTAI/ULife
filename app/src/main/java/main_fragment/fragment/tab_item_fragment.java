@@ -75,6 +75,7 @@ public class tab_item_fragment extends Fragment {
     }
 
     private void setOnclick() {
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

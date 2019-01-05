@@ -22,7 +22,7 @@ public class news_class {
         this.news_title = news_title;
     }
 
-    private  String news_title;
+    private String news_title;
 
     public String getNews_classify() {
         return news_classify;
@@ -32,8 +32,8 @@ public class news_class {
         this.news_classify = news_classify;
     }
 
-    private  String news_classify;
-    private  Integer news_browse_count;
+    private String news_classify;
+    private Integer news_browse_count;
 
     public news_class(String news_title, Integer news_browse_count, String news_classify, String news_time, String news_img) {
         this.news_browse_count = news_browse_count;
@@ -59,12 +59,7 @@ public class news_class {
         this.news_time = news_time;
     }
 
-    private  String news_time;
-
-
-
-
-
+    private String news_time;
 
 
 }

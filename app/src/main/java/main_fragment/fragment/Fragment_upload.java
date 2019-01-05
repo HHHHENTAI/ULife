@@ -100,8 +100,6 @@ public class Fragment_upload extends Fragment implements View.OnClickListener {
                 /* String s=adapterView.getItemAtPosition(i).toString();*/
                 TextView tv_test = view.findViewById(R.id.tv);
                 family = tv_test.getText().toString();
-
-
             }
 
             @Override
