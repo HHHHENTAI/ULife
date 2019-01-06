@@ -217,15 +217,16 @@ public class Fragment_user extends Fragment implements View.OnClickListener {
         iv_user_headPhoto.setOnClickListener(this);
 
         Log.d("user_num", user_num);
-        Cursor cursor1 = database_news.query_publish_news(user_num);
-        int publish_num = cursor1.getCount();
-        pub_num.setText(""+publish_num);
+
 
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        Cursor cursor1 = database_news.query_publish_news(user_num);
+        int publish_num = cursor1.getCount();
+        pub_num.setText(""+publish_num);
         Cursor cursor = database_news.query_personinfo(user_num);
         cursor.moveToFirst();
         String PersonName_text = cursor.getString(cursor.getColumnIndex("PersonName_text"));

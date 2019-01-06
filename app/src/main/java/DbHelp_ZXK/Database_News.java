@@ -51,8 +51,8 @@ public class Database_News {
         database_news.insert("NewsInfo ", null, values_insert);
     }
 
-    public void delete_newsinfo(String delete) {
-        database_news.delete("NewsInfo ", "NewsId_int=?", new String[]{delete});
+    public void delete_newsinfo(String title,String time) {
+        database_news.delete("NewsInfo ", "NewsTitle_text=? and NewsTime_text = ?", new String[]{title,time});
     }
 
     public void update_newsinfo(int NewsId_oldint, int NewsId_newint, String SendusrPhone_text, String NewsTitle_text, String NewsContent_text,
